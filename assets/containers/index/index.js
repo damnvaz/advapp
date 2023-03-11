@@ -1,18 +1,25 @@
 import { Navbar, Footer, Title, Subtitle, Button } from "../../components/index.js";
+import { checkUserLanguage } from "../../utils/checkUserLanguage.js";
+import { indexText } from "./indexText.js";
+
 
 function aboutUs() {
+  const lang = checkUserLanguage();
+
   return `
     <div class="mt-5 mb-5">
-      ${Title('Sobre nós')}
-      ${Subtitle('Nascemos com o propósito de...')}
+      ${Title(indexText(lang)?.aboutUsTitle)}
+      ${Subtitle(indexText(lang)?.aboutUsDescription)}
     </div>
   `;
 }
 
 function advantages() {
+  const lang = checkUserLanguage();
+
   return `
     <div class="mt-5 mb-5">
-      ${Title('Vantagens')}
+      ${Title(indexText(lang)?.advantages)}
       ${Subtitle('Agenda online')}
       ${Subtitle('Gestão financeira')}
       ${Subtitle('Gestão de processos')}
@@ -22,6 +29,7 @@ function advantages() {
 }
 
 function enrollNow() {
+  const lang = checkUserLanguage();
 
   const event = `window.location.href='signup.html'`;
 
