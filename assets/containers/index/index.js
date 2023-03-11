@@ -7,7 +7,7 @@ function aboutUs() {
   const lang = checkUserLanguage();
 
   return `
-    <div class="mt-5 mb-5">
+    <div class="mt-5 mb-5 aboutUs ">
       ${Title(indexText(lang)?.aboutUsTitle)}
       ${Subtitle(indexText(lang)?.aboutUsDescription)}
     </div>
@@ -18,19 +18,27 @@ function advantages() {
   const lang = checkUserLanguage();
 
   return `
-    <div class="mt-5 mb-5">
-      ${Title(indexText(lang)?.advantages)}
-      ${Subtitle(indexText(lang)?.schedule)}
-      ${Subtitle(indexText(lang)?.proceduralManagement)}
-      ${Subtitle(indexText(lang)?.proceduralNotifications)}
-      ${Subtitle(indexText(lang)?.financialManagement)}
-      ${Subtitle(indexText(lang)?.modelPetitions)}
-      ${Subtitle(indexText(lang)?.helpForum)}
-      ${Subtitle(indexText(lang)?.custumerManagement)}
-      ${Subtitle(indexText(lang)?.filesManagement)}
-      ${Subtitle(indexText(lang)?.tableValueOAB)}
-      ${Subtitle(indexText(lang)?.fitisInYourPocket)}
-      ${Subtitle(indexText(lang)?.andMuchMore)}
+    <div class="mt-5 mb-5 vantagens d-table mx-auto caixaExterna">
+      ${Title(indexText(lang)?.advantages, 'white  ')}
+      <br>
+      <div class="columns">
+      <div>
+      ${Subtitle(indexText(lang)?.schedule, 'white')}
+      ${Subtitle(indexText(lang)?.proceduralManagement, 'white')}
+      ${Subtitle(indexText(lang)?.proceduralNotifications, 'white')}
+      ${Subtitle(indexText(lang)?.financialManagement, 'white')}
+      ${Subtitle(indexText(lang)?.petitionsModel, 'white')}
+      ${Subtitle(indexText(lang)?.contractModel, 'white')}
+      </div><div>
+      ${Subtitle(indexText(lang)?.helpForum, 'white')}
+      ${Subtitle(indexText(lang)?.custumerManagement, 'white')}
+      ${Subtitle(indexText(lang)?.filesManagement, 'white')}
+      ${Subtitle(indexText(lang)?.tableValueOAB, 'white')}
+      ${Subtitle(indexText(lang)?.fitisInYourPocket, 'white')}
+      ${Subtitle(indexText(lang)?.andMuchMore, 'white')}
+      </div>
+      </div>
+      </div>     
   `;
 }
 

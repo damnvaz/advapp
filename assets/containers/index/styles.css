@@ -14,6 +14,54 @@
   padding-left: 30px;
 }
 
+.vantagens {
+  background-color: #580100d4;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: #f9f9f9;
+  padding: 40px 50px 20px 50px;
+}
+
+.aboutUs {
+  line-height: 15px;
+}
+
+.caixaExterna {
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .columns {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0px 0px;
+  }
+  .vantagens {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .caixaExterna {
+    text-align: left;
+  }
+
+  .columns {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0px 0px;
+  }
+  .vantagens {
+    width: 100%;
+  }
+}
+
 @media (min-width: 768px) {
   .section-hero {
     display: flex;
