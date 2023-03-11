@@ -1,0 +1,6 @@
+.breakline {
+  width: 100%;
+  display: flex;
+  margin: auto;
+  border-top: 1px solid #cecece;
+}

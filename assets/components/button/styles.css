@@ -1,0 +1,61 @@
+:root {
+  --button-green: #2fc046;
+  --button-green-hover: #0f5012;
+  --button-blue: #4c9be4;
+  --button-yellow: #d7b15c;
+  --button-yellow-hover: #ac8d49;
+  --button-black: #333;
+  --button-white: #f9f9f9;
+}
+
+.button {
+  width: 190px;
+  border-radius: 5px;
+  border: none;
+  border: 2px solid var(--button-black) !important;
+  background-color: var(--button-yellow);
+  color: var(--button-black);
+  font-family: bold;
+  font-size: 1rem;
+  padding: 5px 10px;
+  letter-spacing: 0.5px;
+  height: 45px;
+}
+
+.button:hover {
+  background-color: var(--button-yellow-hover);
+}
+
+.button-link {
+  text-decoration: none;
+  cursor: pointer;
+  float: left;
+  font-size: 1rem;
+  font-family: bold;
+  letter-spacing: 1px;
+  margin: 20px;
+  display: table;
+  color: var(--button-blue);
+}
+
+.button-link a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.button-red-outline {
+  border-radius: 5px;
+  border: 2px solid var(--button-yellow) !important;
+  background-color: var(--button-white);
+  color: var(--button-yellow);
+  font-size: 1rem;
+  font-family: bold;
+  letter-spacing: 1px;
+  padding: 5px 10px;
+  width: 190px;
+}
+
+.button-red-outline:hover {
+  background-color: var(--button-yellow);
+  color: var(--button-white);
+}

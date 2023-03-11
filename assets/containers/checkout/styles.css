@@ -1,0 +1,322 @@
+/* 
+  ==============================
+  CHECKOUT 
+  ==============================  
+*/
+/* 
+  ============================== 
+  SECTION HERO 
+  ==============================   
+*/
+
+@media (min-width: 768px) {
+  /* HERO SECTION */
+  .indexHeroSection {
+    display: flex;
+    flex-direction: row;
+    min-height: 360px;
+    padding: 120px 20px 0px 20px;
+    margin-top: 60px;
+    justify-content: center;
+  }
+
+  .homeHeroSection {
+    display: flex;
+    flex-direction: row;
+    min-height: 360px;
+    padding: 100px 20px 0px 20px;
+    margin-top: 60px;
+    justify-content: center;
+  }
+
+  .indexHeroTitle {
+    color: #0e2431;
+    font-size: 1.8rem;
+    font-family: "Poppins-Medium";
+    max-width: 450px;
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+
+  .indexHeroSubtitle {
+    font-size: 1.2rem;
+    font-weight: normal;
+    font-family: "Poppins";
+    text-align: justify;
+    color: #888;
+    max-width: 430px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .indexHeroSection {
+    display: flex;
+    flex-direction: row;
+    min-height: 400px;
+    padding: 140px 20px 0px 20px;
+    justify-content: center;
+  }
+
+  .homeHeroSection {
+    display: flex;
+    flex-direction: row;
+    min-height: 360px;
+    padding: 100px 20px 0px 20px;
+    margin-top: 60px;
+    justify-content: center;
+  }
+
+  .indexHeroTitle {
+    color: #0e2431;
+    font-size: 1.8rem;
+    font-family: "Poppins-Medium";
+    width: 80%;
+    display: table;
+    margin: 0px auto;
+    letter-spacing: 0.5px;
+  }
+
+  .indexHeroSubtitle {
+    /* color: rgb(88, 88, 88);  */
+    color: #888;
+    font-size: 1rem;
+    font-weight: normal;
+    font-family: "Poppins";
+    text-align: justify;
+    width: 80%;
+    display: table;
+    margin: 10px auto 0px auto;
+  }
+}
+
+/*
+  ============================== 
+  SECTION OPTIONS
+  ==============================
+*/
+
+.indexOptionsCardTitle {
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+  font-family: "Poppins";
+  padding-bottom: 30px;
+  font-weight: bold;
+  color: white;
+}
+
+.indexOptionsCard {
+  min-width: 280px;
+  max-width: 280px;
+  border-radius: 10px;
+  height: 150px;
+  box-shadow: 1px 5px 10px #cccccc;
+  margin-right: 20px;
+  padding: 20px 10px 20px 20px;
+  margin-top: 20px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.indexOptionsCardButton {
+  font-size: 1rem;
+  font-family: "Poppins";
+  color: white;
+  border-radius: 10px;
+  padding: 6px 12px;
+  width: 120px;
+  border: none;
+  text-decoration: none;
+}
+
+.indexOptionsCardInner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.cardAttractionButton {
+  background-color: #c26e3a;
+}
+
+.cardRestaurantButton {
+  background-color: #2d72b2;
+}
+
+.cardHotelsButton {
+  background-color: #279a39;
+}
+
+.cardAttractionButton:hover,
+.cardRestaurantButton:hover,
+.cardHotelsButton:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.cardAttraction {
+  background-color: #ff914d;
+}
+
+.cardRestaurant {
+  background-color: #4c9be4;
+}
+
+.cardHotels {
+  background-color: #2fc046;
+}
+
+.indexOptionsRowCard {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.indexOptionsCardImg {
+  width: 110px;
+  height: 100%;
+  border: none;
+  border-radius: 5px;
+  margin-right: 5px;
+  -webkit-filter: drop-shadow(5px 5px 5px #222);
+  filter: drop-shadow(5px 5px 5px #222);
+}
+
+@media (max-width: 767px) {
+  .indexOptionsRowCard {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cardAttraction,
+  .cardRestaurant,
+  .cardHotels {
+    max-width: 80%;
+    min-width: 80%;
+  }
+}
+
+/*
+  ============================== 
+  SECTION DOWNLOAD THE APP
+  ==============================
+*/
+
+.sectionUnderlineBelowTitle {
+  width: 100px;
+  display: flex;
+  margin: 10px auto 20px auto;
+  border-top: 3px solid #4c9be4;
+}
+
+/*
+  ============================== 
+  SECTION BE A PARTNER
+  ==============================
+*/
+
+.sectionJoinPartnership {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2.5px solid #4c9be4;
+  color: #4c9be4;
+  width: 110px;
+  margin: 30px auto 0px auto;
+  border-radius: 5px;
+  font-weight: bolder;
+  height: 40px;
+}
+
+.sectionJoinPartnership:hover {
+  background-color: #2d72b2;
+  color: #fff;
+}
+
+/*
+*/
+
+.termsAndPoliciesTitle {
+  color: #0e2431;
+  font-weight: bold;
+  font-family: "Poppins";
+  font-size: 1.8rem;
+  width: 100%;
+  display: table;
+  margin: 0px auto;
+  margin-top: 30px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .termsAndPoliciesTitle {
+    font-size: 1.5rem;
+    text-align: left;
+  }
+}
+
+.checkoutTitle {
+  color: #0e2431;
+  font-weight: bold;
+  font-family: "Medium";
+  font-size: 1.8rem;
+  width: 100%;
+  display: table;
+  margin: 0px auto;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.checkoutSubtitle {
+  font-size: 1.3rem;
+  color: #4c9be4;
+  font-weight: bold;
+  text-align: right;
+  margin-bottom: 30px;
+}
+
+.checkoutStepTitle {
+  font-size: 1.2rem;
+  color: #222;
+  font-weight: bolder;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+
+.checkoutStepAreaCart {
+  min-height: 200px;
+  width: 520px;
+  padding: 10px 20px;
+  margin-bottom: 30px;
+}
+
+.checkoutStepAreaCartTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.checkoutStepArea {
+  width: 520px;
+  padding: 10px 20px;
+}
+
+@media (max-width: 768px) {
+  .checkoutTitle {
+    font-size: 1.5rem;
+    text-align: left;
+  }
+
+  .checkoutSubtitle {
+    font-size: 1.2rem;
+  }
+
+  .checkoutStepArea,
+  .checkoutStepAreaCart {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+  }
+}

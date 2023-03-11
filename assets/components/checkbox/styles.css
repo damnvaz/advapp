@@ -1,0 +1,25 @@
+:root {
+  --link-black: #333;
+  --link-blue: #4c9be4;
+  --link-blue-hover: #2d72b2;
+}
+.checkbox-with-link {
+  font-size: 0.85rem;
+  max-width: 80%;
+  display: table;
+  margin: 0px auto;
+  margin-top: 5px;
+  color: var(--link-black);
+  line-height: 25px;
+}
+
+.checkbox-with-link a {
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--link-blue);
+}
+
+.checkbox-with-link a:hover {
+  color: var(--link-blue-hover);
+  font-family: bold;
+}

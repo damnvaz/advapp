@@ -1,0 +1,33 @@
+.input-label {
+  color: #888;
+  font-size: 0.86rem;
+  margin-bottom: 5px;
+}
+
+.input {
+  width: 100%;
+  padding: 5px 15px;
+  margin: 5px 0px;
+  border-radius: 5px;
+  border: 1px solid grey !important;
+}
+
+.text-area {
+  width: 100%;
+  padding: 5px 15px;
+  margin: 5px 0px;
+  min-height: 120px;
+  height: 120px;
+  max-height: 120px;
+  border-radius: 5px;
+  border: 1px solid grey !important;
+  resize: none;
+}
+
+.select {
+  width: 100%;
+  padding: 5px 15px;
+  margin: 5px 0px;
+  border-radius: 5px;
+  border: 0.5px solid grey !important;
+}

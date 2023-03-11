@@ -1,0 +1,55 @@
+:root {
+  --title: #333;
+  --subtitle: #888;
+  --link: #4c9be4;
+  --link-hover: #3c7cb6;
+}
+
+@media (min-width: 768px) {
+  .title {
+    color: var(--title);
+    font-size: 1.2rem;
+    font-family: "Medium";
+    padding: 0px 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .subtitle {
+    font-size: 0.8rem;
+    font-weight: normal;
+    text-align: justify;
+    padding: 0px 20px;
+    letter-spacing: 0.5px;
+    color: var(--subtitle);
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    color: var(--title);
+    font-size: 1.2rem;
+    font-family: "Medium";
+    padding: 0px 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .subtitle {
+    color: var(--subtitle);
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    padding: 0px 20px;
+    font-weight: normal;
+    text-align: justify;
+  }
+}
+
+.link {
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--link);
+}
+.link:hover {
+  color: var(--link-hover)
+}

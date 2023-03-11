@@ -1,0 +1,139 @@
+.arrowBackPanel {
+  color: #4c9be4;
+  font-family: "Medium";
+  font-weight: 600;
+  cursor: pointer;
+  width: 80px;
+  margin-bottom: 30px;
+  display: flex;
+  font-size: 16px;
+  margin-left: 180px;
+}
+
+@media (max-width: 768px) {
+  .arrowBackPanel {
+    margin-left: 0px;
+  }
+}
+
+.heroPanel {
+  display: flex;
+  flex-direction: row;
+  min-height: 220px;
+  padding: 120px 30px 0px 30px;
+  margin-top: 60px;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoutItem {
+  margin-left: 50px;
+  color: #f44336;
+  font-weight: bold;
+  text-decoration: underline;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.indexOptionsCardTitle {
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+  font-family: "Regular";
+  padding-bottom: 30px;
+  font-weight: bold;
+  color: white;
+}
+
+.indexOptionsCard {
+  min-width: 280px;
+  max-width: 280px;
+  border-radius: 10px;
+  height: 100px;
+  box-shadow: 1px 5px 10px #cccccc;
+  margin-right: 20px;
+  padding: 20px 10px 20px 20px;
+  margin-top: 20px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.blankIndexOptionsCard {
+  min-width: 280px;
+  max-width: 280px;
+  border-radius: 10px;
+  height: 100px;
+  margin-right: 20px;
+  padding: 20px 10px 20px 20px;
+  margin-top: 20px;
+  text-decoration: none;
+}
+
+.indexOptionsCardButton {
+  font-size: 1rem;
+  font-family: "Regular";
+  color: #fff;
+  border-radius: 10px;
+  padding: 6px 12px;
+  width: 120px;
+  border: none;
+  text-decoration: none;
+}
+
+.indexOptionsCardInner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.cardAttractionButton {
+  background-color: #c26e3a;
+}
+
+.cardRestaurantButton {
+  background-color: #2d72b2;
+}
+
+.cardHotelsButton {
+  background-color: #279a39;
+}
+
+.cardAttractionButton:hover,
+.cardRestaurantButton:hover,
+.cardHotelsButton:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.cardAttraction {
+  background-color: #ff914d;
+}
+
+.cardRestaurant {
+  background-color: #4c9be4;
+}
+
+.cardHotels {
+  background-color: #2fc046;
+}
+
+.indexOptionsRowCard {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  text-align: left;
+  justify-content: center;
+}
+
+@media (max-width: 767px) {
+  .indexOptionsRowCard {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cardAttraction,
+  .cardRestaurant,
+  .cardHotels {
+    max-width: 80%;
+    min-width: 80%;
+  }
+}

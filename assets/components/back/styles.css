@@ -1,0 +1,18 @@
+:root {
+  --back: #4c9be4;
+  --back-hover: #1b63a6;
+}
+
+.arrow-back {
+  color: var(--back);
+  font-family: bold;
+  cursor: pointer;
+  width: 80px;
+  margin-bottom: 30px;
+  display: flex;
+  cursor: pointer;
+}
+
+.arrow-back:hover {
+  color: var(--back-hover);
+}
