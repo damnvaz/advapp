@@ -46,7 +46,7 @@ function getPageContent() {
         <section class="section">
             <div class="container form-container">
                 ${ArrowBack()}
-                ${Title("Advocatus - Login", 'white')}
+                ${Title("iusok - Login", 'white')}
             </div>
         </section>
       ${form}
