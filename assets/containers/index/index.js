@@ -20,11 +20,17 @@ function advantages() {
   return `
     <div class="mt-5 mb-5">
       ${Title(indexText(lang)?.advantages)}
-      ${Subtitle('Agenda online')}
-      ${Subtitle('Gestão financeira')}
-      ${Subtitle('Gestão de processos')}
-      ${Subtitle('e muito mais!')}
-    </div>
+      ${Subtitle(indexText(lang)?.schedule)}
+      ${Subtitle(indexText(lang)?.proceduralManagement)}
+      ${Subtitle(indexText(lang)?.proceduralNotifications)}
+      ${Subtitle(indexText(lang)?.financialManagement)}
+      ${Subtitle(indexText(lang)?.modelPetitions)}
+      ${Subtitle(indexText(lang)?.helpForum)}
+      ${Subtitle(indexText(lang)?.custumerManagement)}
+      ${Subtitle(indexText(lang)?.filesManagement)}
+      ${Subtitle(indexText(lang)?.tableValueOAB)}
+      ${Subtitle(indexText(lang)?.fitisInYourPocket)}
+      ${Subtitle(indexText(lang)?.andMuchMore)}
   `;
 }
 
@@ -35,10 +41,10 @@ function enrollNow() {
 
   return `
     <div class="mt-5 d-flex flex-column">
-      ${Title('Tá esperando o que?')}
-      ${Subtitle('Cadastre sua agenda e disponibilize para seus clientes de forma rápida e prática!')}
+      ${Title(indexText(lang)?.whatAreYouWaitingForTitle)}
+      ${Subtitle(indexText(lang)?.whatAreYouWaitingForDescription)}
       <div class="d-flex align-items-center flex-column mb-5">
-        ${Button('Cadastrar agora', event)}
+        ${Button(indexText(lang)?.singUpNow, event)}
       </div>
     </div>
   `;

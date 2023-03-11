@@ -31,8 +31,8 @@ export function footerText(language) {
   ];
 
   switch (language) {
-    case "pt-BR":
-      return languages[0];
+    // case "pt-BR":
+    //   return languages[0];
 
     default:
       return languages[1];
