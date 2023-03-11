@@ -1,6 +1,11 @@
+import { Title, Subtitle, ArrowBack, Input, InputLabel, ButtonLink, Button, Toast, Loading } from "../../components/index.js";
+import { checkUserLanguage } from "../../utils/checkUserLanguage.js";
+import { loginText } from "./loginText.js";
+
 function getPageContent() {
+  const lang = checkUserLanguage();
+
   if (JSON.parse(localStorage.getItem("userSession")) !== null) {
-    // if has session, redirect to panel
     window.location.href = "panel.html";
   }
 
@@ -13,25 +18,25 @@ function getPageContent() {
     <section id="loginForm" class="section form">
           <div class="container form-area">
             <div class="form-group" style="display: table; margin: 20px auto 5px auto;">
-                ${showInputLabel("Email")}
-                ${showInput("emailLogin", "", "email", "", null)}
+                ${InputLabel(loginText(lang)?.emailOrPhone)}
+                ${Input("emailLogin", "", "text", "", null)}
             </div>
 
             <div class="form-group" style="display: table; margin: 5px auto 0px auto;">
-                ${showInputLabel("Senha")}
-                ${showInput("senhaLogin", "", "password", "8", null)}
+                ${InputLabel(loginText(lang)?.password)}
+                ${Input("senhaLogin", "", "password", "8", null)}
             </div>
 
             <div class="form-group row" style="display: table; margin: 0px auto 10px auto;">
-                ${showButtonLink("Esqueci a senha", "forgot.html")}
+                ${ButtonLink(loginText(lang)?.forgotPassword, "forgot.html")}
             </div>
             
             <div class="form-group" style="display: table; margin: 20px auto 40px auto;">
-                ${showButton("Login", "login()")}
+                ${Button(loginText(lang)?.loginButton, "login()")}
             </div>
 
             <div class="form-group row" style="display: table; margin: 5px auto 10px auto;">
-                ${showButtonLink("Novo aqui? Cadastrar", "signup.html")}
+                ${ButtonLink(loginText(lang)?.signupLink, "signup.html")}
             </div>
         </section>
   `;
@@ -40,9 +45,8 @@ function getPageContent() {
     <div class="form-space">
         <section class="section">
             <div class="container form-container">
-                ${showArrowBack()}
-                ${showTitle("eOfertas")}
-                ${showSubtitle("Login")}
+                ${ArrowBack()}
+                ${Title("Advocatus - Login", 'white')}
             </div>
         </section>
       ${form}
@@ -60,7 +64,7 @@ function getPageContent() {
     document.getElementById("emailLogin").value = em;
   }
 
-  showLoading(false);
+  Loading(false);
 }
 
 getPageContent();
@@ -69,41 +73,41 @@ async function login() {
   const email = document.getElementById("emailLogin").value;
   const pass = document.getElementById("senhaLogin").value;
 
-  showLoading(true);
+  Loading(true);
 
   if (!validateFields()) {
-    showLoading(false);
+    Loading(false);
     return;
   }
 
   const aux = await performLogin(email.trim(), pass.trim());
 
   if (aux.success === false) {
-    getToast("danger", aux.result);
-    showLoading(false);
+    Toast("danger", aux.result);
+    Loading(false);
     return;
   }
 
-  showLoading(false);
+  Loading(false);
   localStorage.setItem("userSession", JSON.stringify(aux.result));
 
   cleanLoginFields();
 
-  getToast("success", "Bem vindo");
+  Toast("success", "Bem vindo");
   window.location.href = "panel.html";
 }
 
 function validateFields() {
-  const email = document.getElementById("emailLogin").value;
-  const pass = document.getElementById("senhaLogin").value;
+  const email = document.querySelector("#emailLogin").value;
+  const pass = document.querySelector("#senhaLogin").value;
 
   if (email === "") {
-    getToast("danger", "Por favor, preencha o email.");
+    Toast("danger", "Por favor, preencha o email.");
     return false;
   }
 
   if (pass === "") {
-    getToast("danger", "Por favor, preencha o senha.");
+    Toast("danger", "Por favor, preencha o senha.");
     return false;
   }
 
@@ -111,6 +115,6 @@ function validateFields() {
 }
 
 function cleanLoginFields() {
-  document.getElementById("emailLogin").value = "";
-  document.getElementById("senhaLogin").value = "";
+  document.querySelector("#emailLogin").value = "";
+  document.querySelector("#senhaLogin").value = "";
 }
