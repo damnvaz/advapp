@@ -4,32 +4,8 @@
   ==============================   
 */
 
-.contentTitle {
-  color: #0169b9;
-  font-size: 1.5rem;
-  font-family: "Medium";
-  font-weight: 700;
-  max-width: 450px;
-  letter-spacing: 0.5px;
-  padding-left: 30px;
-}
-
-.vantagens {
-  background-color: #580100d4;
-  border-radius: 10px;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 15px;
-  color: #f9f9f9;
-  padding: 40px 50px 20px 50px;
-}
-
 .aboutUs {
   line-height: 15px;
-}
-
-.caixaExterna {
-  text-align: center;
 }
 
 @media (min-width: 768px) {
@@ -40,14 +16,30 @@
     justify-content: space-between;
     padding: 0px 0px;
   }
-  .vantagens {
+  .advantages {
+    background-color: #580100d4;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #f9f9f9;
+    padding: 40px 50px 20px 50px;
+    text-align: center;
     width: 50%;
   }
 }
 
 @media (max-width: 768px) {
-  .caixaExterna {
+  .advantages {
+    background-color: #580100d4;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #f9f9f9;
+    padding: 20px 10px;
     text-align: left;
+    width: 100%;
   }
 
   .columns {
@@ -57,125 +49,4 @@
     justify-content: space-between;
     padding: 0px 0px;
   }
-  .vantagens {
-    width: 100%;
-  }
-}
-
-@media (min-width: 768px) {
-  .section-hero {
-    display: flex;
-    flex-direction: row;
-    min-height: 360px;
-    padding: 120px 20px 0px 20px;
-    margin-top: 60px;
-    justify-content: center;
-  }
-
-  .indexHeroTitle {
-    color: #0e2431;
-    font-size: 1.8rem;
-    font-family: "Medium";
-    font-weight: 700;
-    max-width: 450px;
-    text-align: center;
-    letter-spacing: 0.5px;
-  }
-}
-
-@media (max-width: 768px) {
-  .section-hero {
-    display: flex;
-    flex-direction: row;
-    min-height: 400px;
-    padding: 140px 20px 0px 20px;
-    justify-content: center;
-  }
-
-  .indexHeroTitle {
-    color: #0e2431;
-    font-size: 1.8rem;
-    font-family: "Medium";
-    font-weight: 700;
-    width: 80%;
-    display: table;
-    margin: 0px auto;
-    letter-spacing: 0.5px;
-  }
-
-  .contentTitle {
-    max-width: 80%;
-  }
-}
-
-/* 
-  ============================== 
-  SECTION PRODUCT 
-  ==============================   
-*/
-
-.product-section {
-  margin-bottom: 60px;
-  min-height: 400px;
-}
-
-.productCard {
-  width: 338px;
-  height: 133px;
-  display: flex;
-  flex-direction: row;
-  background-color: #fff;
-  border: 1px solid #707087;
-  border-radius: 5px;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px;
-  margin: 10px 10px;
-  cursor: pointer;
-}
-
-.productCard-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.blankProductCard {
-  width: 338px;
-  height: 133px;
-  display: flex;
-  flex-direction: row;
-  border-radius: 5px;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px;
-  margin: 10px 10px;
-}
-
-.productCard:hover {
-  width: 338px;
-  height: 133px;
-  display: flex;
-  flex-direction: row;
-  background-color: #e3e0e0;
-}
-
-.productCard .content {
-  display: flex;
-  flex-direction: column;
-  width: 70%;
-  padding-left: 20px;
-}
-
-.productCard img {
-  width: 102px;
-  height: 101px;
-  border-radius: 10px;
-  object-fit: cover;
-}
-.productCard-title {
-  font-weight: bolder;
-  color: #222;
-  font-size: 0.9rem;
 }

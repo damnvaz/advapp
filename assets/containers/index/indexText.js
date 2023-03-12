@@ -16,11 +16,11 @@ export function indexText(language) {
         custumerManagement: 'Gerenciamento de clientes',
         filesManagement: "Gerenciamento de arquivos",
         tableValueOAB: 'Tabela de valores OAB',
-        fitisInYourPocket: 'Cabe no seu bolso',
+        fitsInYourPocket: 'Cabe no seu bolso',
         andMuchMore: 'E muito mais',
         whatAreYouWaitingForTitle: 'Tá esperando o que?',
         whatAreYouWaitingForDescription: 'Cadastre-se agora e faça petições em segundos',
-        singUpNow: 'Cadastre-se Agora',
+        signUpNow: 'Cadastre-se agora',
       },
       {
         aboutUsTitle: 'About us',
@@ -36,11 +36,11 @@ export function indexText(language) {
         custumerManagement: 'Custumer management',
         filesManagement: 'Files management:',
         tableValueOAB: 'Table value OAB:',
-        fitisInYourPocket: 'Fit is in your pocket',
+        fitsInYourPocket: 'Fit is in your pocket',
         andMuchMore: 'And much more',
         whatAreYouWaitingForTitle: 'What are you waiting for?',
         whatAreYouWaitingForDescription: 'Sign up now and make petitions in seconds',
-        singUpNow: 'Sing up now',
+        signUpNow: 'Sign up now',
       },
       
     ];

@@ -18,25 +18,26 @@ function advantages() {
   const lang = checkUserLanguage();
 
   return `
-    <div class="mt-5 mb-5 vantagens d-table mx-auto caixaExterna">
+    <div class="mt-5 mb-5 advantages d-table mx-auto">
       ${Title(indexText(lang)?.advantages, 'white  ')}
       <br>
       <div class="columns">
-      <div>
-      ${Subtitle(indexText(lang)?.schedule, 'white')}
-      ${Subtitle(indexText(lang)?.proceduralManagement, 'white')}
-      ${Subtitle(indexText(lang)?.proceduralNotifications, 'white')}
-      ${Subtitle(indexText(lang)?.financialManagement, 'white')}
-      ${Subtitle(indexText(lang)?.petitionsModel, 'white')}
-      ${Subtitle(indexText(lang)?.contractModel, 'white')}
-      </div><div>
-      ${Subtitle(indexText(lang)?.helpForum, 'white')}
-      ${Subtitle(indexText(lang)?.custumerManagement, 'white')}
-      ${Subtitle(indexText(lang)?.filesManagement, 'white')}
-      ${Subtitle(indexText(lang)?.tableValueOAB, 'white')}
-      ${Subtitle(indexText(lang)?.fitisInYourPocket, 'white')}
-      ${Subtitle(indexText(lang)?.andMuchMore, 'white')}
-      </div>
+        <div>
+          ${Subtitle(indexText(lang)?.schedule, 'white')}
+          ${Subtitle(indexText(lang)?.proceduralManagement, 'white')}
+          ${Subtitle(indexText(lang)?.proceduralNotifications, 'white')}
+          ${Subtitle(indexText(lang)?.financialManagement, 'white')}
+          ${Subtitle(indexText(lang)?.petitionsModel, 'white')}
+          ${Subtitle(indexText(lang)?.contractModel, 'white')}
+        </div>
+        <div>
+          ${Subtitle(indexText(lang)?.helpForum, 'white')}
+          ${Subtitle(indexText(lang)?.custumerManagement, 'white')}
+          ${Subtitle(indexText(lang)?.filesManagement, 'white')}
+          ${Subtitle(indexText(lang)?.tableValueOAB, 'white')}
+          ${Subtitle(indexText(lang)?.fitsInYourPocket, 'white')}
+          ${Subtitle(indexText(lang)?.andMuchMore, 'white')}
+        </div>
       </div>
       </div>     
   `;
@@ -52,7 +53,7 @@ function enrollNow() {
       ${Title(indexText(lang)?.whatAreYouWaitingForTitle)}
       ${Subtitle(indexText(lang)?.whatAreYouWaitingForDescription)}
       <div class="d-flex align-items-center flex-column mb-5">
-        ${Button(indexText(lang)?.singUpNow, event)}
+        ${Button(indexText(lang)?.signUpNow, event)}
       </div>
     </div>
   `;
