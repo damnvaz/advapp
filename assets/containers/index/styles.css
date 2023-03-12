@@ -25,7 +25,7 @@
     color: #f9f9f9;
     padding: 40px 50px 20px 50px;
     text-align: center;
-    width: 50%;
+    width: 60%;
   }
 }
 
@@ -39,7 +39,7 @@
     color: #f9f9f9;
     padding: 20px 10px;
     text-align: left;
-    width: 100%;
+    width: 90%;
   }
 
   .columns {
@@ -49,4 +49,8 @@
     justify-content: space-between;
     padding: 0px 0px;
   }
+}
+
+.area {
+  margin: 4rem 0px;
 }
