@@ -55,3 +55,23 @@
   margin-top: 6rem;
   margin-bottom: 6rem;
 }
+
+.check-icon {
+  width: 20px;
+  height: 30px;
+}
+
+.advantage-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.advantage-item {
+  font-size: 0.8rem;
+  font-weight: normal;
+  text-align: justify;
+  padding: 0px 10px;
+  letter-spacing: 0.5px;
+  color: #fff;
+}

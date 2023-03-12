@@ -28,7 +28,7 @@ export function indexText(language) {
         advantages: 'Advantages',
         schedule: 'Online schedule',
         proceduralManagement: 'Procedural management',
-        proceduralNotifications: 'Procedural notifications:',
+        proceduralNotifications: 'Procedural notifications',
         financialManagement: 'Financial management',
         petitionsModel: 'Model petitions',
         contractModel: 'Model contract',

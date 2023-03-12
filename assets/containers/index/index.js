@@ -24,20 +24,20 @@ function advantages() {
 
   const list = [
     {
-      item1: Subtitle(indexText(lang)?.schedule, "white"),
-      item2: Subtitle(indexText(lang)?.proceduralManagement, "white"),
-      item3: Subtitle(indexText(lang)?.proceduralNotifications, "white"),
-      item4: Subtitle(indexText(lang)?.financialManagement, "white"),
-      item5: Subtitle(indexText(lang)?.petitionsModel, "white"),
-      item6: Subtitle(indexText(lang)?.contractModel, "white"),
+      item1: indexText(lang)?.schedule,
+      item2: indexText(lang)?.proceduralManagement,
+      item3: indexText(lang)?.proceduralNotifications,
+      item4: indexText(lang)?.financialManagement,
+      item5: indexText(lang)?.petitionsModel,
+      item6: indexText(lang)?.contractModel,
     },
     {
-      item1: Subtitle(indexText(lang)?.helpForum, "white"),
-      item2: Subtitle(indexText(lang)?.custumerManagement, "white"),
-      item3: Subtitle(indexText(lang)?.filesManagement, "white"),
-      item4: Subtitle(indexText(lang)?.tableValueOAB, "white"),
-      item5: Subtitle(indexText(lang)?.fitsInYourPocket, "white"),
-      item6: Subtitle(indexText(lang)?.andMuchMore, "white"),
+      item1: indexText(lang)?.helpForum,
+      item2: indexText(lang)?.custumerManagement,
+      item3: indexText(lang)?.filesManagement,
+      item4: indexText(lang)?.tableValueOAB,
+      item5: indexText(lang)?.fitsInYourPocket,
+      item6: indexText(lang)?.andMuchMore,
     },
   ];
 
@@ -45,12 +45,30 @@ function advantages() {
   for (let i = 0; i < list.length; i++) {
     el += 
       `<div>
-        ${list[i].item1}
-        ${list[i].item2}
-        ${list[i].item3}
-        ${list[i].item4}
-        ${list[i].item5}
-        ${list[i].item6}
+        <div class="advantage-container">
+          <img src="assets/icons/check.svg" class="check-icon" alt="check icon" /> 
+          <span class="advantage-item">${list[i].item1}</span>
+        </div>
+        <div class="advantage-container">
+          <img src="assets/icons/check.svg" class="check-icon" alt="check icon" /> 
+          <span class="advantage-item">${list[i].item2}</span>
+        </div>
+        <div class="advantage-container">
+          <img src="assets/icons/check.svg" class="check-icon" alt="check icon" /> 
+          <span class="advantage-item">${list[i].item3}</span>
+        </div>
+        <div class="advantage-container">
+          <img src="assets/icons/check.svg" class="check-icon" alt="check icon" /> 
+          <span class="advantage-item">${list[i].item4}</span>
+        </div>
+        <div class="advantage-container">
+          <img src="assets/icons/check.svg" class="check-icon" alt="check icon" /> 
+          <span class="advantage-item">${list[i].item5}</span>
+        </div>
+        <div class="advantage-container">
+          <img src="assets/icons/check.svg" class="check-icon" alt="check icon" /> 
+          <span class="advantage-item">${list[i].item6}</span>
+        </div>
       </div>`;
   }
 

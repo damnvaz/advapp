@@ -91,12 +91,12 @@ function getBookStatusColor(code) {
   return data;
 }
 
-function convertDate(date) {
+export function convertDate(date) {
   var newDate = date.split("/");
   return newDate[2] + "-" + newDate[1] + "-" + newDate[0];
 }
 
-function convertDateDash(date) {
+export function convertDateDash(date) {
   let newDate = date.split("-");
   return newDate[2] + "/" + newDate[1] + "/" + newDate[0];
 }
@@ -106,9 +106,9 @@ function formatDate(date) {
   return newDate[2] + "/" + newDate[1] + "/" + newDate[0];
 }
 
-async function baseRequest(body) {
+export async function baseRequest(body) {
   const url = window.location.href.includes("https://")
-    ? "https://danielvazdev.com/api.php"
+    ? "https://iusok.com/api.php"
     : "http://localhost/api.php";
 
   const heroku = "https://cors-anywhere.herokuapp.com/";
@@ -191,7 +191,7 @@ async function performRecover(email, document) {
   });
 }
 
-async function performLogin(email, pass) {
+export async function performLogin(email, pass) {
   return await baseRequest({
     email: email,
     pass: pass,

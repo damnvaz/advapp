@@ -54,3 +54,8 @@ a {
 a:hover {
   color: #4c9be4;
 }
+
+.icon {
+  width: 30px;
+  height: 30px;
+}

@@ -1,4 +1,5 @@
 import { Title, Subtitle, ArrowBack, Input, InputLabel, ButtonLink, Button, Toast, Loading } from "../../components/index.js";
+import { performLogin } from "../../queries/base.js";
 import { checkUserLanguage } from "../../utils/checkUserLanguage.js";
 import { loginText } from "./loginText.js";
 
@@ -13,6 +14,7 @@ function getPageContent() {
   let copyright = `
     <span id="copyrightText" class="copyrightText copyright-data">© Copyright ${year}</span><br /><br />
   `;
+
 
   let form = `
     <section id="loginForm" class="section form">
@@ -32,7 +34,7 @@ function getPageContent() {
             </div>
             
             <div class="form-group" style="display: table; margin: 20px auto 40px auto;">
-                ${Button(loginText(lang)?.loginButton, "login()")}
+                ${Button(loginText(lang)?.loginButton, login())}
             </div>
 
             <div class="form-group row" style="display: table; margin: 5px auto 10px auto;">
@@ -70,7 +72,7 @@ function getPageContent() {
 getPageContent();
 
 async function login() {
-  const email = document.getElementById("emailLogin").value;
+  const login = document.getElementById("emailLogin").value;
   const pass = document.getElementById("senhaLogin").value;
 
   Loading(true);
@@ -80,7 +82,7 @@ async function login() {
     return;
   }
 
-  const aux = await performLogin(email.trim(), pass.trim());
+  const aux = await performLogin(login.trim(), pass.trim());
 
   if (aux.success === false) {
     Toast("danger", aux.result);
