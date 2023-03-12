@@ -9,7 +9,7 @@ export function Toast(bg, text) {
                         <span class="toast-title">${text}</span>
                         <button  
                             type="button" 
-                            class="close text-white toast-close" onclick="hideToast()">
+                            class="close text-white toast-close" id='closeToast'>
                                 &times;
                         </button>
                     </div>
@@ -20,6 +20,10 @@ export function Toast(bg, text) {
 
   document.getElementById("toast").innerHTML = el;
   document.getElementById("toastAlert").style.display = "block";
+
+  document.querySelector("#closeToast").addEventListener("click", () => {
+    hideToast();
+  });
 
   window.setTimeout(function () {
     hideToast();
