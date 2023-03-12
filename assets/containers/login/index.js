@@ -13,7 +13,7 @@ import { performLogin } from "../../queries/base.js";
 import { checkUserLanguage } from "../../utils/checkUserLanguage.js";
 import { loginText } from "./loginText.js";
 
-function getPageContent() {
+function showPageContent() {
   const lang = checkUserLanguage();
 
   if (JSON.parse(localStorage.getItem("userSession")) !== null) {
@@ -88,7 +88,7 @@ function getPageContent() {
   Loading(false);
 }
 
-getPageContent();
+showPageContent();
 
 async function login() {
   const login = document.getElementById("emailLogin").value;
