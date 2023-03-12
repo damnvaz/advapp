@@ -49,7 +49,7 @@ export function Navbar() {
                 <button
                     class='navbar-btn navbar-toggler  navbar-toggler-right navbar-menu-button'
                     type='button' 
-                    onclick='window.location.href=${goTo}'
+                    onclick='window.location.href="${goTo}"'
                     arial-controls='navbarResponsive' 
                     aria-expanded='false' 
                     aria-label='Toggle Navigation'>
