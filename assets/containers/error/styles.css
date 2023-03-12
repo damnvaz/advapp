@@ -1,5 +1,5 @@
 .not-found-bg {
-  background-color: #0169b9;
+  background-color: #580100d4;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,7 +10,7 @@
 .not-found-bg .inner {
   background-color: #f9f7ff;
   height: 400px;
-  width: 450px;
+  width: 80%;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -23,7 +23,7 @@
 }
 
 .not-found-bg .inner h2 {
-  color: #ff914d;
+  color: #d7b15c;
   margin-bottom: 40px;
   font-weight: 700;
   font-family: "Medium";
@@ -38,6 +38,7 @@
   font-size: 1rem;
   max-width: 340px;
   line-height: 25px;
+  padding: 0px 30px;
 }
 
 img {
@@ -47,15 +48,16 @@ img {
 .company {
   font-weight: 700;
   letter-spacing: 0.5px;
-  color: #fff;
+  color: #fff !important;
 }
 
 .not-found-bg .inner a {
   border-radius: 5px;
   height: 40px;
-  font-weight: 500;
-  color: #fff;
-  background-color: #09810f;
+  font-family: 'medium';
+  color: #333;
+  border: 2px solid #333 !important;
+  background-color: #d7b15c;
   border: none;
   width: 200px;
   text-align: center;
@@ -64,7 +66,7 @@ img {
 }
 
 .not-found-bg .inner a:hover {
-  background-color: #156219;
+  background-color: #ac8d49;
 }
 
 .copyrightText {
