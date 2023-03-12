@@ -191,21 +191,31 @@ async function performRecover(email, document) {
   });
 }
 
-export async function performLogin(email, pass) {
+export async function performLogin(login, pass) {
   return await baseRequest({
-    email: email,
+    login: login,
     pass: pass,
     req: "login",
   });
 }
 
-async function performSignup(name, userDoc, email, pass, phone) {
+export async function performSignup(body) {
   return await baseRequest({
-    name: name.trim(),
-    document: userDoc.replace(/\D/g, ""),
-    email: email.trim(),
-    pass: pass.trim(),
-    phone: phone.replace(/\D/g, ""),
+    name: body.name.trim(),
+    document: body.userDoc.replace(/\D/g, "").trim(),
+    nationalRegistration: body.rg.replace.replace(/\D/g, "").trim(),
+    driversLicense: body.cnh.replace.replace(/\D/g, "").trim(),
+    email: body.email.trim(),
+    pass: body.pass.trim(),
+    phone: body.phone.replace(/\D/g, ""),
+    type: body.type.trim(),
+    status: '1',
+    address: address.trim(),
+    createdAt: body.createdAt.trim(),
+    recipientId: recipientId.trim(),
+    martialStatus: martialStatus.trim(),
+    occupation: occupation.trim(),
+    workPassport: body.workPassport.replace(/\D/g, "").trim(),
     req: "signup",
   });
 }
