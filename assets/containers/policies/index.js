@@ -28,7 +28,7 @@ async function showPageContent() {
 
         <p class="date-update">Data da última atualização: ${convertDateDash(req.version)}</p>
 
-        <div style="width: 100%; display: table; margin: 60px auto">
+        <div style="width: 100%; display: table; margin: 60px auto; text-align: justify">
           ${el}
         </div>
       </div>
