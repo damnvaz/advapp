@@ -44,22 +44,22 @@ if ($postjson['req'] == '') {
 if ($postjson['req'] == 'login') {
 
 	// VALIDATE INPUT BEFORE REQUEST
-	if ($postjson['email'] == '') {
-        $result = json_encode(array('success' => false, 'result' => 'Por favor informe o email.'));
+	if ($postjson['login'] == '') {
+        $result = json_encode(array('success' => false, 'result' => 'Por favor informe o email ou telefone celular.'));
         echo $result;
         return;
     }
 
-	if ($postjson['pass'] == '') {
+	if ($postjson['login'] == '') {
 		$result = json_encode(array('success' => false, 'result' => 'Por favor informe a senha.'));
         echo $result; 
         return;
     }
 
-	$e = $postjson['email'];
+	$e = $postjson['login'];
     $p = $postjson['pass'];
 
-	$query = mysqli_query($mysqli, "SELECT * FROM users WHERE email = '$e' AND pass = '$p' ");
+	$query = mysqli_query($mysqli, "SELECT * FROM users WHERE (email = '$e' OR  phone = '$e' ) AND pass = '$p' ");
     $row = mysqli_num_rows($query);
     
     if ($row === 0) {
@@ -72,25 +72,20 @@ if ($postjson['req'] == 'login') {
     $user_data = array(
         'id' => $data['id'], 
         'name' => utf8_encode($data['name']),
-        'email' => $data['email'],
         'document' => $data['document'],
-        'type' => $data['type'],
-        'pass' => $data['pass'],
+        'nationalRegistration' => $data['nationalRegistration'],
+        'driversLicense' => $data['driversLicense'],
         'phone' => $data['phone'],
-        'addressZipcode' => $data['addressZipcode'],
-        'address' => utf8_encode($data['address']),
-        'addressNumber' => $data['addressNumber'],
-        'addressComplement' => utf8_encode($data['addressComplement']),
-        'addressNeighborhood' => utf8_encode($data['addressNeighborhood']),
-        'addressCity' => utf8_encode($data['addressCity']),
-        'addressState' => utf8_encode($data['addressState']),
-        'addressCountry' => utf8_encode($data['addressCountry']),
-        'details' => utf8_encode($data['details']),
-        'regulation' => utf8_encode($data['regulation']),
-        'img' => utf8_encode($data['img']),
-        'recipientId' => $data['recipientId'],
-        'percent' => $data['percent'],
-        'status' => $data['status']
+        'email' => $data['email'],
+        'pass' => $data['pass'],
+        'type' => $data['type'],
+        'status' => $data['status'],
+        'address' => $data['address'],
+        'createdAt' => utf8_encode($data['createdAt']),
+        'recipientId' => utf8_encode($data['recipientId']),
+        'martialStatus' => utf8_encode($data['martialStatus']),
+        'occupation' => utf8_encode($data['occupation']),
+        'workPassport' => $data['workPassport']
     );
 
     if ($user_data['status'] != '1') {
@@ -192,15 +187,22 @@ if ($postjson['req'] == 'recover') {
         echo $result; 
         return;
     }
+    
+    if ($postjson['phone'] == '') {
+		$result = json_encode(array('success' => false, 'result' => 'Por favor informe o telefone.'));
+        echo $result; 
+        return;
+    }
 
     $e = $postjson['email'];
     $d = $postjson['document'];
+    $p = $postjson['phone'];
 
-	$query = mysqli_query($mysqli, "SELECT * FROM users WHERE email = '$e' AND document = '$d' ");
+	$query = mysqli_query($mysqli, "SELECT * FROM users WHERE email = '$e' AND document = '$d' AND phone = '$p'");
     $row = mysqli_num_rows($query);
     
     if ($row === 0) {
-        $result = json_encode(array('success' => false, 'result' => 'Usuário ou senha inválidos.'));
+        $result = json_encode(array('success' => false, 'result' => 'Usuário inexistente. Verifique os dados.'));
         echo $result; 
         return;
     }
@@ -208,12 +210,14 @@ if ($postjson['req'] == 'recover') {
     $data = mysqli_fetch_array($query);
     $user_data = array(
         'id' => $data['id'],
-        'pass' => $data['pass'],
+        'email' => $data['email'],
+        'pass' => $data['pass']
     );
 
     $to = $e;
-    $subject = "Senha de acesso eOfertas";
+    $subject = "Senha de acesso IUSOK";
 
+    $email = $user_data['email'];
     $pass = $user_data['pass'];
 
     $message = " 
@@ -228,13 +232,15 @@ if ($postjson['req'] == 'recover') {
 
         <br><br> Sua senha de acesso é <strong>$pass</strong>. 
         <br><br>Recomendamos fortemente que altere a sua senha.
+
+        <a href='https://iusok.com/profile?r&e=$email&p=$pass'>Clique aqui</a> para alterar sua senha.
         
         <br><br>Nossos sinceros agradecimentos, 
-        <br> eOfertas.
+        <br> IUSOK.
         </span>
-        ";
+    ";
 
-    $dest = 'atendimento@e-oferta.net.br';
+    $dest = 'suporte@iusok.com';
     $headers = 'MIME-Version: 1.0' . "\r\n";
     $headers .= 'Content-type: text/html; charset=utf-8;' . "\r\n";
     $headers .= "From: " . $dest;
@@ -611,7 +617,7 @@ if ($postjson['req'] == 'faq') {
 // SEND EMAIL
 if ($postjson['req'] == 'send_email') {
     $to = $postjson['email'];
-    $subject = "Voucher eOfertas";
+    $subject = "Voucher IUSOK";
 
     $people = $postjson['people']; 
     $estabName = $postjson['estabName'];
@@ -671,7 +677,7 @@ if ($postjson['req'] == 'send_email') {
         <span style='font-size: 18px; font-family: 'Poppins', 'Helvetica', 'Arial', sans-serif; '> 
         <span class='itemTitle' id='itemTitle' 
             style='font-size: 1.1rem; margin: 0px 30px 0px 0px;'>
-            eOfertas - Voucher
+            IUSOK - Voucher
         </span><br /><br />
 
         <div style='background-color: #fff'>
@@ -767,11 +773,11 @@ if ($postjson['req'] == 'send_email') {
         <a href='https://iusok.com/pages/acesso/acesso.html?e=$to' target='_blank'>Clique aqui</a><br/>
         
         <br><br>Nossos sinceros agradecimentos, 
-        <br> eOfertas.
+        <br> IUSOK.
         </span>
     ";
 
-    $dest = 'atendimento@e-oferta.net.br';
+    $dest = 'suporte@iusok.com';
     $headers = 'MIME-Version: 1.0' . "\r\n";
     $headers .= 'Content-type: text/html; charset=utf-8;' . "\r\n";
     $headers .= "From: " . $dest;

@@ -45,11 +45,9 @@ export function logout() {
 
 
 
-export async function performRecover(email, document) {
+export async function performRecover(email) {
   return await baseRequest({
     email: email.trim(),
-    document: document.replace(/\D/g, "").trim(),
-    phone: phone.replace(/\D/g, "").trim(),
     req: "recover",
   });
 }

@@ -1,3 +1,8 @@
+body {
+  background-color: #633030;
+}
+
+
 .form-space {
   padding-top: 65px;
 }
@@ -23,6 +28,7 @@
   flex-wrap: wrap;
   justify-content: center;
   border-radius: 5px;
+  background-color: #fff;
   border: 1px solid #707087;
   width: 100%;
   max-width: 320px;
