@@ -45,12 +45,12 @@ export function Stepper(current, steps = 3, form, previous, next) {
   `;
 }
 
-export function goToStep(currentStep, steps = 3) {
+export function goToStep(currentStep, steps = 3, nextText, finishText) {
   let indicators = document.getElementsByClassName("progress-bar__dot");
   const previousButton = document.querySelector("#previous");
   const next = document.querySelector("#next");
 
-  handleButtons(currentStep, previousButton, next, steps);
+  handleButtons(currentStep, previousButton, next, steps, nextText, finishText);
   handleIndicators(indicators, currentStep);
 }
 
@@ -74,24 +74,31 @@ function handleIndicators(indicators, currentStep) {
   }
 }
 
-function handleButtons(currentStep, previousButton, next, numberOfSteps) {
+function handleButtons(
+  currentStep,
+  previousButton,
+  next,
+  numberOfSteps,
+  nextText,
+  finishText
+) {
   if (currentStep === 1) {
     disable(previousButton);
     enable(next);
-    next.innerHTML = "próximo";
+    next.innerHTML = nextText;
     return;
   }
 
   if (currentStep > 1 && currentStep < numberOfSteps) {
     enable(previousButton);
     enable(next);
-    next.innerHTML = "próximo";
+    next.innerHTML = nextText;
     return;
   }
 
   if (currentStep > 1 && currentStep === numberOfSteps) {
     enable(previousButton);
-    next.innerHTML = "finalizar";
+    next.innerHTML = finishText;
     return;
   }
 }
