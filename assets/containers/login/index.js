@@ -101,7 +101,7 @@ async function login() {
     return;
   }
 
-  if (!login.includes('@')) {
+  if (!login.includes("@")) {
     login.replace(/\D/g, "");
   }
 
@@ -127,12 +127,12 @@ function validateFields() {
   const pass = document.querySelector("#senhaLogin").value;
 
   if (email === "") {
-    Toast("danger", "Por favor, preencha o email ou telefone celular.");
+    Toast("danger", loginText(lang)?.validationEmail);
     return false;
   }
 
   if (pass === "") {
-    Toast("danger", "Por favor, preencha o senha.");
+    Toast("danger", loginText(lang)?.validationPass);
     return false;
   }
 
