@@ -64,8 +64,8 @@ export async function performSignup(body) {
   return await baseRequest({
     name: body.name.trim(),
     document: body.userDoc.replace(/\D/g, "").trim(),
-    nationalRegistration: body.rg.replace.replace(/\D/g, "").trim(),
-    driversLicense: body.cnh.replace.replace(/\D/g, "").trim(),
+    nationalRegistration: body.rg.replace(/\D/g, "").trim(),
+    driversLicense: body.cnh.trim(),
     email: body.email.trim(),
     pass: body.pass.trim(),
     phone: body.phone.replace(/\D/g, ""),
@@ -76,7 +76,7 @@ export async function performSignup(body) {
     recipientId: body.recipientId.trim(),
     martialStatus: body.martialStatus.trim(),
     occupation: body.occupation.trim(),
-    workPassport: body.workPassport.replace(/\D/g, "").trim(),
+    workPassport: body.workPassport.trim(),
     req: "signup",
   });
 }

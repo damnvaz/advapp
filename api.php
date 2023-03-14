@@ -120,8 +120,14 @@ if ($postjson['req'] == 'signup') {
         return;
     }
 
-	if ($postjson['pass'] == '') {
-		$result = json_encode(array('success' => false, 'result' => 'Por favor informe a senha.'));
+	if ($postjson['nationalRegistration'] == '') {
+		$result = json_encode(array('success' => false, 'result' => 'Por favor informe o rg.'));
+        echo $result; 
+        return;
+    }
+	
+    if ($postjson['driversLicense'] == '') {
+		$result = json_encode(array('success' => false, 'result' => 'Por favor informe a cnh.'));
         echo $result; 
         return;
     }
@@ -132,34 +138,36 @@ if ($postjson['req'] == 'signup') {
         return;
     }
 
-    $name = utf8_decode($postjson['name']);
-    $email = $postjson['email'];
-    $pass = utf8_decode($postjson['pass']);
-    $phone = $postjson['phone'];
+    $name = $postjson['name'];
     $document = $postjson['document'];
+    $nationalRegistration = $postjson['nationalRegistration'];
+    $driversLicense = $postjson['driversLicense'];
+    $email = $postjson['email'];
+    $pass = $postjson['pass'];
+    $phone = $postjson['phone'];
+    $type = $postjson['type'];
+    $createdAt = $postjson['createdAt'];
+    $martialStatus = $postjson['martialStatus'];
+    $occupation = $postjson['occupation'];
+    $workPassport = $postjson['workPassport'];
 
  	$query = mysqli_query($mysqli, 
         "INSERT INTO users SET 
             name = '$name',
-            email = '$email',
             document = '$document',
-            type = 'CLIENT',
-            pass = '$pass',
+            nationalRegistration = '$nationalRegistration',
+            driversLicense = '$driversLicense',
             phone = '$phone',
-            addressZipcode = '-',
+            email = '$email',
+            pass = '$pass',
+            type = '$type',
+            status = 1,
             address = '-',
-            addressNumber = '-',
-            addressComplement = '-',
-            addressNeighborhood = '-',
-            addressCity = '-',
-            addressState = '-',
-            addressCountry = '-',
-            details = '-',
-            regulation = '-',
-            img = '-',
+            createdAt = '$createdAt',
             recipientId = '-',
-            percent = '-',
-            status = 1
+            martialStatus = '$martialStatus',
+            occupation = '$occupation',
+            workPassport = '$workPassport'
         ");
 
  	$id = mysqli_insert_id($mysqli);
