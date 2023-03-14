@@ -31,7 +31,7 @@ export function TextArea(id, placeholder, type, maxlength, event) {
 export function Select(id, event, options) {
   return `
     <select
-      class="form-control mr-2 select"
+      class="select"
       id="${id}"
       ${event !== "" ? JSON.parse(event) : ""}
       dir="ltr"
