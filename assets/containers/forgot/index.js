@@ -6,11 +6,11 @@ import {
   Toast,
   Loading,
 } from "../../components/index.js";
-import { performRecover } from "../../queries/base.js";
+import { performLogin, performRecover } from "../../queries/base.js";
 import { checkUserLanguage } from "../../utils/checkUserLanguage.js";
 import { recoverText } from "./recoverText.js";
 
-function getPageContent() {
+function showPageContent() {
   if (JSON.parse(localStorage.getItem("userSession")) !== null) {
     window.location.href = "panel.html";
   }
@@ -68,18 +68,18 @@ function getPageContent() {
   ).innerHTML = `<section class="section container">${el}</section>`;
 
   document.querySelector("#recoverbutton").addEventListener("click", () => {
-    recover();
+    recover(lang);
   });
 
   Loading(false);
 }
 
-getPageContent();
+showPageContent();
 
-async function recover() {
+async function recover(lang) {
   Loading(true);
 
-  if (!validateFields()) {
+  if (!validateFields(lang)) {
     Loading(false);
     return;
   }
@@ -104,12 +104,12 @@ async function recover() {
   }, 6000);
 }
 
-function validateFields() {
+function validateFields(lang) {
   var email = document.getElementById("emailrecover").value;
 
   if (email === "") {
     Loading(false);
-    Toast("danger", "Por favor, preencha o email.");
+    Toast("danger", recoverText(lang)?.validation);
     return;
   }
 
