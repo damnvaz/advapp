@@ -162,8 +162,10 @@ function showPageContent() {
       <div class="form-space">
         <section class="section">
             <div class="container form-container">
-                ${ArrowBack()}
-                ${Title(signupText(lang)?.title, "white")}
+                <div class="d-flex flex-column mx-auto signuptop">
+                  ${ArrowBack()}
+                  ${Title(signupText(lang)?.title, "white")}
+                </div>
                 ${Stepper(
                   currentStep,
                   numberOfSteps,
