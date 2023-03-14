@@ -1,4 +1,4 @@
-export function setProgressBar(numberOfSteps) {
+export function setProgressBar(numberOfSteps = 3) {
   let bars = "";
   for (let i = 0; i < numberOfSteps; i++) {
     if (i != numberOfSteps - 1) {
@@ -35,7 +35,7 @@ export function setStepperButtonGroup(next, previous, steps, current) {
   `;
 }
 
-export function Stepper(current, steps, form, previous, next) {
+export function Stepper(current, steps = 3, form, previous, next) {
   return `
     <div class="form-area">
       ${setProgressBar(steps)}
@@ -45,7 +45,7 @@ export function Stepper(current, steps, form, previous, next) {
   `;
 }
 
-export function goToStep(currentStep, steps) {
+export function goToStep(currentStep, steps = 3) {
   let indicators = document.getElementsByClassName("progress-bar__dot");
   const previousButton = document.querySelector("#previous");
   const next = document.querySelector("#next");
