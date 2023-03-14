@@ -3,9 +3,10 @@ export function indexText(language) {
 
     const languages = [
       {
-        aboutUsTitle: 'Sobre nós',
-        aboutUsDescription: 'Nascemos com o propósito de integrar agilidade e mobolidade na palma da sua mão.',
-        advantages: 'Vantagens',
+        heroDescription: 'Foque no que importa: <strong>sua advocacia</strong>.',
+        yourLegalAndEffectiveToolTitle: 'A <span>Sua</span> ferramenta jurídica eficaz',
+        yourLegalAndEffectiveToolDescription: 'Com a nossa plataforma, advogar ficou mais fácil. A marcação de consultas é simples, os relatórios saem na hora e você ainda pode tirar dúvidas com outros usuários.',
+        whatWeOffer: 'O que oferecemos:',
         schedule: 'Agenda online',
         proceduralManagement: 'Gestão processual',
         proceduralNotifications: 'Notificações processuais',
@@ -19,13 +20,15 @@ export function indexText(language) {
         fitsInYourPocket: 'Cabe no seu bolso',
         andMuchMore: 'E muito mais',
         whatAreYouWaitingForTitle: 'Tá esperando o que?',
-        whatAreYouWaitingForDescription: 'Cadastre-se agora e faça petições em segundos',
+        whatAreYouWaitingForDescription: 'Tenha uma gestão completa sobre o seu ativo mais valioso: seus clientes. Abra sua agenda online agora mesmo!',
         signUpNow: 'Cadastre-se agora',
+        joinNow: 'Faça parte agora',
       },
       {
-        aboutUsTitle: 'About us',
-        aboutUsDescription: 'We were born with the purpous of integrate agility and mobility on your hands.',
-        advantages: 'Advantages',
+        heroDescription: 'Focus on what matters: <strong>your advocacy</strong>.',
+        yourLegalAndEffectiveToolTitle: '<span>Your</span> effective legal tool',
+        yourLegalAndEffectiveToolDescription: 'On our platform, advocating became easier. Scheduling appointments is simple, reports are available in real time and you can even share doubts with others users.',
+        whatWeOffer: 'What we offer:',
         schedule: 'Online schedule',
         proceduralManagement: 'Procedural management',
         proceduralNotifications: 'Procedural notifications',
@@ -39,8 +42,9 @@ export function indexText(language) {
         fitsInYourPocket: 'Fit is in your pocket',
         andMuchMore: 'And much more',
         whatAreYouWaitingForTitle: 'What are you waiting for?',
-        whatAreYouWaitingForDescription: 'Sign up now and make petitions in seconds',
+        whatAreYouWaitingForDescription: 'Get a complete report about your more valuable active: your clients. Open your online schedule right now',
         signUpNow: 'Sign up now',
+        joinNow: 'Join Now',
       },
       
     ];

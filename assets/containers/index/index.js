@@ -8,18 +8,37 @@ import {
 import { checkUserLanguage } from "../../utils/checkUserLanguage.js";
 import { indexText } from "./indexText.js";
 
-function aboutUs() {
+function hero() {
   const lang = checkUserLanguage();
 
   return `
-    <div class="aboutUs area">
-      ${Title(indexText(lang)?.aboutUsTitle)}
-      ${Subtitle(indexText(lang)?.aboutUsDescription)}
+    <div class="container-hero">
+      <div>
+      <p class="hero-title"> iusok <p>
+        <p class="hero-description">${indexText(lang)?.heroDescription}</p>
+        ${Button(indexText(lang)?.joinNow, event)}
+      </div>
+      <img src="assets/icons/balance.svg" class="balance" alt="balance" />
     </div>
   `;
 }
 
-function advantages() {
+function yourLegalAndEffectiveTool() {
+  const lang = checkUserLanguage();
+
+  return `
+  <div class="container-legal-tool">
+    <img src="assets/icons/hands-shaking.svg" class="hands-shake" alt="hands-shaking" />
+    <div class="yourLegalAndEffectiveTool area">
+      <p  class="title">${indexText(lang)?.yourLegalAndEffectiveToolTitle}</p>
+      ${Subtitle(indexText(lang)?.yourLegalAndEffectiveToolDescription)}
+    </div>
+  </div>
+  `;
+}
+
+
+function whatWeOffer() {
   const lang = checkUserLanguage();
 
   const list = [
@@ -41,10 +60,9 @@ function advantages() {
     },
   ];
 
-  let el = '';
+  let el = "";
   for (let i = 0; i < list.length; i++) {
-    el += 
-      `<div>
+    el += `<div>
         <div class="advantage-container">
           <img src="assets/icons/check.svg" class="check-icon" alt="check icon" /> 
           <span class="advantage-item">${list[i].item1}</span>
@@ -74,7 +92,7 @@ function advantages() {
 
   return `
     <div class="advantages d-table mx-auto area">
-      ${Title(indexText(lang)?.advantages, "white")}
+      ${Title(indexText(lang)?.whatWeOffer, "white")}
       <br>
         <div class="columns">
           ${el}
@@ -104,8 +122,9 @@ function content() {
   <section class="section container mt-5">
   <br/>
   <br/>
-    ${aboutUs()}
-    ${advantages()}
+    ${hero()}
+    ${yourLegalAndEffectiveTool()}
+    ${whatWeOffer()}
     ${enrollNow()}
   </section>`;
 }

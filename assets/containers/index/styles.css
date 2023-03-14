@@ -1,13 +1,4 @@
-/* 
-  ============================== 
-  SECTION HERO 
-  ==============================   
-*/
-
-.aboutUs {
-  line-height: 15px;
-}
-
+/* DESKTOP */
 @media (min-width: 768px) {
   .columns {
     display: flex;
@@ -27,8 +18,26 @@
     text-align: center;
     width: 60%;
   }
+  .hands-shake {
+    width: 57px;
+    height: 57px;
+  }
+
+  .container-legal-tool {
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    padding: 10px 30px 10px 30px;
+  }
+
+  .area {
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+  }
 }
 
+/* TABLET, MOBILE */
 @media (max-width: 768px) {
   .advantages {
     background-color: #580100d4;
@@ -49,11 +58,29 @@
     justify-content: space-between;
     padding: 0px 0px;
   }
-}
 
-.area {
-  margin-top: 6rem;
-  margin-bottom: 6rem;
+  .hands-shake {
+    width: 57px;
+    height: 57px;
+  }
+
+  .container-legal-tool {
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    padding-left: 30px;
+  }
+
+  .yourLegalAndEffectiveTool {
+    margin-left: 20px;
+    width: 75%;
+  }
+
+  .area {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
 }
 
 .check-icon {
@@ -74,4 +101,34 @@
   padding: 0px 10px;
   letter-spacing: 0.5px;
   color: #fff;
+}
+
+.title span {
+  color: #d7b15c;
+}
+
+.hero-title {
+  width: 164px;
+  font-weight: 700;
+  font-size: 30px;
+  color: #633030;
+}
+
+.balance {
+  width: 100px;
+  height: 100px;
+  margin-right: 15px;
+}
+
+.container-hero {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  padding-left: 30px;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+}
+
+.hero-description {
+  max-width: 170px;
 }
