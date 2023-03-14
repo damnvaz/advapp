@@ -1,20 +1,22 @@
-function fMasc(objeto, mascara) {
-  obj = objeto;
-  masc = mascara;
-  setTimeout("fMascEx()", 1);
+export function fMasc(objeto, mascara) {
+  let obj = objeto;
+  let masc = mascara;
+  setTimeout(() => {
+    fMascEx(obj, masc);
+  }, 500);
 }
 
-function fMascEx() {
+export function fMascEx(obj, masc) {
   obj.value = masc(obj.value);
 }
 
-function numberToReal(numero) {
+export function numberToReal(numero) {
   numero = Number(numero).toFixed(2).split(".");
   numero[0] = numero[0].split(/(?=(?:...)*$)/).join(".");
   return numero.join(",");
 }
 
-function mTel(tel) {
+export function mTel(tel) {
   tel = tel.replace(/\D/g, "");
   tel = tel.replace(/^(\d)/, "($1");
   tel = tel.replace(/(.{3})(\d)/, "$1)$2");
@@ -32,7 +34,7 @@ function mTel(tel) {
   return tel;
 }
 
-function mCNPJ(cnpj) {
+export function mCNPJ(cnpj) {
   cnpj = cnpj.replace(/\D/g, "");
   cnpj = cnpj.replace(/^(\d{2})(\d)/, "$1.$2");
   cnpj = cnpj.replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3");
@@ -41,7 +43,7 @@ function mCNPJ(cnpj) {
   return cnpj;
 }
 
-function mCPF(cpf) {
+export function mCPF(cpf) {
   cpf = cpf.replace(/\D/g, "");
   cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");
   cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");
@@ -49,32 +51,32 @@ function mCPF(cpf) {
   return cpf;
 }
 
-function mCEP(cep) {
+export function mCEP(cep) {
   cep = cep.replace(/\D/g, "");
   cep = cep.replace(/^(\d{2})(\d)/, "$1.$2");
   cep = cep.replace(/\.(\d{3})(\d)/, ".$1-$2");
   return cep;
 }
 
-function mNum(num) {
+export function mNum(num) {
   num = num.replace(/\D/g, "");
   return num;
 }
 
-function mDataNasc(data) {
+export function mDataNasc(data) {
   data = data.replace(/\D/g, "");
   data = data.replace(/(\d{2})(\d)/, "$1/$2");
   data = data.replace(/(\d{2})(\d)/, "$1/$2");
   return data;
 }
 
-function mValidadeCartao(data) {
+export function mValidadeCartao(data) {
   data = data.replace(/\D/g, "");
   data = data.replace(/(\d{2})(\d)/, "$1/$2");
   return data;
 }
 
-function mCartao(v) {
+export function mCartao(v) {
   v = v.replace(/\D/g, "");
   v = v.replace(/(\d{4})/g, "$1 ");
   v = v.replace(/\.$/, "");
@@ -83,7 +85,7 @@ function mCartao(v) {
   return v;
 }
 
-function moeda(i) {
+export function moeda(i) {
   let v = i.value.replace(/\D/g, "");
   v = (v / 100).toFixed(2) + "";
   v = v.replace(".", ",");
@@ -92,7 +94,7 @@ function moeda(i) {
   i.value = v;
 }
 
-function mCPFCNPJ(v) {
+export function mCPFCNPJ(v) {
   v = v.replace(/\D/g, "");
 
   if (v.length < 14) {
