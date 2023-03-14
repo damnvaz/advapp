@@ -35,7 +35,7 @@ function getPageContent() {
             <div class="form-group" style="display: table; margin: 10px auto 5px auto;">
                 ${InputLabel(recoverText(lang)?.email)}
                 ${Input("emailrecover", "", "email", "", null)}
-            </div>
+            </div><br/>
             
             <div class="form-group" style="display: table; margin: 5px auto 50px auto;">
                 <button

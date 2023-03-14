@@ -1,20 +1,9 @@
+body {
+  background-color: #633030;
+}
+
 .form-space {
   padding-top: 65px;
-}
-
-.form {
-  margin-bottom: 60px;
-  min-height: 400px;
-  padding: 20px;
-}
-
-.form-container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 100%;
-  max-width: 320px;
 }
 
 .form-area {
@@ -24,11 +13,29 @@
   justify-content: center;
   border-radius: 5px;
   border: 1px solid #707087;
+  background-color: #fff;
   width: 100%;
-  max-width: 320px;
+  min-height: 400px;
+  margin-bottom: 30px;
+  min-height: 400px;
+  padding: 20px;
 }
 
 .copyright-data {
   display: table;
-  margin: 0px auto;
+  margin: 50px auto 0px auto;
+}
+
+.form-title {
+  margin: 10px auto 30px auto;
+  display: table;
+  color: #333;
+  font-size: 1.2rem;
+  font-family: "bold";
+  text-align: center;
+}
+
+.confirm {
+  font-size: 14px;
+  padding: 0px 30px;
 }

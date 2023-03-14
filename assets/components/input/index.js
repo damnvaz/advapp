@@ -11,7 +11,7 @@ export function Input(id, placeholder, type, maxlength, event) {
             ${event !== "" ? JSON.parse(event) : ""}
             maxLength="${maxlength === "" ? "180" : maxlength}"
             id="${id}"
-            required /><br/>
+            required />
     `;
 }
 
@@ -24,7 +24,7 @@ export function TextArea(id, placeholder, type, maxlength, event) {
             ${event !== "" ? JSON.parse(event) : ""}
             maxLength="${maxlength === "" ? "180" : maxlength}"
             id="${id}" 
-            required ></textarea><br/>
+            required ></textarea>
     `;
 }
 
@@ -37,6 +37,6 @@ export function Select(id, event, options) {
       dir="ltr"
       > 
         ${options !== "" ? options : ""}
-    </select><br/>
+    </select>
   `;
 }
