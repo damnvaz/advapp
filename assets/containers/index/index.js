@@ -11,6 +11,8 @@ import { indexText } from "./indexText.js";
 function hero() {
   const lang = checkUserLanguage();
 
+  const event = `window.location.href='signup.html'`;
+
   return `
     <div class="container-hero">
       <div>
@@ -36,7 +38,6 @@ function yourLegalAndEffectiveTool() {
   </div>
   `;
 }
-
 
 function whatWeOffer() {
   const lang = checkUserLanguage();

@@ -7,6 +7,7 @@ import { InputLabel, Input, TextArea, Select } from "./input/index.js";
 import { Loading } from "./loading/index.js";
 import { Navbar } from "./navbar/index.js";
 import { Toast, hideToast } from "./toast/index.js";
+import { Stepper } from "./stepper/index.js";
 import { Title, Subtitle, Description, Link } from "./typography/index.js";
 
 export {
@@ -28,4 +29,5 @@ export {
   Subtitle,
   Description,
   Link,
+  Stepper,
 };
