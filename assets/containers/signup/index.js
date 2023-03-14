@@ -294,6 +294,7 @@ async function signup(lang) {
   Toast("success", aux.result);
 
   setTimeout(() => {
+    cleanSignupFields();
     window.location.href = "login.html";
   }, 5000);
 }
