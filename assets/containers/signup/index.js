@@ -61,7 +61,7 @@ function step1(lang) {
           </option>
         `
       )}
-    </div><br/>
+    </div>
   `;
 }
 
@@ -147,6 +147,10 @@ function showPageContent() {
   let form = `
     <div class='step1'>
         ${step1(lang)}
+
+        <div class="form-group row" style="display: table; margin: 5px auto;">
+          ${ButtonLink(signupText(lang)?.loginLink, "login.html")}
+        </div>
     </div>
     <div class='step2 d-none'>
         ${step2(lang)}
@@ -154,6 +158,7 @@ function showPageContent() {
     <div class='step3 d-none'>
         ${step3(lang)}
     </div>
+    
     <br/>
   `;
 
