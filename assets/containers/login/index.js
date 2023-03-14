@@ -82,7 +82,7 @@ function showPageContent() {
   }
 
   document.querySelector("#loginbutton").addEventListener("click", () => {
-    login();
+    login(lang);
   });
 
   Loading(false);
@@ -90,13 +90,13 @@ function showPageContent() {
 
 showPageContent();
 
-async function login() {
+async function login(lang) {
   const login = document.getElementById("emailLogin").value;
   const pass = document.getElementById("senhaLogin").value;
 
   Loading(true);
 
-  if (!validateFields()) {
+  if (!validateFields(lang)) {
     Loading(false);
     return;
   }
@@ -122,7 +122,7 @@ async function login() {
   window.location.href = "panel.html";
 }
 
-function validateFields() {
+function validateFields(lang) {
   const email = document.querySelector("#emailLogin").value;
   const pass = document.querySelector("#senhaLogin").value;
 
