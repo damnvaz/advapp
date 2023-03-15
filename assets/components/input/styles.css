@@ -33,3 +33,31 @@
   border-radius: 5px;
   border: 0.5px solid grey !important;
 }
+
+.outter-input-password {
+  width: 100%;
+  padding: 5px 15px;
+  height: 40px;
+  margin: 5px 0px;
+  border-radius: 5px;
+  border: 1px solid grey !important;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.input-password {
+  width: 100%;
+  padding: 5px 45px 5px 0px;
+  height: 100%;
+  background-color: #fff;
+  outline: none;
+  border: none;
+}
+
+.input-password-icon {
+  position: initial;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+}

@@ -9,6 +9,7 @@ import {
   Toast,
   Loading,
 } from "../../components/index.js";
+import { InputPassword } from "../../components/input/index.js";
 import { performLogin } from "../../queries/base.js";
 import { checkUserLanguage } from "../../utils/checkUserLanguage.js";
 import { loginText } from "./loginText.js";
@@ -25,17 +26,18 @@ function showPageContent() {
     <span id="copyrightText" class="copyrightText copyright-data">© Copyright ${year}</span><br /><br />
   `;
 
+  let showPassword = false;
   let form = `
     <section id="loginForm" class="section form">
           <div class="container form-area">
-            <div class="form-group" style="display: table; margin: 35px auto 5px auto;">
+            <div class="form-group" style="display: table; margin: 35px auto 5px auto; width: 80%">
                 ${InputLabel(loginText(lang)?.emailOrPhone)}
                 ${Input("emailLogin", "", "text", "", null)}
             </div>
 
-            <div class="form-group" style="display: table; margin: 5px auto 0px auto;">
+            <div class="form-group" style="display: table; margin: 5px auto 0px auto; width: 80%">
                 ${InputLabel(loginText(lang)?.password)}
-                ${Input("senhaLogin", "", "password", "8", null)}
+                ${InputPassword("senhaLogin", "", "10", showPassword)}
             </div>
 
             <div class="form-group row" style="display: table; margin: 0px auto 10px auto;">
@@ -81,6 +83,16 @@ function showPageContent() {
     document.getElementById("emailLogin").value = em;
   }
 
+  document.querySelector("#password-icon").addEventListener("click", () => {
+    if (document.querySelector("#senhaLogin").type === "password") {
+      document.querySelector("#senhaLogin").type = "text";
+      document.querySelector("#password-icon").src = "assets/icons/eye-off.svg";
+      return;
+    }
+
+    document.querySelector("#senhaLogin").type = "password";
+    document.querySelector("#password-icon").src = "assets/icons/eye.svg";
+  });
   document.querySelector("#loginbutton").addEventListener("click", () => {
     login(lang);
   });

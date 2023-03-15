@@ -15,6 +15,25 @@ export function Input(id, placeholder, type, maxlength, event) {
     `;
 }
 
+export function InputPassword(id, placeholder, maxlength, show) {
+  return `
+      <div class="outter-input-password">
+        <input
+            type="${show === false ? "password" : "text"}"
+            placeholder="${placeholder !== "" ? placeholder : ""}"
+            class="input-password"
+            maxLength="${maxlength === "" ? "180" : maxlength}"
+            id="${id}"
+            required />
+          <img 
+            class="input-password-icon"
+            src="assets/icons/eye.svg" 
+            alt="show/hide password" 
+            id="password-icon" />
+      </div>
+    `;
+}
+
 export function TextArea(id, placeholder, type, maxlength, event) {
   return `
         <textarea 
