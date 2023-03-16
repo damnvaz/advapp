@@ -542,6 +542,126 @@ if ($postjson['req'] == 'get_user_by_id') {
 
 
 
+// CLIENTS
+if ($postjson['req'] == 'clients_by_user_id') {
+    
+    if ($postjson['id'] == '') {
+ 		$result = json_encode(array('success'=>false, 'result' => 'Informe o id.'));
+        echo $result; 
+        return;
+ 	}
+
+    $id = $postjson['id'];
+ 	$query = mysqli_query($mysqli, "SELECT * FROM clients WHERE lawyerId = '$id' ");
+
+    if (mysqli_num_rows($query) == 0) {
+        $result = json_encode(array('success' => false, 'result' => []));
+        echo $result; 
+        return;
+    }
+
+ 	while ($row = mysqli_fetch_array($query)) { 
+ 		$data = array(
+            'id' => $data['id'], 
+            'name' => $data['name'],
+            'document' => $data['document'],
+            'nationalRegistration' => $data['nationalRegistration'],
+            'driversLicense' => $data['driversLicense'],
+            'phone' => $data['phone'],
+            'email' => $data['email'],
+            'pass' => $data['pass'],
+            'type' => $data['type'],
+            'status' => $data['status'],
+            'address' => $data['address'],
+            'createdAt' => utf8_encode($data['createdAt']),
+            'recipientId' => utf8_encode($data['recipientId']),
+            'martialStatus' => utf8_encode($data['martialStatus']),
+            'occupation' => utf8_encode($data['occupation']),
+            'workPassport' => $data['workPassport'],
+            'files' => $data['files']
+ 		);
+ 	}
+	
+    $result = json_encode(array('success'=>true, 'result' => $data));
+    echo $result; 
+    return;
+}
+
+// TRANSACTIONS
+if ($postjson['req'] == 'transactions_by_user_id') {
+    
+    if ($postjson['id'] == '') {
+ 		$result = json_encode(array('success' => false, 'result' => 'Informe o id.'));
+        echo $result; 
+        return;
+ 	}
+
+    $id = $postjson['id'];
+ 	$query = mysqli_query($mysqli, "SELECT * FROM transactions WHERE receiverId = '$id' ");
+
+    if (mysqli_num_rows($query) == 0) {
+        $result = json_encode(array('success' => false, 'result' => []));
+        echo $result; 
+        return;
+    }
+
+ 	while ($row = mysqli_fetch_array($query)) { 
+ 		$data = array(
+            'id' => $data['id'], 
+            'receiverId' => $data['receiverId'],
+            'payerId' => $data['payerId'],
+            'amount' => $data['amount'],
+            'paymentMethod' => $data['paymentMethod'],
+            'service' => $data['service'],
+            'wasPaid' => $data['wasPaid'],
+            'createdAt' => $data['createdAt']
+ 		);
+ 	}
+	
+    $result = json_encode(array('success'=>true, 'result' => $data));
+    echo $result; 
+    return;
+}
+
+// AGENDA
+if ($postjson['req'] == 'agenda_by_user_id') {
+    
+    if ($postjson['id'] == '') {
+ 		$result = json_encode(array('success' => false, 'result' => 'Informe o id.'));
+        echo $result; 
+        return;
+ 	}
+
+    $id = $postjson['id'];
+ 	$query = mysqli_query($mysqli, "SELECT * FROM schedule WHERE lawyerId = '$id' ");
+
+    if (mysqli_num_rows($query) == 0) {
+        $result = json_encode(array('success' => false, 'result' => []));
+        echo $result; 
+        return;
+    }
+
+ 	while ($row = mysqli_fetch_array($query)) { 
+ 		$data = array(
+            'id' => $data['id'], 
+            'clientId' => $data['clientId'],
+            'lawyerId' => $data['lawyerId'],
+            'amount' => $data['amount'],
+            'place' => $data['place'],
+            'otherService' => $data['otherService'],
+            'status' => $data['status'],
+            'day' => $data['day'],
+            'time' => $data['time'],
+            'paymentMethod' => $data['paymentMethod']
+ 		);
+ 	}
+	
+    $result = json_encode(array('success'=>true, 'result' => $data));
+    echo $result; 
+    return;
+}
+
+
 // PLATFORM
 if ($postjson['req'] == 'get_platform') {
     
