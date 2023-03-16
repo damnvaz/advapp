@@ -1,0 +1,22 @@
+.outter-bottombar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: #fdfdfd;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.35));
+}
+
+.inner-bottombar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 20px 10px;
+}
+
+.bottombar-icon {
+    width: 40px;
+    height: 40px;
+}
