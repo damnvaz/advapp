@@ -9,6 +9,8 @@ import { Navbar } from "./navbar/index.js";
 import { Toast, hideToast } from "./toast/index.js";
 import { Stepper } from "./stepper/index.js";
 import { Title, Subtitle, Description, Link } from "./typography/index.js";
+import { Card } from "./card/index.js";
+import { Bottombar } from "./bottombar/index.js";
 
 export {
   ArrowBack,
@@ -30,4 +32,6 @@ export {
   Description,
   Link,
   Stepper,
+  Card,
+  Bottombar,
 };
