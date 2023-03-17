@@ -17,12 +17,12 @@ import { loginText } from "./loginText.js";
 
 function form(lang, showPassword) {
   return `
-    <div class="form-content" style="margin-top: 50px">
+    <div class="form-content p-3" style="margin-top: 30px">
       ${InputLabel(loginText(lang)?.emailOrPhone)}
       ${Input("emailLogin", "", "text", "", null)}
     </div>
 
-    <div class="form-content">
+    <div class="form-content p-3">
       ${InputLabel(loginText(lang)?.password)}
       ${InputPassword("senhaLogin", "", "10", showPassword)}
     </div>
@@ -31,7 +31,7 @@ function form(lang, showPassword) {
       ${ButtonLink(loginText(lang)?.forgotPassword, "forgot.html")}
     </div>
 
-    <div class="form-content" style="align-items: center; margin: 30px auto;">
+    <div class="form-content p-3" style="align-items: center; margin: 30px auto;">
       ${Button(loginText(lang)?.loginButton, null, "loginbutton")}
     </div>
 

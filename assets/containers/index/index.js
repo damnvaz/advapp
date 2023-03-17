@@ -4,7 +4,7 @@ import { checkUserLanguage } from "../../utils/checkUserLanguage.js";
 import { indexText } from "./indexText.js";
 
 function indexHero(lang) {
-  const event = `window.location.href='signup.html'`;
+  const event = `window.location.href='login.html'`;
 
   return `
     <div class="index-hero-container">

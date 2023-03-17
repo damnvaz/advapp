@@ -15,7 +15,7 @@ import { recoverText } from "./recoverText.js";
 
 function recoverLabel(lang) {
   return `
-      <div class="form-content" style="margin-top: 30px; margint-bottom: 30px;">
+      <div class="form-content p-3" style="margin-top: 30px; margin-bottom: 20px;">
         <label ">
             ${recoverText(lang)?.info}
         </label>
@@ -24,12 +24,12 @@ function recoverLabel(lang) {
 
 function form(lang) {
   return `
-    <div class="form-content">
+    <div class="form-content p-3">
       ${InputLabel(recoverText(lang)?.email)}
       ${Input("emailrecover", "", "email", "", null)}
     </div><br/>
 
-    <div class="form-content mb-2">
+    <div class="form-content mb-2 p-3" style="display: table; margin: 20px auto;">
       ${Button(recoverText(lang)?.button, null, 'recoverbutton')}
     </div>
   `;
