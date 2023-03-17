@@ -6,21 +6,21 @@ import {
   TextArea,
 } from "../../components/index.js";
 import { baseRequest } from "../../queries/base.js";
+import { translations } from "../../translations/index.js";
 import { checkUserLanguage } from "../../utils/checkUserLanguage.js";
-import { talktousText } from "./talktousText.js";
 
 function form(lang) {
   return `
     ${Input(
       "talk_to_us_username",
-      talktousText(lang)?.fullname,
+      translations(lang)?.talktous_page_fullname,
       "text",
       "180",
       null
     )}
       ${TextArea(
         "talk_to_us_message",
-        talktousText(lang)?.message,
+        translations(lang)?.talktous_page_message,
         "text",
         "255",
         null
@@ -62,7 +62,7 @@ async function showPageContent() {
   <section class="section-area">
       <div class="content">
           ${ArrowBack()}
-          ${PageTitle(talktousText(lang)?.whoa)}
+          ${PageTitle(translations(lang)?.talktous_page_whoa)}
 
           <div style="width: 100%; display: table; margin: 60px auto; text-align: justify">
               ${form(lang)}

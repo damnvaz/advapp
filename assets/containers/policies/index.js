@@ -1,5 +1,7 @@
 import { Footer, ArrowBack, PageTitle } from "../../components/index.js";
 import { baseRequest, convertDateDash } from "../../queries/base.js";
+import { translations } from "../../translations/index.js";
+import { checkUserLanguage } from "../../utils/checkUserLanguage.js";
 
 async function showPageContent() {
   let req = await baseRequest({
@@ -18,11 +20,13 @@ async function showPageContent() {
         .replaceAll("\r\n", "<br/>")}
     `;
 
+  const lang = checkUserLanguage();
+
   document.getElementById("content").innerHTML = `
     <section class="section-area">
       <div class="content">
           ${ArrowBack()}
-          ${PageTitle('Políticas de privacidade')}
+          ${PageTitle(translations(lang)?.policies_page_title)}
 
           <p class="date-update">Data da última atualização: ${convertDateDash(
             req.version

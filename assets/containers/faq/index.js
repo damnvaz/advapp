@@ -1,6 +1,8 @@
 import { Accordion } from "../../components/accordion/index.js";
 import { Footer, ArrowBack, PageTitle } from "../../components/index.js";
 import { baseRequest } from "../../queries/base.js";
+import { translations } from "../../translations/index.js";
+import { checkUserLanguage } from "../../utils/checkUserLanguage.js";
 
 async function showPageContent() {
   let req = await baseRequest({
@@ -12,11 +14,13 @@ async function showPageContent() {
     el += Accordion(req.result[i].doubt, req.result[i].details, i);
   }
 
+  const lang = checkUserLanguage();
+
   document.getElementById("content").innerHTML = `
     <section class="section-area">
       <div class="content">
         ${ArrowBack()}
-        ${PageTitle('Perguntas frequentes')}
+        ${PageTitle(translations(lang)?.faq_page)}
 
         <div class="faq-subcontent">
           ${el}

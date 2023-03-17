@@ -12,6 +12,7 @@ import {
 } from "../../components/index.js";
 import { goToStep } from "../../components/stepper/index.js";
 import { performSignup } from "../../queries/base.js";
+import { translations } from "../../translations/index.js";
 import { isUserLogged } from "../../utils/checkSession.js";
 import { checkUserLanguage } from "../../utils/checkUserLanguage.js";
 import {
@@ -21,41 +22,42 @@ import {
   mRG,
   mTel,
 } from "../../utils/maskInput.js";
-import { signupText } from "./signupText.js";
 
 function step1(lang) {
   return `
-      <span class="signup-title">${signupText(lang)?.personalData}</span>
+      <span class="signup-title">${
+        translations(lang)?.signup_page_personalData
+      }</span>
 
       <div class="form-content">
-        ${InputLabel(signupText(lang)?.fullname)}
+        ${InputLabel(translations(lang)?.signup_page_fullname)}
         ${Input("nameSignup", "", "text", "", null)}
       </div><br/>
       
       <div class="form-content">
-        ${InputLabel(signupText(lang)?.birthdate)}
+        ${InputLabel(translations(lang)?.signup_page_birthdate)}
         ${Input("birthSignup", "", "text", "", null)}
       </div><br/>
       
       <div class="form-content">
-      ${InputLabel(signupText(lang)?.martialStatus)}
+      ${InputLabel(translations(lang)?.signup_page_martialStatus)}
       ${Select(
         "martialStatusSignup",
         "",
         `<option style='color: #0a0a0a' value='1' selected='selected'>
-            ${signupText(lang)?.single}
+            ${translations(lang)?.signup_page_single}
           </option>
           <option style='color: #0a0a0a' value='2'>
-            ${signupText(lang)?.married}
+            ${translations(lang)?.signup_page_married}
           </option>
           <option style='color: #0a0a0a' value='2'>
-            ${signupText(lang)?.separated}
+            ${translations(lang)?.signup_page_separated}
           </option>
           <option style='color: #0a0a0a' value='2'>
-            ${signupText(lang)?.divorced}
+            ${translations(lang)?.signup_page_divorced}
           </option>
           <option style='color: #0a0a0a' value='2'>
-            ${signupText(lang)?.widowed}
+            ${translations(lang)?.signup_page_widowed}
           </option>
         `
       )}
@@ -65,20 +67,22 @@ function step1(lang) {
 
 function step2(lang) {
   return `
-    <span class="signup-title">${signupText(lang)?.generalData}</span>
+    <span class="signup-title">${
+      translations(lang)?.signup_page_generalData
+    }</span>
 
     <div class="form-content">
-      ${InputLabel(signupText(lang)?.document)}
+      ${InputLabel(translations(lang)?.signup_page_document)}
       ${Input("cpfSignup", "", "tel", "18", null)}
     </div><br/>
 
     <div class="form-content">
-        ${InputLabel(signupText(lang)?.rg)}
+        ${InputLabel(translations(lang)?.signup_page_rg)}
         ${Input("rgSignup", "", "tel", "12", null)}
     </div><br/>
     
     <div class="form-content">
-        ${InputLabel(signupText(lang)?.phone)}
+        ${InputLabel(translations(lang)?.signup_page_phone)}
         ${Input("phoneSignup", "", "tel", "", null)}
     </div><br/>
   `;
@@ -86,27 +90,29 @@ function step2(lang) {
 
 function step3(lang) {
   return `
-    <span class="signup-title">${signupText(lang)?.accountData}</span>
+    <span class="signup-title">${
+      translations(lang)?.signup_page_accountData
+    }</span>
     <div class="form-content">
-      ${InputLabel(signupText(lang)?.email)}
+      ${InputLabel(translations(lang)?.signup_page_email)}
       ${Input("emailSignup", "", "email", "", null)}
     </div><br/>
 
     <div class="form-content">
-      ${InputLabel(signupText(lang)?.pass)}
+      ${InputLabel(translations(lang)?.signup_page_pass)}
       ${Input("passSignup", "", "password", "8", null)}
     </div><br/>
     
     <div class="form-content">
-      ${InputLabel(signupText(lang)?.iam)}
+      ${InputLabel(translations(lang)?.signup_page_iam)}
       ${Select(
         "typeSignup",
         "",
         `<option style='color: #0a0a0a' value='1' selected='selected'>
-              ${signupText(lang)?.lawyer}
+              ${translations(lang)?.signup_page_lawyer}
           </option>
           <option style='color: #0a0a0a' value='2'>
-          ${signupText(lang)?.client}
+          ${translations(lang)?.signup_page_client}
           </option>
         `
       )}
@@ -135,7 +141,7 @@ function showPageContent() {
     <div class='step1'>
         ${step1(lang)}
         <div class="form-group" style="display: table; margin: 5px auto;">
-          ${ButtonLink(signupText(lang)?.loginLink, "login.html")}
+          ${ButtonLink(translations(lang)?.signup_page_loginLink, "login.html")}
         </div>
     </div>
     <div class='step2 d-none'>
@@ -151,15 +157,15 @@ function showPageContent() {
     <section class="section-area">
       <div class="content">
         ${ArrowBack()}
-        ${PageTitle(signupText(lang)?.title, "white")}
+        ${PageTitle(translations(lang)?.signup_page_title, "white")}
         <div class="form-area">
           <div class="step">
             ${Stepper(
               currentStep,
               numberOfSteps,
               form,
-              signupText(lang)?.previousText,
-              signupText(lang)?.nextText
+              translations(lang)?.signup_page_previousText,
+              translations(lang)?.signup_page_nextText
             )}
           </div>
         </div>
@@ -196,8 +202,8 @@ function showPageContent() {
     goToStep(
       currentStep,
       numberOfSteps,
-      signupText(lang)?.nextText,
-      signupText(lang)?.finishText
+      translations(lang)?.signup_page_nextText,
+      translations(lang)?.signup_page_finishText
     );
   };
 
@@ -211,8 +217,8 @@ function showPageContent() {
     goToStep(
       currentStep,
       numberOfSteps,
-      signupText(lang)?.nextText,
-      signupText(lang)?.finishText
+      translations(lang)?.signup_page_nextText,
+      translations(lang)?.signup_page_finishText
     );
 
     document.querySelector(`.step${currentStep - 1}`).classList.add("d-none");
@@ -297,42 +303,42 @@ function validateFields(lang) {
   const phone = document.getElementById("phoneSignup").value;
 
   if (name === "") {
-    Toast("danger", signupText(lang)?.validationName);
+    Toast("danger", translations(lang)?.signup_page_validationName);
     return false;
   }
 
   if (birth === "") {
-    Toast("danger", signupText(lang)?.validationBirth);
+    Toast("danger", translations(lang)?.signup_page_validationBirth);
     return false;
   }
 
   if (userDoc === "") {
-    Toast("danger", signupText(lang)?.validationDoc);
+    Toast("danger", translations(lang)?.signup_page_validationDoc);
     return false;
   }
 
   if (rg === "") {
-    Toast("danger", signupText(lang)?.validationRG);
+    Toast("danger", translations(lang)?.signup_page_validationRG);
     return false;
   }
 
   if (phone === "") {
-    Toast("danger", signupText(lang)?.validationPhone);
+    Toast("danger", translations(lang)?.signup_page_validationPhone);
     return false;
   }
 
   if (email === "") {
-    Toast("danger", signupText(lang)?.validationEmail);
+    Toast("danger", translations(lang)?.signup_page_validationEmail);
     return false;
   }
 
   if (pass === "") {
-    Toast("danger", signupText(lang)?.validationPass);
+    Toast("danger", translations(lang)?.signup_page_validationPass);
     return false;
   }
 
   if (pass.length > 8) {
-    Toast("danger", signupText(lang)?.validationPass8);
+    Toast("danger", translations(lang)?.signup_page_validationPass8);
     return false;
   }
 

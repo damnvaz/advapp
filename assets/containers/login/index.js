@@ -11,32 +11,35 @@ import {
   Button,
 } from "../../components/index.js";
 import { performLogin } from "../../queries/base.js";
+import { translations } from "../../translations/index.js";
 import { isUserLogged } from "../../utils/checkSession.js";
 import { checkUserLanguage } from "../../utils/checkUserLanguage.js";
-import { loginText } from "./loginText.js";
 
 function form(lang, showPassword) {
   return `
     <div class="form-content p-3" style="margin-top: 30px">
-      ${InputLabel(loginText(lang)?.emailOrPhone)}
+      ${InputLabel(translations(lang)?.login_page_emailOrPhone)}
       ${Input("emailLogin", "", "text", "", null)}
     </div>
 
     <div class="form-content p-3">
-      ${InputLabel(loginText(lang)?.password)}
+      ${InputLabel(translations(lang)?.login_page_password)}
       ${InputPassword("senhaLogin", "", "10", showPassword)}
     </div>
 
     <div class="form-content" style="text-align: center;">
-      ${ButtonLink(loginText(lang)?.forgotPassword, "forgot.html")}
+      ${ButtonLink(
+        translations(lang)?.login_page_forgotPassword,
+        "forgot.html"
+      )}
     </div>
 
     <div class="form-content p-3" style="align-items: center; margin: 30px auto;">
-      ${Button(loginText(lang)?.loginButton, null, "loginbutton")}
+      ${Button(translations(lang)?.login_page_loginButton, null, "loginbutton")}
     </div>
 
     <div class="form-group row" style="display: table; margin: 5px auto 10px auto;">
-      ${ButtonLink(loginText(lang)?.signupLink, "signup.html")}
+      ${ButtonLink(translations(lang)?.login_page_signupLink, "signup.html")}
     </div>
   `;
 }
@@ -52,7 +55,7 @@ function showPageContent() {
     <section class="section-area">
       <div class="content">
         ${ArrowBack()}
-        ${PageTitle(loginText(lang)?.title, "white")}
+        ${PageTitle(translations(lang)?.login_page_title, "white")}
         <div class="form-area">
           ${form(lang, showPassword)}
         </div>
@@ -125,12 +128,12 @@ function validateFields(lang) {
   const pass = document.querySelector("#senhaLogin").value;
 
   if (email === "") {
-    Toast("danger", loginText(lang)?.validationEmail);
+    Toast("danger", translations(lang)?.login_page_validationEmail);
     return false;
   }
 
   if (pass === "") {
-    Toast("danger", loginText(lang)?.validationPass);
+    Toast("danger", translations(lang)?.login_page_validationPass);
     return false;
   }
 

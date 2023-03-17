@@ -1,7 +1,7 @@
 import { Footer, Title, Subtitle, Button } from "../../components/index.js";
 import { config } from "../../queries/base.js";
+import { translations } from "../../translations/index.js";
 import { checkUserLanguage } from "../../utils/checkUserLanguage.js";
-import { indexText } from "./indexText.js";
 
 function indexHero(lang) {
   const event = `window.location.href='login.html'`;
@@ -11,9 +11,9 @@ function indexHero(lang) {
       <div>
         <p class="index-hero-title">${config().platformName}<p>
         <p class="index-hero-description">${
-          indexText(lang)?.heroDescription
+          translations(lang)?.index_page_heroDescription
         }</p>
-        ${Button(indexText(lang)?.joinNow, event)}
+        ${Button(translations(lang)?.index_page_joinNow, event)}
       </div>
       <img src="assets/icons/balance.svg" 
         class="index-hero-img" 
@@ -30,9 +30,11 @@ function indexTools(lang) {
       alt="hands-shaking" />
     <div class="legal-tool-content">
       <p class="legal-tool-title">${
-        indexText(lang)?.yourLegalAndEffectiveToolTitle
+        translations(lang)?.index_page_yourLegalAndEffectiveToolTitle
       }</p>
-      ${Subtitle(indexText(lang)?.yourLegalAndEffectiveToolDescription)}
+      ${Subtitle(
+        translations(lang)?.index_page_yourLegalAndEffectiveToolDescription
+      )}
     </div>
   </div>
   `;
@@ -41,23 +43,23 @@ function indexTools(lang) {
 function indexServicesOffered(lang) {
   const list = [
     {
-      item: indexText(lang)?.schedule,
+      item: translations(lang)?.index_page_schedule,
     },
-    { item: indexText(lang)?.proceduralManagement },
-    { item: indexText(lang)?.proceduralNotifications },
-    { item: indexText(lang)?.financialManagement },
-    { item: indexText(lang)?.petitionsModel },
-    { item: indexText(lang)?.contractModel },
+    { item: translations(lang)?.index_page_proceduralManagement },
+    { item: translations(lang)?.index_page_proceduralNotifications },
+    { item: translations(lang)?.index_page_financialManagement },
+    { item: translations(lang)?.index_page_petitionsModel },
+    { item: translations(lang)?.index_page_contractModel },
     {
-      item: indexText(lang)?.helpForum,
+      item: translations(lang)?.index_page_helpForum,
     },
-    { item: indexText(lang)?.custumerManagement },
-    { item: indexText(lang)?.filesManagement },
-    { item: indexText(lang)?.tableValueOAB },
+    { item: translations(lang)?.index_page_custumerManagement },
+    { item: translations(lang)?.index_page_filesManagement },
+    { item: translations(lang)?.index_page_tableValueOAB },
     {
-      item: indexText(lang)?.fitsInYourPocket,
+      item: translations(lang)?.index_page_fitsInYourPocket,
     },
-    { item: indexText(lang)?.andMuchMore },
+    { item: translations(lang)?.index_page_andMuchMore },
   ];
 
   let el = "";
@@ -84,7 +86,7 @@ function indexServicesOffered(lang) {
 
   return `
     <div class="services">
-      ${Title(indexText(lang)?.whatWeOffer, "white")}
+      ${Title(translations(lang)?.index_page_whatWeOffer, "white")}
       <br>
       <div class="services-columns">
         ${el}

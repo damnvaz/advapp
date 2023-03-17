@@ -9,15 +9,16 @@ import {
   Button,
 } from "../../components/index.js";
 import { performRecover } from "../../queries/base.js";
+import { translations } from "../../translations/index.js";
 import { isUserLogged } from "../../utils/checkSession.js";
 import { checkUserLanguage } from "../../utils/checkUserLanguage.js";
-import { recoverText } from "./recoverText.js";
+
 
 function recoverLabel(lang) {
   return `
       <div class="form-content p-3" style="margin-top: 30px; margin-bottom: 20px;">
         <label ">
-            ${recoverText(lang)?.info}
+            ${translations(lang)?.forgot_page_info}
         </label>
       </div>`;
 }
@@ -25,12 +26,12 @@ function recoverLabel(lang) {
 function form(lang) {
   return `
     <div class="form-content p-3">
-      ${InputLabel(recoverText(lang)?.email)}
+      ${InputLabel(translations(lang)?.forgot_page_email)}
       ${Input("emailrecover", "", "email", "", null)}
     </div><br/>
 
     <div class="form-content mb-2 p-3" style="display: table; margin: 20px auto;">
-      ${Button(recoverText(lang)?.button, null, 'recoverbutton')}
+      ${Button(translations(lang)?.forgot_page_button, null, 'recoverbutton')}
     </div>
   `;
 }
@@ -44,7 +45,7 @@ function showPageContent() {
     <section class="section-area">
       <div class="content">
         ${ArrowBack()}
-        ${PageTitle(recoverText(lang)?.title, "white")}
+        ${PageTitle(translations(lang)?.forgot_page_title, "white")}
         <div class="form-area">
           ${recoverLabel(lang)}
           ${form(lang)}
@@ -96,7 +97,7 @@ function validateFields(lang) {
 
   if (email === "") {
     Loading(false);
-    Toast("danger", recoverText(lang)?.validation);
+    Toast("danger", translations(lang)?.forgot_page_validation);
     return;
   }
 
