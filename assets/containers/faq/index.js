@@ -13,7 +13,7 @@ async function showPageContent() {
   }
 
   document.getElementById("content").innerHTML = `
-    <section id="hero" class="section-area">
+    <section class="section-area">
       <div class="content">
         ${ArrowBack()}
         ${PageTitle('Perguntas frequentes')}

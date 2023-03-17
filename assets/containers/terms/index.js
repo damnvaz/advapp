@@ -19,7 +19,7 @@ async function showPageContent() {
     `;
 
   document.getElementById("content").innerHTML = `
-    <main id="hero" class="section-area">
+    <section class="section-area">
       <div class="content">
           ${ArrowBack()}
           ${PageTitle('Termos e condições de uso')}
@@ -33,7 +33,7 @@ async function showPageContent() {
           </div>
 
       </div>
-    </main>
+    </section>
     `;
 
   Footer();
