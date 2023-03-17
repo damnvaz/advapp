@@ -7,11 +7,8 @@ function showPageContent() {
   const lang = checkUserLanguage();
 
   let el = `
-        <div class="navbar-brand">
-            <img  src="assets/logo.svg" alt="company logo" class="not-found-logo" />
-            <span class="not-found-company">${config()?.platformName}</span>
-        </div>
         <div class="not-found-bg-inner">
+            <h1>iusok</h1>
             <h2>${errorText(lang)?.whoa}</h2>
             <h5>${errorText(lang)?.message}</h5>
             <a class="not-found-bg-inner-button" 
