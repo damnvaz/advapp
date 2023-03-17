@@ -145,3 +145,7 @@ a:hover {
 .d-flex {
   display: flex;
 }
+
+.text-white {
+  color: white;
+}

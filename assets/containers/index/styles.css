@@ -2,103 +2,91 @@
   background-color: #fff;
 }
 
-/* DESKTOP */
-@media (min-width: 768px) {
-  .columns {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0px 0px;
-  }
-  .advantages {
-    background-color: #580100d4;
-    border-radius: 10px;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 15px;
-    color: #f9f9f9;
-    padding: 40px 50px 20px 50px;
-    text-align: center;
-    width: 60%;
-  }
-  .hands-shake {
-    width: 57px;
-    height: 57px;
-  }
+/* SECTION HERO */
+.index-hero-title {
+  width: 164px;
+  font-family: "bold";
+  font-size: 38px;
+  color: #633030;
+}
 
-  .container-legal-tool {
-    align-items: center;
-    justify-content: space-between;
-    display: flex;
-    flex-direction: row;
+.index-hero-description {
+  max-width: 170px;
+}
+
+.index-hero-container {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 3rem;
+  margin-bottom: 4rem;
+}
+
+.index-hero-img {
+  width: 100px;
+  height: 100px;
+}
+
+/* SECTION LEGAL TOOL */
+.legal-tool-container {
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+}
+.legal-tool-content {
+  margin-left: 20px;
+  width: 75%;
+}
+.legal-tool-title span {
+  color: #d7b15c;
+}
+
+@media (min-width: 768px) {
+  .legal-tool-container {
     padding: 10px 30px 10px 30px;
   }
-
-  .area {
-    margin-top: 6rem;
-    margin-bottom: 6rem;
-  }
 }
-
-/* TABLET, MOBILE */
 @media (max-width: 768px) {
-  .advantages {
-    background-color: #580100d4;
-    border-radius: 10px;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 15px;
-    color: #f9f9f9;
-    padding: 20px 10px;
-    text-align: left;
-    width: 90%;
-  }
-
-  .columns {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0px 0px;
-  }
-
-  .hands-shake {
-    width: 57px;
-    height: 57px;
-  }
-
-  .container-legal-tool {
-    align-items: center;
-    justify-content: space-between;
-    display: flex;
-    flex-direction: row;
-    padding-left: 30px;
-  }
-
-  .yourLegalAndEffectiveTool {
-    margin-left: 20px;
-    width: 75%;
-  }
-
-  .area {
-    margin-top: 3rem;
-    margin-bottom: 3rem;
+  .legal-tool-container {
+    padding-left: 0px;
   }
 }
 
-.check-icon {
-  width: 20px;
-  height: 30px;
+.legal-tool-img {
+  width: 57px;
+  height: 57px;
 }
 
-.advantage-container {
+/* SECTION SERVICES OFFERED */
+.services {
+  display: flex;
+  flex-direction: column;
+  margin: 0px auto;
+  margin-top: 6rem;
+  margin-bottom: 6rem;
+  background-color: #580100d4;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: #f9f9f9;
+  text-align: center;
+}
+
+.services-container {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.advantage-item {
+.services-check-icon {
+  width: 20px;
+  height: 30px;
+}
+
+.services-item {
   font-size: 0.8rem;
   font-weight: normal;
   text-align: justify;
@@ -107,32 +95,43 @@
   color: #fff;
 }
 
-.title span {
-  color: #d7b15c;
+@media (min-width: 768px) {
+  .services {
+    padding: 20px 50px 30px 50px;
+    width: 60%;
+  }
+
+  .services-columns {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0px 0px;
+  }
 }
 
-.hero-title {
-  width: 164px;
-  font-family: "bold";
-  font-size: 38px;
-  color: #633030;
+@media (max-width: 768px) {
+  .services {
+    padding: 20px 10px 20px 30px;
+    text-align: left;
+    width: 90%;
+  }
+
+  .services-columns {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0px 0px;
+  }
 }
 
-.balance {
-  width: 100px;
-  height: 100px;
-  margin-right: 15px;
+
+/* GENERAL */
+.subtitle {
+  padding-left: 0px !important;
 }
 
-.hero-container {
-  justify-content: space-between;
-  display: flex;
-  flex-direction: row;
-  padding-left: 30px;
-  margin-top: 6rem;
-  margin-bottom: 4rem;
-}
-
-.hero-description {
-  max-width: 170px;
+.section-area-index {
+  padding: 0px 20px 0px 20px !important;
 }
