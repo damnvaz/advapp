@@ -1,10 +1,4 @@
-import {
-  Navbar,
-  Footer,
-  Title,
-  Subtitle,
-  Button,
-} from "../../components/index.js";
+import { Footer, Title, Subtitle, Button } from "../../components/index.js";
 import { config } from "../../queries/base.js";
 import { checkUserLanguage } from "../../utils/checkUserLanguage.js";
 import { indexText } from "./indexText.js";
@@ -16,7 +10,9 @@ function indexHero(lang) {
     <div class="index-hero-container">
       <div>
         <p class="index-hero-title">${config().platformName}<p>
-        <p class="index-hero-description">${indexText(lang)?.heroDescription}</p>
+        <p class="index-hero-description">${
+          indexText(lang)?.heroDescription
+        }</p>
         ${Button(indexText(lang)?.joinNow, event)}
       </div>
       <img src="assets/icons/balance.svg" 
@@ -33,7 +29,9 @@ function indexTools(lang) {
       class="legal-tool-img" 
       alt="hands-shaking" />
     <div class="legal-tool-content">
-      <p class="legal-tool-title">${indexText(lang)?.yourLegalAndEffectiveToolTitle}</p>
+      <p class="legal-tool-title">${
+        indexText(lang)?.yourLegalAndEffectiveToolTitle
+      }</p>
       ${Subtitle(indexText(lang)?.yourLegalAndEffectiveToolDescription)}
     </div>
   </div>
@@ -95,11 +93,9 @@ function indexServicesOffered(lang) {
   `;
 }
 
-
 function PageContent() {
   const lang = checkUserLanguage();
 
-  Navbar();
   document.querySelector("#content").innerHTML = `
     <section class="section-area section-area-index">
       <div class="content">

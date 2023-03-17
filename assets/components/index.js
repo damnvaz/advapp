@@ -11,7 +11,6 @@ import {
   InputPassword,
 } from "./input/index.js";
 import { Loading } from "./loading/index.js";
-import { Navbar } from "./navbar/index.js";
 import { Toast, hideToast } from "./toast/index.js";
 import { Stepper } from "./stepper/index.js";
 import {
@@ -38,7 +37,6 @@ export {
   TextArea,
   Select,
   Loading,
-  Navbar,
   Toast,
   hideToast,
   Title,
