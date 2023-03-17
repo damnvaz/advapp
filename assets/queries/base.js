@@ -1,4 +1,3 @@
-
 export function convertDate(date) {
   var newDate = date.split("/");
   return newDate[2] + "-" + newDate[1] + "-" + newDate[0];
@@ -36,14 +35,9 @@ export async function baseRequest(body) {
 
 // AUTH
 export function logout() {
-
   localStorage.removeItem("userSession");
-
   window.location.href = "index.html";
 }
-
-
-
 
 export async function performRecover(email) {
   return await baseRequest({
@@ -70,7 +64,7 @@ export async function performSignup(body) {
     pass: body.pass.trim(),
     phone: body.phone.replace(/\D/g, ""),
     type: body.type.trim(),
-    status: '1',
+    status: "1",
     address: body.address.trim(),
     createdAt: body.createdAt.trim(),
     recipientId: body.recipientId.trim(),
@@ -91,11 +85,6 @@ async function getTicketByQRCode(id) {
   return aux.result[0];
 }
 
-
-
-
-
-
 async function updateBook(id, status, type) {
   return await baseRequest({
     id: id,
@@ -104,11 +93,6 @@ async function updateBook(id, status, type) {
     req: "edit_booking",
   });
 }
-
-
-
-
-
 
 // EMAIL
 async function sendEmailService(
@@ -134,3 +118,12 @@ async function sendEmailService(
   });
 }
 
+// CONFIG
+
+export function config() {
+  return {
+    platformName: "iusok",
+    email: "suporte@iusok.com",
+    phone: "(21)991943672",
+  };
+}

@@ -1,20 +1,18 @@
 import {
-  Title,
-  Subtitle,
   ArrowBack,
   Input,
   InputLabel,
   ButtonLink,
-  Button,
   Toast,
   Loading,
-  CheckboxWithLink,
   Stepper,
   Select,
+  PageTitle,
+  Copyright,
 } from "../../components/index.js";
-import { goToStep, setProgressBar } from "../../components/stepper/index.js";
-import { config } from "../../config/index.js";
-import { convertDateDash, performSignup } from "../../queries/base.js";
+import { goToStep } from "../../components/stepper/index.js";
+import { performSignup } from "../../queries/base.js";
+import { isUserLogged } from "../../utils/checkSession.js";
 import { checkUserLanguage } from "../../utils/checkUserLanguage.js";
 import {
   fMasc,
@@ -27,19 +25,19 @@ import { signupText } from "./signupText.js";
 
 function step1(lang) {
   return `
-      <span class="form-title">${signupText(lang)?.personalData}</span>
+      <span class="signup-title">${signupText(lang)?.personalData}</span>
 
-      <div style="display: table; margin: 0px auto; width: 78%;">
+      <div class="signup-form-content">
         ${InputLabel(signupText(lang)?.fullname)}
         ${Input("nameSignup", "", "text", "", null)}
       </div><br/>
       
-      <div style="display: table; margin: 0px auto; width: 78%;">
+      <div class="signup-form-content">
         ${InputLabel(signupText(lang)?.birthdate)}
         ${Input("birthSignup", "", "text", "", null)}
       </div><br/>
       
-      <div style="display: table; margin: 5px auto; width: 78%;">
+      <div class="signup-form-content">
       ${InputLabel(signupText(lang)?.martialStatus)}
       ${Select(
         "martialStatusSignup",
@@ -67,19 +65,19 @@ function step1(lang) {
 
 function step2(lang) {
   return `
-    <span class="form-title">${signupText(lang)?.generalData}</span>
+    <span class="signup-title">${signupText(lang)?.generalData}</span>
 
-    <div style="display: table; margin: 0px auto; width: 78%;">
+    <div class="signup-form-content">
       ${InputLabel(signupText(lang)?.document)}
       ${Input("cpfSignup", "", "tel", "18", null)}
     </div><br/>
 
-    <div style="display: table; margin: 0px auto; width: 78%;">
+    <div class="signup-form-content">
         ${InputLabel(signupText(lang)?.rg)}
         ${Input("rgSignup", "", "tel", "12", null)}
     </div><br/>
     
-    <div style="display: table; margin: 0px auto; width: 78%;">
+    <div class="signup-form-content">
         ${InputLabel(signupText(lang)?.phone)}
         ${Input("phoneSignup", "", "tel", "", null)}
     </div><br/>
@@ -88,19 +86,18 @@ function step2(lang) {
 
 function step3(lang) {
   return `
-    <span class="form-title">${signupText(lang)?.accountData}</span>
-    <div style="display: table; margin: 5px auto; width: 75%;">
+    <span class="signup-title">${signupText(lang)?.accountData}</span>
+    <div class="signup-form-content">
       ${InputLabel(signupText(lang)?.email)}
       ${Input("emailSignup", "", "email", "", null)}
     </div><br/>
 
-    <div style="display: table; margin: 5px auto; width: 78%;">
+    <div class="signup-form-content">
       ${InputLabel(signupText(lang)?.pass)}
       ${Input("passSignup", "", "password", "8", null)}
-      <span style="font-size:12px; color: #cecece;" id="pass"></span>
     </div><br/>
     
-    <div style="display: table; margin: 5px auto; width: 78%;">
+    <div class="signup-form-content">
       ${InputLabel(signupText(lang)?.iam)}
       ${Select(
         "typeSignup",
@@ -116,7 +113,6 @@ function step3(lang) {
     </div><br/>
 
 
-
     <p class="confirm">
       Ao apertar em cadastrar eu afirmo que Li e aceito os 
       <a href="terms.html">Termos de uso</a> e 
@@ -128,27 +124,17 @@ function step3(lang) {
 function showPageContent() {
   Loading(true);
 
-  if (JSON.parse(localStorage.getItem("userSession")) !== null) {
-    window.location.href = "panel.html";
-  }
+  isUserLogged();
 
   let currentStep = 1;
   let numberOfSteps = 3;
 
   const lang = checkUserLanguage();
 
-  const year = new Date().getFullYear();
-  let copyright = `
-    <span id="copyrightText" class="copyrightText copyright-data">© Copyright ${year}. ${
-    config().platformName
-  }</span><br /><br />
-  `;
-
   let form = `
     <div class='step1'>
         ${step1(lang)}
-
-        <div class="form-group row" style="display: table; margin: 5px auto;">
+        <div class="form-group" style="display: table; margin: 5px auto;">
           ${ButtonLink(signupText(lang)?.loginLink, "login.html")}
         </div>
     </div>
@@ -158,29 +144,26 @@ function showPageContent() {
     <div class='step3 d-none'>
         ${step3(lang)}
     </div>
-    
     <br/>
   `;
 
   document.querySelector("#content").innerHTML = `
-    <section class="section container">
-      <div class="form-space">
-        <section class="section">
-            <div class="container form-container">
-                <div class="d-flex flex-column mx-auto signuptop">
-                  ${ArrowBack()}
-                  ${Title(signupText(lang)?.title, "white")}
-                </div>
-                ${Stepper(
-                  currentStep,
-                  numberOfSteps,
-                  form,
-                  signupText(lang)?.previousText,
-                  signupText(lang)?.nextText
-                )}
-                ${copyright}
-            </div>
-        </section>
+    <section class="section-area">
+      <div class="content">
+        ${ArrowBack()}
+        ${PageTitle(signupText(lang)?.title, "white")}
+        <div class="form-area">
+          <div class="step">
+            ${Stepper(
+              currentStep,
+              numberOfSteps,
+              form,
+              signupText(lang)?.previousText,
+              signupText(lang)?.nextText
+            )}
+          </div>
+        </div>
+        ${Copyright()}
       </div>
     </section>
   `;

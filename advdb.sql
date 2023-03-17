@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 11-Mar-2023 às 21:53
+-- Tempo de geração: 16-Mar-2023 às 14:45
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.2.0
 
@@ -33,6 +33,31 @@ CREATE TABLE `chat` (
   `receiverId` varchar(255) NOT NULL,
   `message` varchar(255) NOT NULL,
   `createdAt` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `clients`
+--
+
+CREATE TABLE `clients` (
+  `id` bigint(20) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `document` varchar(18) NOT NULL,
+  `nationalRegistration` varchar(18) NOT NULL,
+  `driversLicense` varchar(18) NOT NULL,
+  `phone` varchar(30) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `pass` varchar(255) NOT NULL,
+  `lawyerId` varchar(255) NOT NULL,
+  `status` int(11) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `createdAt` varchar(15) NOT NULL,
+  `recipientId` varchar(255) NOT NULL,
+  `martialStatus` varchar(255) NOT NULL,
+  `occupation` varchar(255) NOT NULL,
+  `workPassport` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -81,6 +106,14 @@ CREATE TABLE `faq` (
   `details` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Extraindo dados da tabela `faq`
+--
+
+INSERT INTO `faq` (`id`, `doubt`, `details`) VALUES
+(1, 'Como criar uma conta?', 'Para criar sua conta, basta ir em login na barra superior, em seguida, clicar em \'Novo aqui? cadastrar\''),
+(2, 'Quanto tempo dura meu acesso?', 'Seu acesso à plataforma tem vigor de 1 mês. Após esse período, é necessário renovar sua mensalidade.');
+
 -- --------------------------------------------------------
 
 --
@@ -127,6 +160,7 @@ CREATE TABLE `notifications` (
 --
 
 CREATE TABLE `platform` (
+  `id` bigint(20) NOT NULL,
   `email` varchar(255) NOT NULL,
   `phone` varchar(20) NOT NULL,
   `stoneApiKey` varchar(255) NOT NULL,
@@ -137,8 +171,8 @@ CREATE TABLE `platform` (
 -- Extraindo dados da tabela `platform`
 --
 
-INSERT INTO `platform` (`email`, `phone`, `stoneApiKey`, `recipientId`) VALUES
-('support@adv.com.br', '(21)991943672', 'stone_api_key', 'recipient_id');
+INSERT INTO `platform` (`id`, `email`, `phone`, `stoneApiKey`, `recipientId`) VALUES
+(1, 'suporte@iusok.com', '(21)991943672', 'stone_api_key', 'recipient_id');
 
 -- --------------------------------------------------------
 
@@ -147,9 +181,17 @@ INSERT INTO `platform` (`email`, `phone`, `stoneApiKey`, `recipientId`) VALUES
 --
 
 CREATE TABLE `privacy_policy` (
+  `id` bigint(20) NOT NULL,
   `policy` longtext NOT NULL,
   `version` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `privacy_policy`
+--
+
+INSERT INTO `privacy_policy` (`id`, `policy`, `version`) VALUES
+(1, '<titulo>SEGURANÇA EM DADOS PESSOAIS</titulo>\n<paragrafo>Compartilhe suas informações conosco e nos ajude a melhorar o sistema de compras do site. Para que seu pedido possa ser efetuado em segurança, preencha os dados cadastrais com atenção. Asseguramos a privacidade e a segurança de nossos clientes durante todo o processo de navegação e compra no site. Seus dados cadastrais não serão utilizados em nenhuma hipótese para fins de ofertas a não ser que você autorize expressamente no momento do cadastramento. Os seus dados pessoais são fundamentais para que seu pedido seja bem-sucedido e sua compra seja segura.</paragrafo>\n\n<titulo>COOKIES E INFORMAÇÕES DE NAVEGAÇÃO</titulo>\n<paragrafo>Seus dados de navegação são coletados para que possamos aprimorar sua experiência de compra, garantindo um serviço personalizado para sua necessidade. Os cookies são pequenos arquivos de dados transferidos de um site da web para o disco do seu computador, sem armazenar dados pessoais (como logins e senhas, por exemplo). Assim como outros websites, nós utilizamos cookies e informações de navegação de nossos usuários (sessão do browser) que são agrupados e utilizados de maneira genérica, com o objetivo de aperfeiçoar os serviços que o site oferece, e assim garantindo as melhores ofertas e promoções sem oferecer conteúdo irrelevante. É importante ressaltar que durante todo este processo as informações pessoais são mantidas em sigilo absoluto. Importante! Para que seus dados permaneçam intactos, desaconselhamos expressamente a divulgação de senhas a terceiros, mesmo a amigos e parentes.</paragrafo>', '2023-03-12');
 
 -- --------------------------------------------------------
 
@@ -207,7 +249,7 @@ CREATE TABLE `schedule` (
   `place` varchar(15) NOT NULL,
   `otherService` varchar(255) NOT NULL,
   `status` int(11) NOT NULL,
-  `dayOfTheWeek` varchar(30) NOT NULL,
+  `day` varchar(30) NOT NULL,
   `time` varchar(30) NOT NULL,
   `paymentMethod` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -257,9 +299,17 @@ CREATE TABLE `suggestions` (
 --
 
 CREATE TABLE `terms_of_use` (
+  `id` bigint(20) NOT NULL,
   `terms` longtext NOT NULL,
   `version` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `terms_of_use`
+--
+
+INSERT INTO `terms_of_use` (`id`, `terms`, `version`) VALUES
+(1, '<paragrafo>Nós garantimos total segurança de todos os seus dados fornecidos. Sua privacidade também é garantida durante as compras e a navegação pelo site do iusok.</paragrafo>\n\n<titulo>SEGURANÇA EM DADOS PESSOAIS</titulo>\n<paragrafo>Compartilhe suas informações conosco e nos ajude a melhorar o sistema de compras do site. Para que seu pedido possa ser efetuado em segurança, preencha os dados cadastrais com atenção. Asseguramos a privacidade e a segurança de nossos clientes durante todo o processo de navegação e compra no site. Seus dados cadastrais não serão utilizados em nenhuma hipótese para fins de ofertas a não ser que você autorize expressamente no momento do cadastramento. Os seus dados pessoais são fundamentais para que seu pedido seja bem-sucedido e sua compra seja segura.</paragrafo>\n\n<titulo>COOKIES E INFORMAÇÕES DE NAVEGAÇÃO</titulo>\n<paragrafo>Seus dados de navegação são coletados para que possamos aprimorar sua experiência de compra, garantindo um serviço personalizado para sua necessidade. Os cookies são pequenos arquivos de dados transferidos de um site da web para o disco do seu computador, sem armazenar dados pessoais (como logins e senhas, por exemplo). Assim como outros websites, nós utilizamos cookies e informações de navegação de nossos usuários (sessão do browser) que são agrupados e utilizados de maneira genérica, com o objetivo de aperfeiçoar os serviços que o site oferece, e assim garantindo as melhores ofertas e promoções sem oferecer conteúdo irrelevante. É importante ressaltar que durante todo este processo as informações pessoais são mantidas em sigilo absoluto. Importante! Para que seus dados permaneçam intactos, desaconselhamos expressamente a divulgação de senhas a terceiros, mesmo a amigos e parentes.</paragrafo>\n\n<titulo>E-MAILS PROMOCIONAIS COM OFERTAS E SERVIÇOS</titulo>\n<paragrafo>Ao se cadastrar em nosso site, você poderá escolher receber e-mails com nossas informações e promoções, tendo a opção de desativá-los a hora que quiser. O envio de e-mails será feito apenas com consentimento do usuário e poderá ser cancelado há qualquer momento. No entanto, após requisitar o cancelamento nós teremos um período de até 3 (três) dias para processar sua solicitação. Lembrando que não praticamos o envio de e-mails sem autorização prévia, conhecidos como SPAM. Os e-mails serão enviados pelo Remetente e-mail excluindo toda e qualquer responsabilidade por conteúdo enviado em nome do iusok emitidos por outro endereço de e-mail. Caso você receba, por favor, exclua e denuncie como SPAM imediatamente.</paragrafo>\n\n<titulo>POLITICA DE CANCELAMENTO E REEMBOLSO</titulo>\n<paragrafo>Como funciona o processo da restituição do valor? Depois do SAC confirmar a solicitação do cancelamento enviado ao suporte@iusok.com , será solicitado o estorno de valores junto à administradora de cartão de crédito. O estorno na fatura do cartão seguirá as normas de cada operadora/banco emissor, podendo ser creditado na fatura seguinte ou na subsequente, de acordo com a data de fechamento da fatura. Neste caso o processo de estorno pode levar de 30 a 60 dias. Posso trocar meu ingresso? Não realizamos troca de ingressos. Sugerimos você repassar seu ingresso para outra pessoa. Para isso basta imprimir e solicitar um termo de transferência para o suporte@iusok.come  entregar o ingresso ao novo portador.</paragrafo>', '2023-03-12');
 
 -- --------------------------------------------------------
 
@@ -274,6 +324,7 @@ CREATE TABLE `transactions` (
   `amount` varchar(255) NOT NULL,
   `paymentMethod` varchar(15) NOT NULL,
   `service` varchar(255) NOT NULL,
+  `wasPaid` tinyint(1) NOT NULL,
   `createdAt` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -295,12 +346,19 @@ CREATE TABLE `users` (
   `type` int(11) NOT NULL,
   `status` int(11) NOT NULL,
   `address` varchar(255) NOT NULL,
-  `createdAt` varchar(10) NOT NULL,
+  `createdAt` varchar(15) NOT NULL,
   `recipientId` varchar(255) NOT NULL,
   `martialStatus` varchar(255) NOT NULL,
   `occupation` varchar(255) NOT NULL,
-  `workCard` varchar(255) NOT NULL
+  `workPassport` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `document`, `nationalRegistration`, `driversLicense`, `phone`, `email`, `pass`, `type`, `status`, `address`, `createdAt`, `recipientId`, `martialStatus`, `occupation`, `workPassport`) VALUES
+(1, 'Daniel Vaz Monteiro', '17927364790', '288167992', '-', '21991943672', 'contact.daniel.vaz@gmail.com', '12345678', 1, 1, '-', '15/03/2023', '-', '1', 'Advogado(a)', '-');
 
 --
 -- Índices para tabelas despejadas
@@ -310,6 +368,12 @@ CREATE TABLE `users` (
 -- Índices para tabela `chat`
 --
 ALTER TABLE `chat`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `clients`
+--
+ALTER TABLE `clients`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -346,6 +410,18 @@ ALTER TABLE `log`
 -- Índices para tabela `notifications`
 --
 ALTER TABLE `notifications`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `platform`
+--
+ALTER TABLE `platform`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `privacy_policy`
+--
+ALTER TABLE `privacy_policy`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -391,6 +467,12 @@ ALTER TABLE `suggestions`
   ADD PRIMARY KEY (`Id`);
 
 --
+-- Índices para tabela `terms_of_use`
+--
+ALTER TABLE `terms_of_use`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `transactions`
 --
 ALTER TABLE `transactions`
@@ -413,6 +495,12 @@ ALTER TABLE `chat`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de tabela `clients`
+--
+ALTER TABLE `clients`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `contract`
 --
 ALTER TABLE `contract`
@@ -428,7 +516,7 @@ ALTER TABLE `contract_template`
 -- AUTO_INCREMENT de tabela `faq`
 --
 ALTER TABLE `faq`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `forum`
@@ -447,6 +535,18 @@ ALTER TABLE `log`
 --
 ALTER TABLE `notifications`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `platform`
+--
+ALTER TABLE `platform`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `privacy_policy`
+--
+ALTER TABLE `privacy_policy`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `process`
@@ -491,6 +591,12 @@ ALTER TABLE `suggestions`
   MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de tabela `terms_of_use`
+--
+ALTER TABLE `terms_of_use`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de tabela `transactions`
 --
 ALTER TABLE `transactions`
@@ -500,7 +606,7 @@ ALTER TABLE `transactions`
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

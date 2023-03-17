@@ -1,71 +1,63 @@
 import {
-  Title,
   ArrowBack,
   Input,
   InputLabel,
   Toast,
   Loading,
+  PageTitle,
+  Copyright,
 } from "../../components/index.js";
-import { performLogin, performRecover } from "../../queries/base.js";
+import { performRecover } from "../../queries/base.js";
+import { isUserLogged } from "../../utils/checkSession.js";
 import { checkUserLanguage } from "../../utils/checkUserLanguage.js";
 import { recoverText } from "./recoverText.js";
 
+function recoverLabel(lang) {
+  return `
+      <div class="form-group" style="display: table; margin: 30px auto;">
+        <label style="margin: 10px auto; display: table; width: 90%; color: #707087; ">
+            ${recoverText(lang)?.info}
+        </label>
+      </div>`;
+}
+
+function form(lang) {
+  return `
+    <div class="form-group" style="display: table; margin: 10px auto 5px auto;">
+      ${InputLabel(recoverText(lang)?.email)}
+      ${Input("emailrecover", "", "email", "", null)}
+    </div><br/>
+
+    <div class="form-group" style="display: table; margin: 5px auto 50px auto;">
+      <button
+          class="button"
+          type="button"
+          id="recoverbutton"
+      >
+          ${recoverText(lang)?.button}
+      </button>
+    </div>
+  `;
+}
+
 function showPageContent() {
-  if (JSON.parse(localStorage.getItem("userSession")) !== null) {
-    window.location.href = "panel.html";
-  }
+  isUserLogged();
 
   const lang = checkUserLanguage();
 
-  const year = new Date().getFullYear();
-  let copyright = `
-    <span id="copyrightText" class="copyrightText copyright-data">© Copyright ${year}</span><br /><br />
+  document.querySelector("#content").innerHTML = `
+    <section class="section-area">
+      <div class="content">
+        ${ArrowBack()}
+        ${PageTitle(recoverText(lang)?.title, "white")}
+        <div class="form-area">
+          ${recoverLabel(lang)}
+          ${form(lang)}
+        </div>
+        ${Copyright()}
+      </div>
+    </section>
   `;
-
-  let form = `
-    <section id="loginForm" class="section form">
-          <div class="container form-area">
-
-            <div class="form-group" style="display: table; margin: 10px auto 30px auto;">
-                <label style="margin: 10px auto; display: table; width: 90%; color: #707087; ">
-                    ${recoverText(lang)?.info}
-                </label>
-            </div>
-
-            <div class="form-group" style="display: table; margin: 10px auto 5px auto;">
-                ${InputLabel(recoverText(lang)?.email)}
-                ${Input("emailrecover", "", "email", "", null)}
-            </div><br/>
-            
-            <div class="form-group" style="display: table; margin: 5px auto 50px auto;">
-                <button
-                    class="button"
-                    type="button"
-                    id="recoverbutton"
-                >
-                    ${recoverText(lang)?.button}
-                </button>
-            </div>
-        </section>
-  `;
-
-  let el = `
-    <div class="form-space">
-        <section class="section">
-            <div class="container form-container">
-                ${ArrowBack()}
-                ${Title(recoverText(lang)?.title, "white")}
-            </div>
-        </section>
-      ${form}
-
-      ${copyright}
-    </div>
-  `;
-
-  document.querySelector(
-    "#content"
-  ).innerHTML = `<section class="section container">${el}</section>`;
 
   document.querySelector("#recoverbutton").addEventListener("click", () => {
     recover(lang);

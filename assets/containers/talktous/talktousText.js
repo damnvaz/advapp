@@ -2,13 +2,13 @@ export function talktousText(language) {
   const languages = [
     {
       whoa: "Fale com a gente!",
-      message: "Entre em com a gente pelos canais abaixo:",
-      home: "Voltar para início",
+      fullname: "Seu nome completo",
+      message: "Sua mensagem aqui...",
     },
     {
       whoa: "Talk to us!",
-      message: "Talk to us using the channels below:",
-      home: "Go back home",
+      fullname: "Your full name",
+      message: "Your message here...",
     },
   ];
 

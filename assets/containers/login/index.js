@@ -1,88 +1,77 @@
 import {
-  Title,
-  Subtitle,
   ArrowBack,
   Input,
   InputLabel,
   ButtonLink,
-  Button,
+  InputPassword,
   Toast,
   Loading,
+  PageTitle,
+  Copyright,
 } from "../../components/index.js";
-import { InputPassword } from "../../components/input/index.js";
 import { performLogin } from "../../queries/base.js";
+import { isUserLogged } from "../../utils/checkSession.js";
 import { checkUserLanguage } from "../../utils/checkUserLanguage.js";
 import { loginText } from "./loginText.js";
 
-function showPageContent() {
-  const lang = checkUserLanguage();
+function form(lang, showPassword) {
+  return `
+    <div class="form-group" style="display: table; margin: 45px auto 5px auto; width: 80%">
+      ${InputLabel(loginText(lang)?.emailOrPhone)}
+      ${Input("emailLogin", "", "text", "", null)}
+    </div>
 
-  if (JSON.parse(localStorage.getItem("userSession")) !== null) {
-    window.location.href = "panel.html";
-  }
+    <div class="form-group" style="display: table; margin: 5px auto 0px auto; width: 80%">
+      ${InputLabel(loginText(lang)?.password)}
+      ${InputPassword("senhaLogin", "", "10", showPassword)}
+    </div>
 
-  const year = new Date().getFullYear();
-  let copyright = `
-    <span id="copyrightText" class="copyrightText copyright-data">© Copyright ${year}</span><br /><br />
-  `;
+    <div class="form-group row" style="display: table; margin: 0px auto 10px auto;">
+      ${ButtonLink(loginText(lang)?.forgotPassword, "forgot.html")}
+    </div>
 
-  let showPassword = false;
-  let form = `
-    <section id="loginForm" class="section form">
-          <div class="container form-area">
-            <div class="form-group" style="display: table; margin: 35px auto 5px auto; width: 80%">
-                ${InputLabel(loginText(lang)?.emailOrPhone)}
-                ${Input("emailLogin", "", "text", "", null)}
-            </div>
+    <div class="form-group" style="display: table; margin: 20px auto 40px auto;">
+      <button
+          class="button"
+          type="button"
+          id="loginbutton"
+      >
+          ${loginText(lang)?.loginButton}
+      </button>
+    </div>
 
-            <div class="form-group" style="display: table; margin: 5px auto 0px auto; width: 80%">
-                ${InputLabel(loginText(lang)?.password)}
-                ${InputPassword("senhaLogin", "", "10", showPassword)}
-            </div>
-
-            <div class="form-group row" style="display: table; margin: 0px auto 10px auto;">
-                ${ButtonLink(loginText(lang)?.forgotPassword, "forgot.html")}
-            </div>
-            
-            <div class="form-group" style="display: table; margin: 20px auto 40px auto;">
-                <button
-                    class="button"
-                    type="button"
-                    id="loginbutton"
-                >
-                    ${loginText(lang)?.loginButton}
-                </button>
-            </div>
-
-            <div class="form-group row" style="display: table; margin: 5px auto 10px auto;">
-                ${ButtonLink(loginText(lang)?.signupLink, "signup.html")}
-            </div>
-        </section>
-  `;
-
-  let el = `
-    <div class="form-space">
-        <section class="section">
-            <div class="container form-container">
-                ${ArrowBack()}
-                ${Title("Login", "white")}
-            </div>
-        </section>
-      ${form}
-
-      ${copyright}
+    <div class="form-group row" style="display: table; margin: 5px auto 10px auto;">
+      ${ButtonLink(loginText(lang)?.signupLink, "signup.html")}
     </div>
   `;
+}
 
-  document.getElementById(
-    "content"
-  ).innerHTML = `<section class="section container">${el}</section>`;
+function showPageContent() {
+  isUserLogged();
+
+  const lang = checkUserLanguage();
+
+  let showPassword = false;
+
+  document.getElementById("content").innerHTML = `
+    <section class="section-area">
+      <div class="content">
+        ${ArrowBack()}
+        ${PageTitle(loginText(lang)?.title, "white")}
+        <div class="form-area">
+          ${form(lang, showPassword)}
+        </div>
+        ${Copyright()}
+      </div>
+    </section>
+  `;
 
   if (window.location.href.includes("login.html?e=")) {
     let em = window.location.href.split("login.html?e=")[1];
     document.getElementById("emailLogin").value = em;
   }
 
+  // password icon handler
   document.querySelector("#password-icon").addEventListener("click", () => {
     if (document.querySelector("#senhaLogin").type === "password") {
       document.querySelector("#senhaLogin").type = "text";
@@ -93,6 +82,8 @@ function showPageContent() {
     document.querySelector("#senhaLogin").type = "password";
     document.querySelector("#password-icon").src = "assets/icons/eye.svg";
   });
+
+  // login handler
   document.querySelector("#loginbutton").addEventListener("click", () => {
     login(lang);
   });

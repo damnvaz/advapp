@@ -51,10 +51,7 @@
   padding: 5px 10px;
   letter-spacing: 0.5px;
   height: 45px;
-}
-
-.stepper-button-back:hover {
-  background-color: var(--button-yellow-hover);
+  cursor: pointer;
 }
 
 .stepper-button-next {
@@ -68,10 +65,7 @@
   padding: 5px 10px;
   letter-spacing: 0.5px;
   height: 45px;
-}
-
-.stepper-button-next:hover {
-  background-color: #3a9b6c;
+  cursor: pointer;
 }
 
 .disabled {

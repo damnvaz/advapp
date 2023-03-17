@@ -1,49 +1,16 @@
-@media (min-width: 768px) {
-  .section-area {
-    display: flex;
-    flex-direction: row;
-    min-height: 360px;
-    padding: 100px 20px 0px 20px;
-    margin-top: 60px;
-    justify-content: center;
-  }
+.terms-bg {
+  background-color: #fff;
 }
 
-@media (max-width: 768px) {
-  .section-area {
-    display: flex;
-    flex-direction: row;
-    min-height: 400px;
-    padding: 100px 20px 0px 20px;
-    justify-content: center;
-  }
-
-  .terms-title {
-    font-size: 1.5rem;
-    text-align: left;
-  }
+.contact-icon {
+  margin: 0px 10px 40px 10px;
+  width: 40px;
 }
 
-.terms-title {
-  color: #333;
-  font-weight: bold;
-  font-family: "Medium";
-  font-size: 1.8rem;
-  width: 100%;
-  display: table;
-  margin: 0px auto;
-  margin-top: 30px;
-  text-align: center;
-}
 
-.date-update {
-  color: #333;
-  font-weight: bold;
-  font-family: "Medium";
-  font-size: 1rem;
-  width: 100%;
-  display: table;
-  margin: 0px auto;
-  margin-top: 30px;
-  text-align: center;
+.terms-button-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 3rem;
 }

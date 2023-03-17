@@ -1,12 +1,11 @@
 import { Bottombar, Card, Loading } from "../../components/index.js";
 import { baseRequest } from "../../queries/base.js";
+import { isUserNotLogged } from "../../utils/checkSession.js";
 
 async function getPageContent() {
   Loading(true);
 
-  if (JSON.parse(localStorage.getItem("userSession")) === null) {
-    window.location.href = "index.html";
-  }
+  isUserNotLogged();
 
   const user = JSON.parse(localStorage.getItem("userSession"));
   const data = await getData(user);

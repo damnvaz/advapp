@@ -1,4 +1,4 @@
-import { Navbar, Footer, ArrowBack } from "../../components/index.js";
+import { Footer, ArrowBack, PageTitle } from "../../components/index.js";
 import { baseRequest, convertDateDash } from "../../queries/base.js";
 
 async function showPageContent() {
@@ -9,7 +9,6 @@ async function showPageContent() {
   // get last update from policies
   req = req.result.slice(-1)[0];
 
-
   let el = `
       ${req.policy
         .replaceAll("<titulo>", "<strong>")
@@ -19,18 +18,19 @@ async function showPageContent() {
         .replaceAll("\r\n", "<br/>")}
     `;
 
-  Navbar();
   document.getElementById("content").innerHTML = `
-        <main id="hero" class="section container section-area">
-      <div class="indexHeroWidth" style="padding: 0px 20px; min-height: 600px">
-        ${ArrowBack()}
-        <p class="terms-title">Politicas de privacidade</p>
+    <main id="hero" class="section-area">
+      <div class="content">
+          ${ArrowBack()}
+          ${PageTitle('Políticas de privacidade')}
 
-        <p class="date-update">Data da última atualização: ${convertDateDash(req.version)}</p>
+          <p class="date-update">Data da última atualização: ${convertDateDash(
+            req.version
+          )}</p>
 
-        <div style="width: 100%; display: table; margin: 60px auto; text-align: justify">
-          ${el}
-        </div>
+          <div style="width: 100%; display: table; margin: 60px auto; text-align: justify">
+            ${el}
+          </div>
       </div>
     </main>
     `;

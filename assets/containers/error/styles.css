@@ -7,10 +7,10 @@
   height: 100vh;
 }
 
-.not-found-bg .inner {
+.not-found-bg-inner {
   background-color: #f9f7ff;
   height: 400px;
-  width: 80%;
+  width: 100%;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -22,7 +22,7 @@
     100px 100px 80px rgba(0, 0, 0, 0.07);
 }
 
-.not-found-bg .inner h2 {
+.not-found-bg-inner h2 {
   color: #d7b15c;
   margin-bottom: 40px;
   font-weight: 700;
@@ -30,7 +30,7 @@
   font-size: 1.6rem;
 }
 
-.not-found-bg .inner h5 {
+.not-found-bg-inner h5 {
   color: #4c4c4c;
   margin-bottom: 60px;
   font-weight: 400;
@@ -41,20 +41,20 @@
   padding: 0px 30px;
 }
 
-img {
+.not-found-logo {
   height: 50px;
 }
 
-.company {
+.not-found-company {
   font-weight: 700;
   letter-spacing: 0.5px;
   color: #fff !important;
 }
 
-.not-found-bg .inner a {
+.not-found-bg-inner-button {
   border-radius: 5px;
   height: 40px;
-  font-family: 'medium';
+  font-family: "medium";
   color: #333;
   border: 2px solid #333 !important;
   background-color: #d7b15c;
@@ -62,13 +62,7 @@ img {
   width: 200px;
   text-align: center;
   align-items: center;
-  padding-top: 7px;
+  display: flex;
+  justify-content: center;
 }
 
-.not-found-bg .inner a:hover {
-  background-color: #ac8d49;
-}
-
-.copyrightText {
-  color: #fff;
-}

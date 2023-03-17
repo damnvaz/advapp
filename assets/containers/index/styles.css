@@ -1,3 +1,7 @@
+.index-bg {
+  background-color: #fff;
+}
+
 /* DESKTOP */
 @media (min-width: 768px) {
   .columns {
@@ -109,7 +113,7 @@
 
 .hero-title {
   width: 164px;
-  font-family: 'bold';
+  font-family: "bold";
   font-size: 38px;
   color: #633030;
 }
@@ -120,12 +124,12 @@
   margin-right: 15px;
 }
 
-.container-hero {
+.hero-container {
   justify-content: space-between;
   display: flex;
   flex-direction: row;
   padding-left: 30px;
-  margin-top: 2rem;
+  margin-top: 6rem;
   margin-bottom: 4rem;
 }
 

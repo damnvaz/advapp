@@ -13,3 +13,8 @@ export function Description(text, color = '') {
 export function Link(link, text) {
   return `<a class="link" href="${link}">${text}</a>`;
 }
+
+export function PageTitle(text, color = '') {
+  return `<p class="page-title" 
+    ${color !== '' ? "style='color: #fff;'" : ''}>${text}</p>`;
+}

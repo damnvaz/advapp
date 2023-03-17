@@ -16,3 +16,7 @@
 .arrow-back:hover {
   color: var(--back-hover);
 }
+
+.text-white {
+  color: #fff;
+}

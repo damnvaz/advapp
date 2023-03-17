@@ -45,6 +45,11 @@
     font-weight: normal;
     text-align: justify;
   }
+
+  .page-title {
+    font-size: 1.5rem;
+    text-align: left;
+  }
 }
 
 .link {
@@ -54,4 +59,16 @@
 }
 .link:hover {
   color: var(--link-hover)
+}
+
+.page-title {
+  color: #333;
+  font-weight: bold;
+  font-family: "Medium";
+  font-size: 1.8rem;
+  width: 100%;
+  display: table;
+  margin: 0px auto;
+  margin-top: 30px;
+  text-align: left;
 }

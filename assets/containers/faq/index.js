@@ -1,5 +1,5 @@
 import { Accordion } from "../../components/accordion/index.js";
-import { Navbar, Footer, ArrowBack } from "../../components/index.js";
+import { Footer, ArrowBack, PageTitle } from "../../components/index.js";
 import { baseRequest } from "../../queries/base.js";
 
 async function showPageContent() {
@@ -12,26 +12,24 @@ async function showPageContent() {
     el += Accordion(req.result[i].doubt, req.result[i].details, i);
   }
 
-  Navbar();
   document.getElementById("content").innerHTML = `
-     <main id="hero" class="section container section-area">
-      <div class="indexHeroWidth" style="padding: 0px 20px; min-height: 600px">
+    <section id="hero" class="section-area">
+      <div class="content">
         ${ArrowBack()}
-        <p class="terms-title">Perguntas frequentes</p>
+        ${PageTitle('Perguntas frequentes')}
 
-        
-        <div style="width: 100%; display: table; margin: 60px auto">
+        <div class="faq-subcontent">
           ${el}
         </div>
       </div>
-    </main>
+    </section>
   `;
 
   Footer();
 
   for (let i = 0; i < req.result.length; i++) {
     document
-      .querySelector(`#accordiontitle${i}`)
+      .querySelector(`#accordion-title-${i}`)
       .addEventListener("click", () => {
         document.querySelector(`#accordioncontent${i}`).style.display =
           document.querySelector(`#accordioncontent${i}`).style.display ==

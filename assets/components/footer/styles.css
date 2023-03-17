@@ -36,12 +36,26 @@
   line-height: 1.5;
   letter-spacing: 0.00938em;
   text-decoration: none;
-  color: #D2D2D2;
+  color: #d2d2d2;
   font-family: "Regular";
 }
 
-.copyrightText {
-  color: #f9f9f9;
-  font-size: 0.6rem;
-  letter-spacing: 1px;
+.footer-content {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 786px) {
+  .footer-row {
+    display: flex;
+    flex-direction: row;
+  }
+
+}
+@media (max-width: 786px) {
+  .footer-row {
+    display: flex;
+    flex-direction: column;
+  }
+
 }

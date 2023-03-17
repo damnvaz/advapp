@@ -1,5 +1,5 @@
 ﻿import { checkUserLanguage } from "../../utils/checkUserLanguage.js";
-import { config } from "../../config/index.js";
+import { config } from "../../queries/base.js";
 import { navbarText } from "./navbarText.js";
 
 export function Navbar() {

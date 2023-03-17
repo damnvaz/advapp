@@ -8,13 +8,11 @@ import {
 import { checkUserLanguage } from "../../utils/checkUserLanguage.js";
 import { indexText } from "./indexText.js";
 
-function hero() {
-  const lang = checkUserLanguage();
-
+function indexHero(lang) {
   const event = `window.location.href='signup.html'`;
 
   return `
-    <div class="container-hero">
+    <div class="hero-container">
       <div>
       <p class="hero-title"> iusok <p>
         <p class="hero-description">${indexText(lang)?.heroDescription}</p>
@@ -25,7 +23,7 @@ function hero() {
   `;
 }
 
-function yourLegalAndEffectiveTool() {
+function indexTools() {
   const lang = checkUserLanguage();
 
   return `
@@ -39,7 +37,7 @@ function yourLegalAndEffectiveTool() {
   `;
 }
 
-function whatWeOffer() {
+function indexServicesOffered() {
   const lang = checkUserLanguage();
 
   const list = [
@@ -102,7 +100,7 @@ function whatWeOffer() {
   `;
 }
 
-function enrollNow() {
+function indexSignupNow() {
   const lang = checkUserLanguage();
 
   const event = `window.location.href='signup.html'`;
@@ -119,15 +117,15 @@ function enrollNow() {
 }
 
 function content() {
+  const lang = checkUserLanguage();
+
   document.querySelector("#content").innerHTML = `
-  <section class="section container mt-5">
-  <br/>
-  <br/>
-    ${hero()}
-    ${yourLegalAndEffectiveTool()}
-    ${whatWeOffer()}
-    ${enrollNow()}
-  </section>`;
+    <section class="section container mt-5">
+      ${indexHero(lang)}
+      ${indexTools()}
+      ${indexServicesOffered()}
+      ${indexSignupNow()}
+    </section>`;
 }
 
 function PageContent() {

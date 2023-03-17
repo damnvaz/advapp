@@ -37,11 +37,9 @@ export function setStepperButtonGroup(next, previous, steps, current) {
 
 export function Stepper(current, steps = 3, form, previous, next) {
   return `
-    <div class="form-area">
-      ${setProgressBar(steps)}
-      ${form}
-      ${setStepperButtonGroup(next, previous, steps, current)}
-    </div>
+    ${setProgressBar(steps)}
+    ${form}
+    ${setStepperButtonGroup(next, previous, steps, current)}
   `;
 }
 

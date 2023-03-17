@@ -1,19 +1,5 @@
-.arrowBackPanel {
-  color: #4c9be4;
-  font-family: "Medium";
-  font-weight: 600;
-  cursor: pointer;
-  width: 80px;
-  margin-bottom: 30px;
-  display: flex;
-  font-size: 16px;
-  margin-left: 180px;
-}
-
-@media (max-width: 768px) {
-  .arrowBackPanel {
-    margin-left: 0px;
-  }
+.panel-bg {
+  background-color: #fff;
 }
 
 .heroPanel {
@@ -97,12 +83,6 @@
   background-color: #279a39;
 }
 
-.cardAttractionButton:hover,
-.cardRestaurantButton:hover,
-.cardHotelsButton:hover {
-  text-decoration: none;
-  color: white;
-}
 
 .cardAttraction {
   background-color: #ff914d;

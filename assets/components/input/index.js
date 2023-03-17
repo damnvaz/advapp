@@ -7,7 +7,7 @@ export function Input(id, placeholder, type, maxlength, event) {
         <input
             type="${type}"
             placeholder="${placeholder !== "" ? placeholder : ""}"
-            class="form-control mr-2 input"
+            class="form-control input"
             ${event !== "" ? JSON.parse(event) : ""}
             maxLength="${maxlength === "" ? "180" : maxlength}"
             id="${id}"
@@ -39,7 +39,7 @@ export function TextArea(id, placeholder, type, maxlength, event) {
         <textarea 
             type="${type}" 
             placeholder="${placeholder !== "" ? placeholder : ""}"
-            class="form-control mr-2 text-area"
+            class="form-control text-area"
             ${event !== "" ? JSON.parse(event) : ""}
             maxLength="${maxlength === "" ? "180" : maxlength}"
             id="${id}" 
@@ -50,7 +50,7 @@ export function TextArea(id, placeholder, type, maxlength, event) {
 export function Select(id, event, options) {
   return `
     <select
-      class="select"
+      class="form-control select"
       id="${id}"
       ${event !== "" ? JSON.parse(event) : ""}
       dir="ltr"
