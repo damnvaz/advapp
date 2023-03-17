@@ -1,7 +1,7 @@
 export function indexText(language) {
   const languages = [
     {
-      heroDescription: "Foque no que importa: <strong>sua advocacia</strong>.",
+      heroDescription: `Foque no que importa: <span style='font-family: "bold"'>sua advocacia</span>.`,
       yourLegalAndEffectiveToolTitle:
         "A <span>sua</span> ferramenta jurídica eficaz",
       yourLegalAndEffectiveToolDescription:
@@ -19,11 +19,10 @@ export function indexText(language) {
       tableValueOAB: "Tabela de valores OAB",
       fitsInYourPocket: "Cabe no seu bolso",
       andMuchMore: "E muito mais",
-      signUpNow: "Cadastre-se agora",
-      joinNow: "Faça parte agora",
+      joinNow: "acesse agora",
     },
     {
-      heroDescription: "Focus on what matters: <strong>your advocacy</strong>.",
+      heroDescription: `Focus on what matters: <span style='font-family: "bold"'>your advocacy</span>.`,
       yourLegalAndEffectiveToolTitle: "<span>Your</span> effective legal tool",
       yourLegalAndEffectiveToolDescription:
         "Here, advocating became easier. Scheduling appointments is simple, reports are available in real time and you can even share doubts with others users.",
@@ -40,8 +39,7 @@ export function indexText(language) {
       tableValueOAB: "Table value OAB:",
       fitsInYourPocket: "Fit is in your pocket",
       andMuchMore: "And much more",
-      signUpNow: "Sign up now",
-      joinNow: "Join Now",
+      joinNow: "signin now",
     },
   ];
 
