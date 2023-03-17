@@ -4,15 +4,8 @@ export function Toast(bg, text) {
   let el = `
         <div id="toastAlert" class="toast-area" role="dialog">
             <div class="toast-dialog">
-                <div class="bg-${bg} toast-content" >
-                    <div style="display: flex; flex-direction: row; padding-right: 20px;">
-                        <span class="toast-title">${text}</span>
-                        <button  
-                            type="button" 
-                            class="close text-white toast-close" id='closeToast'>
-                                &times;
-                        </button>
-                    </div>
+                <div class="bg-${bg} toast-content" id='closeToast'>
+                  <span class="toast-title">${text}</span>
                 </div>
             </div>
         </div>
