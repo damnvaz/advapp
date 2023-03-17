@@ -2,6 +2,9 @@
   color: #888;
   font-size: 0.86rem;
   margin-bottom: 5px;
+  text-align: left;
+  width: 100%;
+  padding-left: 30px;
 }
 
 .form-control {
@@ -12,7 +15,8 @@
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.input, .select {
+.input,
+.select {
   width: 90%;
   padding: 5px 15px;
   height: 40px;
@@ -23,7 +27,7 @@
 }
 
 .select {
-  width: 100%;
+  width: 95%;
   height: 52px;
   max-height: 52px;
 }
@@ -39,7 +43,6 @@
   border: 1px solid grey !important;
   resize: none;
 }
-
 
 .outter-input-password {
   width: 90%;

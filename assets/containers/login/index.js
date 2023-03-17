@@ -8,6 +8,7 @@ import {
   Loading,
   PageTitle,
   Copyright,
+  Button,
 } from "../../components/index.js";
 import { performLogin } from "../../queries/base.js";
 import { isUserLogged } from "../../utils/checkSession.js";
@@ -16,28 +17,22 @@ import { loginText } from "./loginText.js";
 
 function form(lang, showPassword) {
   return `
-    <div class="form-group" style="display: table; margin: 45px auto 5px auto; width: 80%">
+    <div class="form-content" style="margin-top: 50px">
       ${InputLabel(loginText(lang)?.emailOrPhone)}
       ${Input("emailLogin", "", "text", "", null)}
     </div>
 
-    <div class="form-group" style="display: table; margin: 5px auto 0px auto; width: 80%">
+    <div class="form-content">
       ${InputLabel(loginText(lang)?.password)}
       ${InputPassword("senhaLogin", "", "10", showPassword)}
     </div>
 
-    <div class="form-group row" style="display: table; margin: 0px auto 10px auto;">
+    <div class="form-content" style="text-align: center;">
       ${ButtonLink(loginText(lang)?.forgotPassword, "forgot.html")}
     </div>
 
-    <div class="form-group" style="display: table; margin: 20px auto 40px auto;">
-      <button
-          class="button"
-          type="button"
-          id="loginbutton"
-      >
-          ${loginText(lang)?.loginButton}
-      </button>
+    <div class="form-content" style="align-items: center; margin: 30px auto;">
+      ${Button(loginText(lang)?.loginButton, null, "loginbutton")}
     </div>
 
     <div class="form-group row" style="display: table; margin: 5px auto 10px auto;">

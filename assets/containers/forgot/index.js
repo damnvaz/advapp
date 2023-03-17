@@ -6,6 +6,7 @@ import {
   Loading,
   PageTitle,
   Copyright,
+  Button,
 } from "../../components/index.js";
 import { performRecover } from "../../queries/base.js";
 import { isUserLogged } from "../../utils/checkSession.js";
@@ -14,8 +15,8 @@ import { recoverText } from "./recoverText.js";
 
 function recoverLabel(lang) {
   return `
-      <div class="form-group" style="display: table; margin: 30px auto;">
-        <label style="margin: 10px auto; display: table; width: 90%; color: #707087; ">
+      <div class="form-content" style="margin-top: 30px; margint-bottom: 30px;">
+        <label ">
             ${recoverText(lang)?.info}
         </label>
       </div>`;
@@ -23,19 +24,13 @@ function recoverLabel(lang) {
 
 function form(lang) {
   return `
-    <div class="form-group" style="display: table; margin: 10px auto 5px auto;">
+    <div class="form-content">
       ${InputLabel(recoverText(lang)?.email)}
       ${Input("emailrecover", "", "email", "", null)}
     </div><br/>
 
-    <div class="form-group" style="display: table; margin: 5px auto 50px auto;">
-      <button
-          class="button"
-          type="button"
-          id="recoverbutton"
-      >
-          ${recoverText(lang)?.button}
-      </button>
+    <div class="form-content mb-2">
+      ${Button(recoverText(lang)?.button, null, 'recoverbutton')}
     </div>
   `;
 }

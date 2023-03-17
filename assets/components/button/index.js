@@ -1,9 +1,10 @@
-export function Button(text, event) {
+export function Button(text, event, id) {
   return `
         <button
             class="button"
             type="button"
             onclick="${event}"
+            id="${id}"
         >
             ${text}
         </button>

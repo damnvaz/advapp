@@ -52,6 +52,7 @@ function modalDeactivateAccount() {
                             >
                                 desativar
                             </button>
+                            
                         </div>
                     </div>
                 </div>

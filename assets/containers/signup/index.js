@@ -27,17 +27,17 @@ function step1(lang) {
   return `
       <span class="signup-title">${signupText(lang)?.personalData}</span>
 
-      <div class="signup-form-content">
+      <div class="form-content">
         ${InputLabel(signupText(lang)?.fullname)}
         ${Input("nameSignup", "", "text", "", null)}
       </div><br/>
       
-      <div class="signup-form-content">
+      <div class="form-content">
         ${InputLabel(signupText(lang)?.birthdate)}
         ${Input("birthSignup", "", "text", "", null)}
       </div><br/>
       
-      <div class="signup-form-content">
+      <div class="form-content">
       ${InputLabel(signupText(lang)?.martialStatus)}
       ${Select(
         "martialStatusSignup",
@@ -67,17 +67,17 @@ function step2(lang) {
   return `
     <span class="signup-title">${signupText(lang)?.generalData}</span>
 
-    <div class="signup-form-content">
+    <div class="form-content">
       ${InputLabel(signupText(lang)?.document)}
       ${Input("cpfSignup", "", "tel", "18", null)}
     </div><br/>
 
-    <div class="signup-form-content">
+    <div class="form-content">
         ${InputLabel(signupText(lang)?.rg)}
         ${Input("rgSignup", "", "tel", "12", null)}
     </div><br/>
     
-    <div class="signup-form-content">
+    <div class="form-content">
         ${InputLabel(signupText(lang)?.phone)}
         ${Input("phoneSignup", "", "tel", "", null)}
     </div><br/>
@@ -87,17 +87,17 @@ function step2(lang) {
 function step3(lang) {
   return `
     <span class="signup-title">${signupText(lang)?.accountData}</span>
-    <div class="signup-form-content">
+    <div class="form-content">
       ${InputLabel(signupText(lang)?.email)}
       ${Input("emailSignup", "", "email", "", null)}
     </div><br/>
 
-    <div class="signup-form-content">
+    <div class="form-content">
       ${InputLabel(signupText(lang)?.pass)}
       ${Input("passSignup", "", "password", "8", null)}
     </div><br/>
     
-    <div class="signup-form-content">
+    <div class="form-content">
       ${InputLabel(signupText(lang)?.iam)}
       ${Select(
         "typeSignup",
