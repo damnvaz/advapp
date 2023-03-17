@@ -104,6 +104,9 @@ function ptBR() {
     settings_page_notifications: "Notificações",
     settings_page_plans: "Meu plano",
     settings_page_contact: "Fale com a gente",
+
+    notifications_page_title: "Notificações",
+    notifications_page_nomessages: "Não há dados à exibir.",
   };
 }
 
@@ -166,5 +169,9 @@ function enUS() {
     settings_page_notifications: "Notifications",
     settings_page_plans: "My subscriptions",
     settings_page_contact: "Talk to us",
+
+    notifications_page_title: "Notifications",
+
+    notifications_page_nomessages: "No data to show.",
   };
 }

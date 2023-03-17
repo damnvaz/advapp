@@ -692,6 +692,73 @@ if ($postjson['req'] == 'get_platform') {
     return;
 }
 
+// NOTIFICATIONS
+if ($postjson['req'] == 'notifications_by_user_id') {
+
+    if ($postjson['id'] == '') {
+       $result = json_encode(array('success' => false, 'result' => 'Informe o id.'));
+       echo $result; 
+       return;
+    }
+
+    $id = $postjson['id'];
+    
+    $query = mysqli_query($mysqli, "SELECT * FROM notifications WHERE receiverId = '$id' ");
+    if (mysqli_num_rows($query) == 0)  {
+       $result = json_encode(array('success' => true, 'result' => []));
+       echo $result; 
+       return;
+    }
+
+    while ($row = mysqli_fetch_array($query)) { 
+        $data[] = array(
+           'id' => $row['id'],
+           'receiverId' => utf8_encode($row['receiverId']),
+           'message' => $row['message'],
+           'url' => $row['url'],
+           'wasRead' => $row['wasRead']
+        );
+    }
+
+   if ($query) {
+        $result = json_encode(array('success'=>true, 'result' => $data));
+       echo $result; 
+       return;
+    }
+   
+   $result = json_encode(array('success'=>false, 'result' => 'Erro ao listar'));
+   echo $result; 
+   return;
+}
+
+if ($postjson['req'] == 'update_notification') {
+
+    if ($postjson['id'] == '') {
+       $result = json_encode(array('success' => false, 'result' => 'Informe o id.'));
+       echo $result; 
+       return;
+    }
+
+    $id = $postjson['id'];
+    
+    
+    $query = mysqli_query($mysqli, 
+    "UPDATE notifications SET 
+        wasRead = 1
+        WHERE id ='$id'
+    ");
+
+    if ($query) {
+        $result = json_encode(array('success' => true, 'result' => 'Dados salvos com sucesso.'));
+        echo $result; 
+        return;
+    }
+
+    $result = json_encode(array('success' => false, 'result' => 'Erro ao atualizar.'));
+    echo $result; 
+    return;
+}
+
 
 // TERMS, POLICIES, FAQ
 if ($postjson['req'] == 'terms') {

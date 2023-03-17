@@ -1,0 +1,33 @@
+.notifications-bg {
+  background-color: #fff;
+}
+
+.notifications-subcontent {
+  display: table;
+  margin: 60px 0px;
+  width: 100%;
+}
+
+.message {
+  background-color: #e5f4ff;
+  color: #797979;
+  font-family: "medium";
+  font-size: 16px;
+  border-radius: 5px;
+  height: 50px;
+  padding: 10px 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px 0px 10px 0px;
+  cursor: pointer;
+}
+
+.was-read {
+  background-color: #f5f5f5;
+  font-family: "regular";
+}
+
+.no-messages {
+  color: #797979;
+}
