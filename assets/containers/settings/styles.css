@@ -1,0 +1,39 @@
+.settings-bg {
+  background-color: #fff;
+}
+
+.settings-subcontent {
+  display: table;
+  margin: 60px auto;
+  width: 100%;
+}
+
+.logout {
+  color: #da4646;
+  display: table;
+  margin: 80px auto 30px auto;
+  cursor: pointer;
+}
+
+.settings-item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 40px;
+  padding: 0px 0px 20px 10px;
+  border-bottom: 1px solid #cecece;
+  cursor: pointer;
+  position: relative;
+}
+
+.settings-item-title {
+  color: #333;
+  font-family: "Medium";
+  font-size: 1.1rem;
+  padding: 0px 50px 0px 0px;
+}
+
+.settings-item-img {
+  position: absolute;
+  right: 5px;
+}

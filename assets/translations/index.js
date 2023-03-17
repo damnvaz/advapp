@@ -95,6 +95,15 @@ function ptBR() {
     talktous_page_message: "Sua mensagem aqui...",
 
     terms_page_title: "Termos e condições de uso",
+
+    settings_page_title: "Configurações",
+
+    settings_page_leave_account: "Sair da conta",
+
+    settings_page_profile: "Meus dados",
+    settings_page_notifications: "Notificações",
+    settings_page_plans: "Meu plano",
+    settings_page_contact: "Fale com a gente",
   };
 }
 
@@ -149,5 +158,13 @@ function enUS() {
     talktous_page_message: "Your message here...",
 
     terms_page_title: "Terms and use conditions",
+
+    settings_page_title: "Settings",
+    settings_page_leave_account: "logout",
+
+    settings_page_profile: "My profile",
+    settings_page_notifications: "Notifications",
+    settings_page_plans: "My subscriptions",
+    settings_page_contact: "Talk to us",
   };
 }
