@@ -1,5 +1,11 @@
-.talktous-bg {
+.support-bg {
   background-color: #fff;
+}
+
+.faq-subcontent {
+  display: table;
+  margin: 60px auto;
+  width: 100%;
 }
 
 .talktous-button {
@@ -19,7 +25,6 @@
 .whatsapp {
   background-color: #63ae61;
 }
-
 
 .talktous-button-row {
   display: flex;

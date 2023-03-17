@@ -23,6 +23,7 @@ import {
 import { Card } from "./card/index.js";
 import { Bottombar } from "./bottombar/index.js";
 import { Copyright } from "./copyright/index.js";
+import { Accordion } from "./accordion/index.js";
 
 export {
   ArrowBack,
@@ -48,4 +49,5 @@ export {
   Bottombar,
   Copyright,
   PageTitle,
+  Accordion,
 };

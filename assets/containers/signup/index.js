@@ -121,8 +121,8 @@ function step3(lang) {
 
     <p class="confirm">
       Ao apertar em cadastrar eu afirmo que Li e aceito os 
-      <a href="terms.html">Termos de uso</a> e 
-      <a href="policies.html">Politica de Privacidade</a>.          
+      <a href="support.html?page=terms">Termos de uso</a> e 
+      <a href="support.html?page=policies">Politica de Privacidade</a>.          
     </p>
   `;
 }
