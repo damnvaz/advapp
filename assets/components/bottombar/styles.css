@@ -9,14 +9,21 @@
 }
 
 .inner-bottombar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 20px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 20px 10px;
+  margin: 0px auto;
 }
 
 .bottombar-icon {
-    width: 40px;
-    height: 40px;
+  width: 40px;
+  height: 40px;
+}
+
+@media (min-width: 768px) {
+  .inner-bottombar {
+    width: 600px;
+  }
 }
