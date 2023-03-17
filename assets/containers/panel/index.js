@@ -1,4 +1,4 @@
-import { Bottombar, Card, Loading } from "../../components/index.js";
+import { Bottombar, Card, Loading, PageTitle } from "../../components/index.js";
 import { baseRequest } from "../../queries/base.js";
 import { isUserNotLogged } from "../../utils/checkSession.js";
 
@@ -41,6 +41,16 @@ async function getPageContent() {
       description2: "recebido",
       value2: data?.transactions?.received || "0,00",
     },
+    {
+      url: "#",
+      bg: "transparent",
+      color: "transparent",
+      title: "",
+      description1: "",
+      value1: "",
+      description2: "",
+      value2: "",
+    },
   ];
 
   let cards = "";
@@ -57,20 +67,23 @@ async function getPageContent() {
   ];
 
   let el = `
-      <div id="options" class="container mb-5">
-        <div class="indexOptionsRowCard">
-            <div class='panel-row'>
-              <h3 class='panel-title'>Dashboard</h3>
-              <img src="assets/icons/refresh.svg" 
-                  alt="refresh icon"
-                  id="refresh-icon"
-                  class="refresh-icon" 
-              /> 
-            </div>
-            ${cards}
-            ${Bottombar(bottombarArr)}
+  <section class="section-area">
+      <div class="content">
+        <div class='panel-row'>
+          ${PageTitle("Dashboard")}
+          <img src="assets/icons/refresh.svg" 
+              alt="refresh icon"
+              id="refresh-icon"
+              class="refresh-icon" 
+          /> 
         </div>
+        
+        <div class='panel-cards-content'> 
+          ${cards}
+        </div>
+        ${Bottombar(bottombarArr)}
       </div>
+    </section>
     `;
 
   document.getElementById("content").innerHTML = el;
