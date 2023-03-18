@@ -1,18 +1,15 @@
-.subcontent {
-  display: flex;
-  flex-direction: column;
-  margin: 30px auto 40px auto;
-}
-
 .profile-content-title {
-  font-family: 'medium';
+  font-family: "medium";
   font-size: 18px;
   color: #333;
   margin-top: 40px;
+  text-align: left;
+  width: 100%;
 }
 
-.profile-input, .profile-select {
-  font-family: 'regular';
+.profile-input,
+.profile-select {
+  font-family: "regular";
   border: none;
   font-size: 17px;
   color: #797979;

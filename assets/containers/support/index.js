@@ -107,7 +107,7 @@ async function showFAQPage() {
           ${ArrowBack()}
           ${PageTitle(translations(lang)?.faq_page)}
   
-          <div class="faq-subcontent">
+          <div class="subcontent">
             ${el}
           </div>
         </div>

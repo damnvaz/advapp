@@ -1,0 +1,62 @@
+.current-plan {
+  color: #797979;
+}
+
+.plan-detail {
+  font-size: 1rem;
+  font-family: "regular";
+  padding: 0px 20px;
+  letter-spacing: 0.5px;
+  line-height: 24px;
+}
+
+.plan-table {
+  display: table;
+  margin: 30px auto;
+  color: #797979;
+  line-height: 30px;
+  border-radius: 5px;
+  border: 1px solid #797979;
+  width: 80%;
+  padding: 10px 30px;
+}
+
+.plan-detail-button {
+  text-align: end;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-family: "medium";
+  padding-right: 20px;
+  color: #81b9ec;
+}
+
+.plan-price-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin: 30px 30px;
+}
+
+.plan-price-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.place-price-title {
+  font-weight: 700;
+  color: #797979;
+}
+
+.plan-price-old {
+  text-decoration: line-through;
+  font-weight: 700;
+  color: #797979;
+  font-size: 1.4rem;
+}
+
+.plan-price-new {
+  color: #63ae61;
+  font-weight: 700;
+  font-size: 1.4rem;
+}

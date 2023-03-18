@@ -14,7 +14,7 @@ export function Link(link, text) {
   return `<a class="link" href="${link}">${text}</a>`;
 }
 
-export function PageTitle(text, color = '') {
-  return `<p class="page-title" 
+export function PageTitle(text, color = '', id) {
+  return `<p class="page-title" id="${id}"
     ${color !== '' ? "style='color: #fff;'" : ''}>${text}</p>`;
 }

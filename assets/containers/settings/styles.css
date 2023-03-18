@@ -2,12 +2,6 @@
   background-color: #fff;
 }
 
-.settings-subcontent {
-  display: table;
-  margin: 60px auto;
-  width: 100%;
-}
-
 .logout {
   color: #da4646;
   display: table;

@@ -103,6 +103,15 @@ a:hover {
   margin: 40px auto;
 }
 
+/* DEFAULT SUBCONTENT */
+.subcontent {
+  display: flex;
+  margin: 60px auto;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
 /* MARGIN */
 .mt-5 {
   margin-top: 3.5rem;

@@ -14,7 +14,7 @@ async function showPageContent() {
   let list = [
     { title: translations(lang)?.settings_page_profile, url: "profile.html" },
     { title: translations(lang)?.settings_page_notifications, url: "notifications.html" },
-    { title: translations(lang)?.settings_page_plans, url: "plans.html" },
+    { title: translations(lang)?.settings_page_plans, url: "subscriptions.html" },
     { title: translations(lang)?.settings_page_contact, url: "support.html?page=contact" },
   ];
 
@@ -39,7 +39,7 @@ async function showPageContent() {
           ${ArrowBack()}
           ${PageTitle(translations(lang)?.settings_page_title)}
   
-          <div class="settings-subcontent">
+          <div class="subcontent">
             ${items}
           </div>
 

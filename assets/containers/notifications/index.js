@@ -42,8 +42,8 @@ async function showPageContent() {
           ${ArrowBack()}
           ${PageTitle(translations(lang)?.notifications_page_title)}
   
-          <div class="notifications-subcontent">
-                ${items}
+          <div class="subcontent">
+            ${items}
           </div>
         </div>
       </section>

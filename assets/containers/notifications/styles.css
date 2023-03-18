@@ -2,12 +2,6 @@
   background-color: #fff;
 }
 
-.notifications-subcontent {
-  display: table;
-  margin: 60px 0px;
-  width: 100%;
-}
-
 .message {
   background-color: #e5f4ff;
   color: #797979;
@@ -30,4 +24,6 @@
 
 .no-messages {
   color: #797979;
+  text-align: left;
+  width: 100%;
 }

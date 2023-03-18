@@ -9,7 +9,7 @@ header('Content-Type: application/json; charset=utf-8');
 header('Accept: application/json; charset=utf-8');
 date_default_timezone_set('America/Sao_Paulo');
 
-
+// GET DATA FROM LOCAL/PROD
 if ( isset($_SERVER['HTTPS'] ) ) {
     // ============== PROD
     define('DATABASE', 'advdb');
@@ -495,6 +495,66 @@ if ($postjson['req'] == 'get_user_by_id') {
 }
 
 
+// PLANS
+if ($postjson['req'] == 'get_plans') {
+   
+ 	$query = mysqli_query($mysqli, "SELECT * FROM plans");
+
+    if (mysqli_num_rows($query) == 0) {
+        $result = json_encode(array('success' => false, 'result' => []));
+        echo $result; 
+        return;
+    }
+
+    while ($row = mysqli_fetch_array($query)) {
+        $data[] = array(
+            'id' => $row['id'],
+            'title' => $row['title'],
+            'oldPrice' => $row['oldPrice'],
+            'price' => $row['price'],
+            'details' => $row['details'],
+            'bg' => $row['bg'],
+            'color' => $row['color']
+ 		);
+ 	}
+	
+    $result = json_encode(array('success' => true, 'result' => $data));
+    echo $result; 
+    return;
+}
+if ($postjson['req'] == 'get_plan_by_id') {
+
+   if ($postjson['id'] == '') {
+ 		$result = json_encode(array('success'=> false, 'result' => 'Informe o id.'));
+        echo $result; 
+        return;
+ 	}
+
+    $id = $postjson['id'];
+    $query = mysqli_query($mysqli, "SELECT * FROM plans WHERE id = '$id' ");
+
+    if (mysqli_num_rows($query) == 0) {
+       $result = json_encode(array('success' => false, 'result' => []));
+       echo $result; 
+       return;
+    }
+
+    $row = mysqli_fetch_array($query);
+    $data = array(
+        'id' => $row['id'],
+        'title' => $row['title'],
+        'oldPrice' => $row['oldPrice'],
+        'price' => $row['price'],
+        'details' => $row['details'],
+        'bg' => $row['bg'],
+        'color' => $row['color']
+    );
+    
+   
+   $result = json_encode(array('success' => true, 'result' => $data));
+   echo $result; 
+   return;
+}
 
 // CLIENTS
 if ($postjson['req'] == 'clients_by_user_id') {

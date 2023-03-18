@@ -113,7 +113,9 @@ function ptBR() {
     profile_page_address: "Endereço",
     profile_page_contact: "Contato",
     profile_page_other: "Outros",
-    save_data: "Salvar dados"
+    save_data: "Salvar dados",
+    plans_page_title: "Meu plano",
+    plans_page_current_plan: "Plano atual: ",
   };
 }
 
@@ -186,5 +188,8 @@ function enUS() {
     profile_page_contact: "Contact",
     profile_page_other: "Other",
     save_button: "Save data",
+    plans_page_title: "My subscription",
+
+    plans_page_current_plan: "Current plan: ",
   };
 }
