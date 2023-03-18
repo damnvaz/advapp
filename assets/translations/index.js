@@ -107,6 +107,13 @@ function ptBR() {
 
     notifications_page_title: "Notificações",
     notifications_page_nomessages: "Não há dados à exibir.",
+
+    profile_page_title: "Meus dados",
+    profile_page_personal_data: "Dados pessoais",
+    profile_page_address: "Endereço",
+    profile_page_contact: "Contato",
+    profile_page_other: "Outros",
+    save_data: "Salvar dados"
   };
 }
 
@@ -171,7 +178,13 @@ function enUS() {
     settings_page_contact: "Talk to us",
 
     notifications_page_title: "Notifications",
-
     notifications_page_nomessages: "No data to show.",
+
+    profile_page_title: "My profile",
+    profile_page_personal_data: "Personal data",
+    profile_page_address: "Address",
+    profile_page_contact: "Contact",
+    profile_page_other: "Other",
+    save_button: "Save data",
   };
 }

@@ -1,349 +1,316 @@
-// COMPONENTS
-function showHero() {
+import {
+  ArrowBack,
+  Button,
+  Loading,
+  PageTitle,
+  Toast,
+} from "../../components/index.js";
+import { baseRequest } from "../../queries/base.js";
+import { translations } from "../../translations/index.js";
+import { isUserNotLogged } from "../../utils/checkSession.js";
+import { checkUserLanguage } from "../../utils/checkUserLanguage.js";
+import { getAddressByZipcode } from "../../utils/getAddressByZipcode.js";
+import {
+  fMasc,
+  mCEP,
+  mCPFCNPJ,
+  mDataNasc,
+  mRG,
+  mTel,
+} from "../../utils/maskInput.js";
+
+function Input(id, placeholder, maxLength = "180", type, width = "100%") {
   return `
-        <span
-          onclick="history.back();"
-          style="
-            margin-top: 120px;
-            color: #4c9be4;
-            font-family: 'Medium';
-            font-weight: 600;
-            cursor: pointer;
-            width: 70px;
-            margin-bottom: 30px;
-            display: flex;
-          "
-        >
-          < voltar
-        </span>
-        <p class="profileTitle">Meu perfil</p>
-        <br />
-    `;
+    <input 
+      class="profile-input" 
+      type="${type}" 
+      placeholder="${placeholder}" 
+      id="${id}"
+      style="width: ${width}"
+      maxLength="${maxLength === "" ? "180" : maxLength}"
+    />`;
 }
 
-function showStep1() {
+function Select(id, event, options) {
   return `
-        <section class="profileStepArea" style="display: table">
-          <h4 class="profileStepTitle">Dados gerais</h4>
-          <br />
-
-          <input
-            disabled
-            type="text"
-            class="form-control mr-2"
-            id="ownerName"
-            placeholder="Nome"
-          />
-
-          <br />
-          <input
-            disabled
-            type="text"
-            class="form-control mr-2"
-            id="ownerCPF"
-            onkeydown="javascript: fMasc( this, mCPF );"
-            placeholder="Documento CPF *"
-            maxlength="14"
-            required
-          />
-          
-          <br />
-          <input
-            disabled
-            type="text"
-            class="form-control mr-2"
-            id="ownerPhone"
-            onkeydown="javascript: fMasc( this, mTel );"
-            placeholder="Telefone *"
-            maxlength="14"
-            required
-          />
-
-          <br />
-          <input
-            disabled
-            type="email"
-            class="form-control mr-2"
-            id="ownerEmail"
-            placeholder="Email *"
-            required
-          />
-
-          <br />
-          <input
-            type="password"
-            class="form-control mr-2"
-            id="ownerPass"
-            placeholder="Senha *"
-            required
-          />
-        </section>
-    `;
+    <select
+      class="profile-select"
+      id="${id}"
+      ${event !== "" ? JSON.parse(event) : ""}
+      dir="ltr"
+      > 
+        ${options !== "" ? options : ""}
+    </select>
+  `;
 }
 
-function showStep2() {
+function PersonalData(lang) {
   return `
-        <section class="profileStepArea" style="display: table">
-          <h4 class="profileStepTitle">Endereço</h4>
+  <span class='profile-content-title'>${
+    translations(lang)?.profile_page_personal_data
+  }</span>
+  ${Input("user_name", "Nome completo", "", "text")}
+  ${Input("user_document", "Documento (CPF/CNPJ)", "18", "tel")}
+  <div style='display: flex; flex-direction: row; justify-content: space-between'> 
+   ${Input("user_national_registration", "RG", "14", "tel")}
+   ${Input("user_drivers_license", "CNH", "14", "tel")}
+  </div>
 
-          <input
-            type="tel"
-            class="form-control mr-2"
-            onkeydown="javascript: fMasc( this, mCEP );"
-            maxlength="10"
-            onblur="javascript: pesquisacep(this.value)"
-            id="ownerZipcode"
-            placeholder="CEP *"
-          />
-
-          <br />
-          <input
-            disabled
-            type="text"
-            class="form-control mr-2"
-            id="ownerAddress"
-            placeholder="Endereço *"
-            maxlength="120"
-            required
-          />
-
-          <br />
-          <input
-            type="text"
-            class="form-control mr-2"
-            id="ownerAddressNumber"
-            placeholder="Número *"
-          />
-
-          <br />
-          <input
-            type="text"
-            class="form-control mr-2"
-            id="ownerComplement"
-            placeholder="Complemento (opcional)"
-            maxlength="14"
-          />
-
-          <br />
-          <input
-            disabled
-            type="text"
-            class="form-control mr-2"
-            id="ownerNeighborhood"
-            placeholder="Bairro *"
-          />
-
-          <br />
-          <input
-            disabled
-            type="text"
-            class="form-control mr-2"
-            id="ownerCity"
-            placeholder="Cidade *"
-          />
-
-          <br />
-          <input
-            disabled
-            value=""
-            class="form-control mr-2"
-            maxlength="2"
-            type="text"
-            id="ownerState"
-            placeholder="Estado *"
-            name="state"
-            required
-          />
-          <br />
-        </section>
-    `;
+  ${Input("user_work_passport", "(Carteira de trabalho)", "", "tel")}
+  ${Input("user_birthdate", "Data de nascimento", "", "tel")}
+  `;
 }
 
-function showButtons() {
+function ContactData(lang) {
   return `
-        <div
-          class="form-group"
-          style="
-            display: flex;
-            flex-direction: row;
-            margin: 30px auto 100px auto;
-            justify-content: center;
-          "
-        >
-          <button
-            onclick="deactivateAccount()"
-            style="
-              border-radius: 5px;
-              border: 2px solid #c95e4b !important;
-              background-color: #fff;
-              color: #c95e4b;
-              font-family: 'Medium';
-              font-size: 1rem;
-              font-weight: 600;
-              letter-spacing: 1px;
-              padding: 5px 10px;
-            "
-            class="btn btn-success mr-2"
-          >
-            desativar conta
-          </button>
-
-          <button
-            onclick="updateProfile()"
-            id="profile-nextbutton"
-            style="
-              border-radius: 5px;
-              border: none;
-              background-color: #2fc046;
-              font-family: 'Medium';
-              font-size: 1rem;
-              font-weight: 600;
-              letter-spacing: 1px;
-              padding: 5px 35px;
-            "
-            class="btn btn-success mr-2"
-          >
-            Salvar
-          </button>
-        </div>
-    `;
-}
-
-// CONTAINER
-async function getPageContent() {
-  if (JSON.parse(localStorage.getItem("userSession")) === null) {
-    window.location.href = "index.html";
-  }
-
-  var user = JSON.parse(localStorage.getItem("userSession"));
-
-  document.getElementById("content").innerHTML = `
-    <div class="indexHeroWidth" style="padding: 0px 20px; min-height: 700pxp; align-items: center; display: flex; flex-direction: column;">
-        <div id="hero">${showHero()}</div>
-
-        <div id="step1">${showStep1()}</div>
-        <br />
-
-        <div id="step2">${showStep2()}</div>
-
-        <div id="buttons">${showButtons()}</div>
+    <span class='profile-content-title'>${
+      translations(lang)?.profile_page_contact
+    }</span>
+    ${Input("user_phone", "Telefone celular", "", "tel")}
+    ${Input("user_email", "Email", "", "email")}
+    <div style='display: flex; flex-direction: row; align-items: center;'> 
+      ${Input("user_pass", "Senha", "", "password", "120px")}
+      <span style='font-size: 14px; margin-top: 10px; color: cornflowerblue' id="pass"></span>
     </div>
   `;
-
-  document.getElementById("ownerName").value = user.name;
-  document.getElementById("ownerCPF").value = user.document;
-  document.getElementById("ownerEmail").value = user.email;
-  document.getElementById("ownerPass").value = user.pass;
-  document.getElementById("ownerPhone").value = user.phone;
-
-  document.getElementById("ownerZipcode").value = user.addressZipcode;
-  document.getElementById("ownerAddress").value = user.address;
-  document.getElementById("ownerAddressNumber").value = user.addressNumber;
-  document.getElementById("ownerComplement").value = user.addressComplement;
-  document.getElementById("ownerNeighborhood").value = user.addressNeighborhood;
-  document.getElementById("ownerCity").value = user.addressCity;
-  document.getElementById("ownerState").value = user.addressState;
 }
 
-getPageContent();
+function AddressData(lang) {
+  return `
+  <span class='profile-content-title'>${
+    translations(lang)?.profile_page_address
+  }</span>
+  ${Input("user_zipcode", "CEP", "", "tel")}
+  ${Input("user_address", "Endereço", "", "text")}
+  ${Input("user_address_number", "Número", "", "tel")}
+  ${Input("user_address_neighborhood", "Bairro", "", "text")}
+  ${Input("user_address_complement", "Complemento", "", "text")}
+  ${Input("user_address_city", "Cidade", "", "text")}
+  ${Input("user_address_state", "Estado", "", "text")}
+  `;
+}
 
-// QUERIES
+function OtherData(lang) {
+  return `
+    <span class='profile-content-title'>${
+      translations(lang)?.profile_page_other
+    }</span>
+    ${Select(
+      "user_martial_status",
+      "",
+      `<option style='color: #0a0a0a' value='1' selected='selected'>
+        ${translations(lang)?.signup_page_single}
+      </option>
+      <option style='color: #0a0a0a' value='2'>
+        ${translations(lang)?.signup_page_married}
+      </option>
+      <option style='color: #0a0a0a' value='2'>
+        ${translations(lang)?.signup_page_separated}
+      </option>
+      <option style='color: #0a0a0a' value='2'>
+        ${translations(lang)?.signup_page_divorced}
+      </option>
+      <option style='color: #0a0a0a' value='2'>
+        ${translations(lang)?.signup_page_widowed}
+      </option>
+   `
+    )}
+  ${Input("user_occupation", "Ocupação profissional")}
+  `;
+}
 
-async function updateProfile() {
-  showLoading(true);
-  if (document.getElementById("ownerName").value === "") {
-    getToast("danger", "Por favor, preencha o nome.");
-    showLoading(false);
-    return;
-  }
+function SaveButton(lang) {
+  return `
+    <div style='display: table; margin: 80px auto 50px auto;'>
+      ${Button(
+        translations(lang)?.save_data,
+        null,
+        "save_data_button",
+        "green"
+      )}
+    </div>
+  `;
+}
 
-  if (document.getElementById("ownerCPF").value === "") {
-    getToast("danger", "Por favor, preencha o CPF.");
-    showLoading(false);
-    return;
-  }
+function LoadData(data) {
+  let addressData = data.address;
+  let address = addressData.split("Endereço: ")[1].split(",")[0];
+  let addressNumber = addressData.split("Número: ")[1].split(",")[0];
+  let complement = addressData.split("Complemento: ")[1].split(",")[0];
+  let neighborhood = addressData.split("Bairro: ")[1].split(",")[0];
+  let zipcode = addressData.split("CEP: ")[1].split(",")[0];
+  let city = addressData.split("Cidade: ")[1].split(",")[0];
+  let state = addressData.split("Estado: ")[1].split(".")[0];
 
-  if (document.getElementById("ownerEmail").value === "") {
-    getToast("danger", "Por favor, preencha o email.");
-    showLoading(false);
-    return;
-  }
+  document.querySelector("#user_name").value = data.name;
+  document.querySelector("#user_document").value = data.document;
+  document.querySelector("#user_national_registration").value =
+    data.nationalRegistration;
+  document.querySelector("#user_drivers_license").value = data.driversLicense;
+  document.querySelector("#user_work_passport").value = data.workPassport;
+  document.querySelector("#user_birthdate").value = data.birthdate;
+  document.querySelector("#user_phone").value = data.phone;
+  document.querySelector("#user_email").value = data.email;
+  document.querySelector("#user_pass").value = data.pass;
+  document.querySelector("#user_zipcode").value = zipcode;
+  document.querySelector("#user_address").value = address;
+  document.querySelector("#user_address_number").value = addressNumber;
+  document.querySelector("#user_address_neighborhood").value = neighborhood;
+  document.querySelector("#user_address_complement").value = complement;
+  document.querySelector("#user_address_city").value = city;
+  document.querySelector("#user_address_state").value = state;
+  document.querySelector("#user_martial_status").value = data.martialStatus;
+  document.querySelector("#user_occupation").value = data.occupation;
+}
 
-  if (document.getElementById("ownerPass").value === "") {
-    getToast("danger", "Por favor, preencha a senha.");
-    showLoading(false);
-    return;
-  }
+async function showPageContent() {
+  Loading(true);
 
-  if (document.getElementById("ownerZipcode").value === "") {
-    getToast("danger", "Por favor, preencha o CEP.");
-    showLoading(false);
-    return;
-  }
+  isUserNotLogged();
 
-  if (document.getElementById("ownerAddress").value === "") {
-    getToast("danger", "Por favor, preencha o Endereço.");
-    showLoading(false);
-    return;
-  }
+  const user = JSON.parse(localStorage.getItem("userSession"));
 
-  if (document.getElementById("ownerAddressNumber").value === "") {
-    getToast("danger", "Por favor, preencha o número do endereço.");
-    showLoading(false);
-    return;
-  }
-
-  if (document.getElementById("ownerNeighborhood").value === "") {
-    getToast("danger", "Por favor, preencha o bairro.");
-    showLoading(false);
-    return;
-  }
-
-  if (document.getElementById("ownerCity").value === "") {
-    getToast("danger", "Por favor, preencha a cidade.");
-    showLoading(false);
-    return;
-  }
-
-  if (document.getElementById("ownerState").value === "") {
-    getToast("danger", "Por favor, preencha o estado.");
-    showLoading(false);
-    return;
-  }
-
-  var user = JSON.parse(localStorage.getItem("userSession"));
-
-  const aux = await updateUser({
+  let req = await baseRequest({
     id: user.id,
-    name: document.getElementById("ownerName").value,
-    document: document.getElementById("ownerCPF").value,
-    email: document.getElementById("ownerEmail").value,
-    pass: document.getElementById("ownerPass").value,
-    phone: document.getElementById("ownerPhone").value,
-    type: user.type,
-    addressZipcode: document.getElementById("ownerZipcode").value,
-    address: document.getElementById("ownerAddress").value,
-    addressNumber: document.getElementById("ownerAddressNumber").value,
-    addressComplement: document.getElementById("ownerComplement").value ?? "-",
-    addressNeighborhood: document.getElementById("ownerNeighborhood").value,
-    addressCity: document.getElementById("ownerCity").value,
-    addressState: document.getElementById("ownerState").value,
-    addressCountry: user.addressCountry,
-    details: user.details,
-    regulation: user.regulation,
-    img: user.img,
-    recipientId: user.recipientId,
-    percent: user.percent,
-    status: 1,
-    req: "edit_user",
+    req: "get_user_by_id",
+  });
+  req = req.result;
+
+  const lang = checkUserLanguage();
+
+  document.getElementById("content").innerHTML = `
+      <section class="section-area">
+        <div class="content">
+          ${ArrowBack()}
+          ${PageTitle(translations(lang)?.profile_page_title)}
+  
+          <div class="subcontent">
+                ${PersonalData(lang)}     
+                ${ContactData(lang)}                
+                ${AddressData(lang)}
+                ${OtherData(lang)}
+                ${SaveButton(lang)}
+          </div>
+        </div>
+      </section>
+  `;
+
+  LoadData(req);
+
+  // input handler
+  document.querySelector("#user_birthdate").onkeydown = () => {
+    fMasc(document.querySelector("#user_birthdate"), mDataNasc);
+  };
+  document.querySelector("#user_document").onkeydown = () => {
+    fMasc(document.querySelector("#user_document"), mCPFCNPJ);
+  };
+  document.querySelector("#user_national_registration").onkeydown = () => {
+    fMasc(document.querySelector("#user_national_registration"), mRG);
+  };
+  document.querySelector("#user_phone").onkeydown = () => {
+    fMasc(document.querySelector("#user_phone"), mTel);
+  };
+  document.querySelector("#user_zipcode").onkeydown = () => {
+    fMasc(document.querySelector("#user_zipcode"), mCEP);
+  };
+  document.querySelector("#user_pass").onkeyup = () => {
+    document.querySelector("#pass").innerHTML =
+      "(" + document.querySelector("#user_pass").value + ")";
+  };
+  document.querySelector("#user_pass").onblur = () => {
+    document.querySelector("#pass").innerHTML =
+      "(" + document.querySelector("#user_pass").value + ")";
+  };
+
+  // get address info
+  document.querySelector(`#user_zipcode`).addEventListener("blur", async () => {
+    let zipcode = document.querySelector(`#user_zipcode`).value;
+    const info = await getAddressByZipcode(zipcode);
+
+    if (info !== null) {
+      document.querySelector(`#user_address`).value = info.address;
+      document.querySelector(`#user_address_neighborhood`).value =
+        info.neighborhood;
+      document.querySelector(`#user_address_city`).value = info.city;
+      document.querySelector(`#user_address_state`).value = info.state;
+    }
   });
 
-  if (aux.success === false) {
-    showLoading(false);
-    getToast("danger", aux.result);
-    return;
-  }
+  document
+    .querySelector(`#save_data_button`)
+    .addEventListener("click", async () => {
+      updateUserData(user.id);
 
-  getToast("success", aux.result);
-  showLoading(false);
+      refreshData(user.id);
+    });
+
+  Loading(false);
+}
+showPageContent();
+
+async function updateUserData(id) {
+  let add = document.querySelector("#user_address").value;
+  let num = document.querySelector("#user_address_number").value;
+  let comp =
+    document.querySelector("#user_address_complement").value === ""
+      ? "(não possui complemento)"
+      : document.querySelector("#user_address_complement").value;
+  let neig = document.querySelector("#user_address_neighborhood").value;
+  let zip = document.querySelector("#user_zipcode").value;
+  let city = document.querySelector("#user_address_city").value;
+  let uf = document.querySelector("#user_address_state").value;
+
+  let workPassport =
+    document.querySelector("#user_work_passport").value === ""
+      ? "(não possui carteira de trabalho)"
+      : document.querySelector("#user_work_passport").value;
+
+  let cnh =
+    document.querySelector("#user_drivers_license").value === ""
+      ? "(não possui cnh)"
+      : document
+          .querySelector("#user_drivers_license")
+          .value.replace(/\D/g, "")
+          .trim();
+
+  let address = `Endereço: ${add}, Número: ${num}, Complemento: ${comp}, Bairro: ${neig}, CEP: ${zip}, Cidade: ${city}, Estado: ${uf}.`;
+
+  await baseRequest({
+    id: Number(id),
+    name: document
+    .querySelector("#user_name").value,
+    document: document
+      .querySelector("#user_document")
+      .value.replace(/\D/g, "")
+      .trim(),
+    nationalRegistration: document
+      .querySelector("#user_national_registration")
+      .value.replace(/\D/g, "")
+      .trim(),
+    driversLicense: cnh,
+    email: document.querySelector("#user_email").value.trim(),
+    pass: document.querySelector("#user_pass").value.trim(),
+    phone: document.querySelector("#user_phone").value.replace(/\D/g, ""),
+    birthdate: document
+      .querySelector("#user_birthdate")
+      .value.replace(/\D/g, "")
+      .trim(),
+    address: address,
+    martialStatus: document.querySelector("#user_martial_status").value.trim(),
+    occupation: document.querySelector("#user_occupation").value.trim(),
+    workPassport: workPassport,
+    req: "edit_user",
+  });
+}
+
+async function refreshData(userId) {
+  let req = await baseRequest({
+    id: userId,
+    req: "get_user_by_id",
+  });
+  req = req.result;
+
+  Toast("success", "Dados salvos com sucesso");
+
+  LoadData(req);
 }

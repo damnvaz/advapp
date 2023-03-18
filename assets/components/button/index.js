@@ -1,7 +1,12 @@
-export function Button(text, event, id) {
+export function Button(text, event, id, color = "") {
   return `
         <button
             class="button"
+            style="${
+              color === ""
+                ? ""
+                : "background-color: var(--button-green); color: #fff; border: 1px solid var(--button-green) !important;"
+            }"
             type="button"
             onclick="${event}"
             id="${id}"

@@ -65,6 +65,7 @@ export async function performSignup(body) {
     phone: body.phone.replace(/\D/g, ""),
     type: body.type.trim(),
     status: "1",
+    birthdate: body.birthdate.replace(/\D/g, "").trim(),
     address: body.address.trim(),
     createdAt: body.createdAt.trim(),
     recipientId: body.recipientId.trim(),

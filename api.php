@@ -80,6 +80,7 @@ if ($postjson['req'] == 'login') {
         'pass' => $data['pass'],
         'type' => $data['type'],
         'status' => $data['status'],
+        'birthdate' => $data['birthdate'],
         'address' => $data['address'],
         'createdAt' => utf8_encode($data['createdAt']),
         'recipientId' => utf8_encode($data['recipientId']),
@@ -146,6 +147,7 @@ if ($postjson['req'] == 'signup') {
     $pass = $postjson['pass'];
     $phone = $postjson['phone'];
     $type = $postjson['type'];
+    $birthdate = $postjson['birthdate'];
     $createdAt = $postjson['createdAt'];
     $martialStatus = $postjson['martialStatus'];
     $occupation = $postjson['occupation'];
@@ -162,6 +164,7 @@ if ($postjson['req'] == 'signup') {
             pass = '$pass',
             type = '$type',
             status = 1,
+            birthdate = '$birthdate',
             address = '-',
             createdAt = '$createdAt',
             recipientId = '-',
@@ -354,82 +357,36 @@ if ($postjson['req'] == 'create_user') {
 if ($postjson['req'] == 'edit_user') {
 
     $id = $postjson['id'];
-    $name = utf8_decode($postjson['name']);
+    $name = $postjson['name'];
+    $document = $postjson['document'];
+    $nationalRegistration = $postjson['nationalRegistration'];
+    $driversLicense = $postjson['driversLicense'];
     $email = $postjson['email'];
     $pass = $postjson['pass'];
     $phone = $postjson['phone'];
-    $document = $postjson['document'];
-    $type = $postjson['type'];
-    $addressZipcode = $postjson['addressZipcode'];
-    $address = utf8_decode($postjson['address']);
-    $addressNumber = $postjson['addressNumber'];
-    $addressComplement = utf8_decode($postjson['addressComplement']);
-    $addressNeighborhood = utf8_decode($postjson['addressNeighborhood']);
-    $addressCity = utf8_decode($postjson['addressCity']);
-    $addressState = utf8_decode($postjson['addressState']);
-    $addressCountry = utf8_decode($postjson['addressCountry']);
-    $details = utf8_decode($postjson['details']);
-    $regulation = utf8_decode($postjson['regulation']);
-    $img = utf8_decode($postjson['img']);
-    $recipientId = $postjson['recipientId'];
-    $percent = $postjson['percent'];
-    $status = $postjson['status'];
+    $address = $postjson['address'];
+    $birthdate = $postjson['birthdate'];
+    $martialStatus = $postjson['martialStatus'];
+    $occupation = $postjson['occupation'];
+    $workPassport = $postjson['workPassport'];
     
-    $data = [
-        'id' => $id,
-        'nome' => $name,
-        'email' => $email,
-        'senha' => $pass,
-        'telefone' => $phone,
-        'documento' => $document,
-        'tipo' => $type,
-        'cep' => $addressZipcode,
-        'endereco' => $address,
-        'numero' => $addressNumber,
-        'complemento' => $addressComplement,
-        'bairro' => $addressNeighborhood,
-        'cidade' => $addressCity,
-        'estado' => $addressState,
-        'pais' => $addressCountry,
-        'detalhes' => $details,
-        'regulamento' => $regulation,
-        'imagem' => $img,
-        'id do recebedor' => $recipientId,
-        'percentual de recebimento' => $percent,
-        'status' => $status
-    ];
 
-    // VALIDATE INPUT BEFORE REQUEST
-	foreach ($data as $key => $val) {
- 	    if ($val == '') {
-            $result = json_encode(array('success' => false, 'result' => 'O campo (' . $key . ') não foi informado.'));
-            echo $result; 
-            return;
-        }
-    }
 
     $query = mysqli_query($mysqli, 
         "UPDATE users SET 
             name = '$name',
-            email = '$email',
             document = '$document',
-            type = '$type',
-            pass = '$pass',
+            nationalRegistration = '$nationalRegistration',
+            driversLicense = '$driversLicense',
             phone = '$phone',
-            addressZipcode = '$addressZipcode',
+            email = '$email',
+            pass = '$pass',
+            birthdate = '$birthdate',
             address = '$address',
-            addressNumber = '$addressNumber',
-            addressComplement = '$addressComplement',
-            addressNeighborhood = '$addressNeighborhood',
-            addressCity = '$addressCity',
-            addressState = '$addressState',
-            addressCountry = '$addressCountry',
-            details = '$details',
-            regulation = '$regulation',
-            img = '$img',
-            recipientId = '$recipientId',
-            percent = '$percent',
-            status = '$status'
+            martialStatus = '$martialStatus',
+            occupation = '$occupation',
+            workPassport = '$workPassport'
+
             WHERE id ='$id'
         ");
 
@@ -495,47 +452,44 @@ if ($postjson['req'] == 'get_users') {
 if ($postjson['req'] == 'get_user_by_id') {
     
     if ($postjson['id'] == '') {
- 		$result = json_encode(array('success'=>false, 'result' => 'Informe o id.'));
+ 		$result = json_encode(array('success'=> false, 'result' => 'Informe o id.'));
         echo $result; 
         return;
  	}
 
     $id = $postjson['id'];
  	$query = mysqli_query($mysqli, "SELECT * FROM users WHERE id = '$id' ");
-
-    if (mysqli_num_rows($query) == 0) {
-        $result = json_encode(array('success' => false, 'result' => 'Erro ao listar'));
+    $row = mysqli_num_rows($query);
+    
+    if ($row === 0) {
+        $result = json_encode(array('success' => false, 'result' => 'Usuário ou senha inválidos.'));
         echo $result; 
         return;
     }
-
- 	while ($row = mysqli_fetch_array($query)) { 
- 		$data = array(
- 			'id' => $row['id'], 
-            'name' => utf8_encode($row['name']),
-            'email' => $row['email'],
-            'document' => $row['document'],
-            'type' => $row['type'],
-            'pass' => $row['pass'],
-            'phone' => $row['phone'],
-            'addressZipcode' => $row['addressZipcode'],
-            'address' => utf8_encode($row['address']),
-            'addressNumber' => $row['addressNumber'],
-            'addressComplement' => utf8_encode($row['addressComplement']),
-            'addressNeighborhood' => utf8_encode($row['addressNeighborhood']),
-            'addressCity' => utf8_encode($row['addressCity']),
-            'addressState' => utf8_encode($row['addressState']),
-            'addressCountry' => utf8_encode($row['addressCountry']),
-            'details' => utf8_encode($row['details']),
-            'regulation' => utf8_encode($row['regulation']),
-            'img' => utf8_encode($row['img']),
-            'recipientId' => $row['recipientId'],
-            'percent' => $row['percent'],
-            'status' => $row['status']
- 		);
- 	}
+ 
+    $data = mysqli_fetch_array($query);
+    $user_data = array(
+        'id' => $data['id'], 
+        'name' => utf8_encode($data['name']),
+        'document' => $data['document'],
+        'nationalRegistration' => $data['nationalRegistration'],
+        'driversLicense' => $data['driversLicense'],
+        'phone' => $data['phone'],
+        'email' => $data['email'],
+        'pass' => $data['pass'],
+        'type' => $data['type'],
+        'status' => $data['status'],
+        'birthdate' => $data['birthdate'],
+        'address' => $data['address'],
+        'createdAt' => utf8_encode($data['createdAt']),
+        'recipientId' => utf8_encode($data['recipientId']),
+        'martialStatus' => utf8_encode($data['martialStatus']),
+        'occupation' => utf8_encode($data['occupation']),
+        'workPassport' => $data['workPassport']
+    );
+   
 	
-    $result = json_encode(array('success'=>true, 'result' => $data));
+    $result = json_encode(array('success'=>true, 'result' => $user_data));
     echo $result; 
     return;
 }

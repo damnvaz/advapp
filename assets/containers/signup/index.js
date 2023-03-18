@@ -245,6 +245,7 @@ async function signup(lang) {
   const phone = document.querySelector("#phoneSignup").value;
   const rg = document.querySelector("#rgSignup").value;
   const type = document.querySelector("#typeSignup").value;
+  const birthdate = document.querySelector("#birthSignup").value;
 
   const martialStatus = document.querySelector("#martialStatusSignup").value;
   const occupation = document.querySelector("#typeSignup").value
@@ -270,6 +271,7 @@ async function signup(lang) {
     phone: phone.replace(/\D/g, ""),
     type: type.trim(),
     status: "1",
+    birthdate: birthdate.replace(/\D/g, "").trim(),
     address: "-",
     createdAt: createdAt.trim(),
     recipientId: "-",
