@@ -43,9 +43,8 @@
 .stepper-button-back {
   border-radius: 5px;
   border: none;
-  border: 2px solid var(--button-black) !important;
-  background-color: var(--button-yellow);
-  color: var(--button-black);
+  background-color: #bca239;
+  color: var(--button-white);
   font-family: bold;
   font-size: 1rem;
   padding: 5px 10px;
@@ -57,9 +56,8 @@
 .stepper-button-next {
   border-radius: 5px;
   border: none;
-  border: 2px solid var(--button-black) !important;
-  background-color: #48a97a;
-  color: var(--button-black);
+  background-color: #63ae61;
+  color: var(--button-white);
   font-family: bold;
   font-size: 1rem;
   padding: 5px 10px;
