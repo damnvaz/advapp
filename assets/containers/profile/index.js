@@ -31,13 +31,14 @@ function Input(id, placeholder, maxLength = "180", type, width = "100%") {
     />`;
 }
 
-function Select(id, event, options) {
+function Select(id, event, options, width) {
   return `
     <select
       class="profile-select"
       id="${id}"
       ${event !== "" ? JSON.parse(event) : ""}
       dir="ltr"
+      ${width !== "" ? 'style="width: 100%"' : ''}
       > 
         ${options !== "" ? options : ""}
     </select>
@@ -113,7 +114,7 @@ function OtherData(lang) {
       <option style='color: #0a0a0a' value='2'>
         ${translations(lang)?.signup_page_widowed}
       </option>
-   `
+   `, '100%'
     )}
   ${Input("user_occupation", "Ocupação profissional")}
   `;

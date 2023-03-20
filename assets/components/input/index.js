@@ -47,13 +47,14 @@ export function TextArea(id, placeholder, type, maxlength, event) {
     `;
 }
 
-export function Select(id, event, options) {
+export function Select(id, event, options, width) {
   return `
     <select
       class="form-control select"
       id="${id}"
       ${event !== "" ? JSON.parse(event) : ""}
       dir="ltr"
+      ${width !== "" ? 'style="width: 100%"' : ''}
       > 
         ${options !== "" ? options : ""}
     </select>
