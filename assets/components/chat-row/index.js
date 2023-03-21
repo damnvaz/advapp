@@ -13,12 +13,17 @@ export function ChatRow(props) {
         ? props[i].message.substring(0, 23) + "..."
         : props[i].message;
 
-    let datetime = getOnlyTime(props[i].time);
+    let datetime = props[i].time.includes("T")
+      ? getOnlyTime(props[i].time)
+      : props[i].time;
 
     messages += `
-        <div class="chat-row" onclick="window.location.href='chat.html?id=${
-          props[i].userid
-        }'">
+        <div class="chat-row"
+          onclick="window.location.href='chat.html?id=${props[i].userid}'"
+          >
+            <span style="display: none;" class="chat-row-user-id">
+              ${props[i].userid}
+            </span>
             <img
                 class="chat-row-user-image" 
                 src="${props[i].img || "assets/icons/no-user.svg"}" 
