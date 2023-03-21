@@ -109,6 +109,7 @@ async function retriveMessages(userid, lang) {
   let cardsPeople = [];
 
   for (let i = 0; i < messagesSorted.length; i++) {
+
     if (userid !== messagesSorted[i].senderId) {
       let req = await baseRequest({
         id: messagesSorted[i].senderId,
@@ -122,25 +123,12 @@ async function retriveMessages(userid, lang) {
         message: messagesSorted[i].message,
         userid: messagesSorted[i].senderId,
       });
-    } else {
-      let req = await baseRequest({
-        id: messagesSorted[i].receiverId,
-        req: "get_user_by_id",
-      });
-      req = req.result;
-
-      cardsPeople.push({
-        username: req.name,
-        time: messagesSorted[i].createdAt,
-        message: translations(lang)?.chats_page_you + messagesSorted[i].message,
-        userid: messagesSorted[i].receiverId,
-      });
     }
   }
 
-  // const messagesArr = removeDuplicates(cardsPeople, "username");
+  const messagesArr = removeDuplicates(cardsPeople, "username");
 
-  document.querySelector("#messages-list").innerHTML = ChatRow(cardsPeople);
+  document.querySelector("#messages-list").innerHTML = ChatRow(messagesArr);
   Loading(false);
 }
 
