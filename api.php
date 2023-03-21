@@ -494,6 +494,42 @@ if ($postjson['req'] == 'get_user_by_id') {
     return;
 }
 
+// MESSAGES
+if ($postjson['req'] == 'get_messages') {
+
+    if ($postjson['id'] == '') {
+ 		$result = json_encode(array('success'=> false, 'result' => 'Informe o id.'));
+        echo $result; 
+        return;
+ 	}
+
+    $id = $postjson['id'];
+    $query = mysqli_query($mysqli, "SELECT * FROM chat 
+        WHERE receiverId = '$id' OR senderId = '$id'  ");
+
+    if (mysqli_num_rows($query) == 0) {
+       $result = json_encode(array('success' => false, 'result' => []));
+       echo $result; 
+       return;
+    }
+
+
+    while ($row = mysqli_fetch_array($query)) {
+        
+        $data[] = array(
+            'id' => $row['id'],
+            'senderId' => $row['senderId'],
+            'receiverId' => $row['receiverId'],
+            'message' => $row['message'],
+            'createdAt' => $row['createdAt']
+        );
+    }
+   
+   $result = json_encode(array('success' => true, 'result' => $data));
+   echo $result; 
+   return;
+}
+
 
 // PLANS
 if ($postjson['req'] == 'get_plans') {

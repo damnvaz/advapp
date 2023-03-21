@@ -116,6 +116,11 @@ function ptBR() {
     save_data: "Salvar dados",
     plans_page_title: "Meu plano",
     plans_page_current_plan: "Plano atual: ",
+
+    chats_page_title: "Conversas",
+    chats_page_new_chat: "Novo",
+    chats_page_searchbar_placeholder: "Buscar pelo nome",
+    chats_page_nomessages: "Não há conversas. Comece uma agora!",
   };
 }
 
@@ -191,5 +196,11 @@ function enUS() {
     plans_page_title: "My subscription",
 
     plans_page_current_plan: "Current plan: ",
+
+    chats_page_title: "Chats",
+    chats_page_new_chat: "Compose",
+    chats_page_searchbar_placeholder: "Search by name",
+
+    chats_page_nomessages: "No chats. Start one now!"
   };
 }
