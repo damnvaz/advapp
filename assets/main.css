@@ -61,7 +61,7 @@ a:hover {
     display: flex;
     flex-direction: row;
     min-height: 360px;
-    padding: 80px 20px 0px 20px;
+    padding: 40px 20px 0px 20px;
     margin-top: 60px;
     justify-content: center;
   }
@@ -79,7 +79,7 @@ a:hover {
     display: flex;
     flex-direction: row;
     min-height: 400px;
-    padding: 80px 20px 0px 20px;
+    padding: 50px 20px 0px 20px;
     justify-content: center;
   }
 

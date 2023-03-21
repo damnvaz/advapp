@@ -62,7 +62,7 @@ async function getPageContent() {
     { url: "documents.html", icon: "document" },
     { url: "reports.html", icon: "report" },
     { url: "add.html", icon: "add" },
-    { url: "chat.html", icon: "chat" },
+    { url: "chats.html", icon: "chat" },
     { url: "settings.html", icon: "settings" },
   ];
 
