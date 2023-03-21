@@ -54,9 +54,40 @@ export function Select(id, event, options, width) {
       id="${id}"
       ${event !== "" ? JSON.parse(event) : ""}
       dir="ltr"
-      ${width !== "" ? 'style="width: 100%"' : ''}
+      ${width !== "" ? 'style="width: 100%"' : ""}
       > 
         ${options !== "" ? options : ""}
     </select>
   `;
+}
+
+export function InputDataList(id, options, placeholder) {
+  let opt = "";
+  for (let i = 0; i < options.length; i++) {
+    opt += `
+      <option
+        data-value="${options[i][1]}"
+        value="${options[i][1]}"
+      >
+        ${options[i][0]}
+      </option>
+    `;
+  }
+
+  return `
+        <input
+            type="text"
+            placeholder="${options.length === 0 ? placeholder : ""}"
+            class="form-control input ${
+              options.length === 0 ? "input-disabled" : ""
+            }"
+            maxLength="180"
+            id="${id}"
+            list="datalist-${id}"
+            disabled="${options.length === 0 ? "true" : "false"}"
+            required />
+        <datalist id="datalist-${id}">
+          ${opt}
+        </datalist>
+    `;
 }

@@ -9,6 +9,7 @@ import {
   TextArea,
   Select,
   InputPassword,
+  InputDataList,
 } from "./input/index.js";
 import { Loading } from "./loading/index.js";
 import { Toast, hideToast } from "./toast/index.js";
@@ -36,6 +37,7 @@ export {
   InputLabel,
   Input,
   InputPassword,
+  InputDataList,
   TextArea,
   Select,
   Loading,

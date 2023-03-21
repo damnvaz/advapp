@@ -494,6 +494,7 @@ if ($postjson['req'] == 'get_user_by_id') {
     return;
 }
 
+
 // MESSAGES
 if ($postjson['req'] == 'get_messages') {
 
@@ -528,6 +529,64 @@ if ($postjson['req'] == 'get_messages') {
    $result = json_encode(array('success' => true, 'result' => $data));
    echo $result; 
    return;
+}
+
+if ($postjson['req'] == 'send_message') {
+
+    if ($postjson['senderId'] == '') {
+ 		$result = json_encode(array('success'=> false, 'result' => 'Informe senderId.'));
+        echo $result; 
+        return;
+ 	}
+    
+    if ($postjson['receiverId'] == '') {
+ 		$result = json_encode(array('success'=> false, 'result' => 'Informe receiverId.'));
+        echo $result; 
+        return;
+ 	}
+
+    if ($postjson['receiverId'] == $postjson['senderId']) {
+        $result = json_encode(array('success'=> false, 'result' => 'receiverId tem que ser diferente de senderId.'));
+       echo $result; 
+       return;
+    }
+    
+    if ($postjson['message'] == '') {
+ 		$result = json_encode(array('success'=> false, 'result' => 'Informe message.'));
+        echo $result; 
+        return;
+ 	}
+    
+    if ($postjson['createdAt'] == '') {
+ 		$result = json_encode(array('success'=> false, 'result' => 'Informe createdAt.'));
+        echo $result; 
+        return;
+ 	}
+
+    $senderId = $postjson['senderId'];
+    $receiverId = $postjson['receiverId'];
+    $message = $postjson['message'];
+    $createdAt = $postjson['createdAt'];
+
+   
+    $query = mysqli_query($mysqli, 
+        "INSERT INTO chat SET 
+            senderId = '$senderId',
+            receiverId = '$receiverId',
+            message = '$message',
+            createdAt = '$createdAt'
+        ");
+
+ 	$id = mysqli_insert_id($mysqli);
+ 	if ($query) {
+ 		$result = json_encode(array('success' => true, 'result' => 'Dados salvos com sucesso.'));
+        echo $result; 
+        return;
+    }
+
+	$result = json_encode(array('success' => false, 'result' => 'Erro ao enviar mensagem.'));
+    echo $result; 
+    return;
 }
 
 

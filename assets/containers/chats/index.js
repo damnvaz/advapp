@@ -1,9 +1,9 @@
-import { ChatRow } from "../../components/chat-row/index.js";
 import {
   ArrowBack,
   Bottombar,
   Loading,
   PageTitle,
+  ChatRow,
 } from "../../components/index.js";
 import { baseRequest } from "../../queries/base.js";
 import { translations } from "../../translations/index.js";
