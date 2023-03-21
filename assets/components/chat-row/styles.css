@@ -1,0 +1,50 @@
+.chat-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid #CECECE;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.chat-row:hover {
+    background-color: #CECECE;
+    cursor: pointer;
+}
+
+.chat-row-user-image {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.chat-row-user-container {
+  width: 90%;
+  margin-left: 15px;
+}
+
+.chat-row-user-time {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chat-row-username {
+  font-family: "medium";
+  font-size: 16px;
+}
+
+.chat-row-time {
+  font-family: "regular";
+  color: #9c9c9c;
+  font-size: 14px;
+}
+
+.chat-row-message {
+  font-family: "regular";
+  color: #9c9c9c;
+  font-size: 15px;
+}

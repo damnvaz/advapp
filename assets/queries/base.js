@@ -13,6 +13,12 @@ export function formatDate(date) {
   return newDate[2] + "/" + newDate[1] + "/" + newDate[0];
 }
 
+export function getOnlyTime(date) {
+  var dateTime = date.split("T");
+  var time = dateTime[1].split(":");
+  return time[0] + ":" + time[1];
+}
+
 export async function baseRequest(body) {
   const url = window.location.href.includes("https://")
     ? "https://iusok.com/api.php"

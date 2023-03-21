@@ -24,6 +24,7 @@ import { Card } from "./card/index.js";
 import { Bottombar } from "./bottombar/index.js";
 import { Copyright } from "./copyright/index.js";
 import { Accordion } from "./accordion/index.js";
+import { ChatRow } from "./chat-row/index.js";
 
 export {
   ArrowBack,
@@ -50,4 +51,5 @@ export {
   Copyright,
   PageTitle,
   Accordion,
+  ChatRow,
 };
