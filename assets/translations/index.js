@@ -121,6 +121,7 @@ function ptBR() {
     chats_page_new_chat: "Novo",
     chats_page_searchbar_placeholder: "Buscar pelo nome",
     chats_page_nomessages: "Não há conversas. Comece uma agora!",
+    chats_page_you: "Você: ",
 
     new_chat_page_title: "Nova mensagem",
     new_chat_page_who_to_send: "Para quem você deseja enviar?",
@@ -207,13 +208,12 @@ function enUS() {
     chats_page_title: "Chats",
     chats_page_new_chat: "Compose",
     chats_page_searchbar_placeholder: "Search by name",
-
     chats_page_nomessages: "No chats. Start one now!",
+    chats_page_you: "You: ",
 
     new_chat_page_title: "New chat",
     new_chat_page_who_to_send: "Who do you want to send?",
     new_chat_page_your_message: "Your message here",
-
     new_chat_page_no_clients: "No clients to show.",
     new_chat_send_button: "Send",
     new_chat_validation_no_clients: "No clients to send message.",

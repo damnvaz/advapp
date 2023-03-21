@@ -122,13 +122,25 @@ async function retriveMessages(userid, lang) {
         message: messagesSorted[i].message,
         userid: messagesSorted[i].senderId,
       });
+    } else {
+      let req = await baseRequest({
+        id: messagesSorted[i].receiverId,
+        req: "get_user_by_id",
+      });
+      req = req.result;
+
+      cardsPeople.push({
+        username: req.name,
+        time: messagesSorted[i].createdAt,
+        message: translations(lang)?.chats_page_you + messagesSorted[i].message,
+        userid: messagesSorted[i].receiverId,
+      });
     }
   }
 
   // const messagesArr = removeDuplicates(cardsPeople, "username");
 
   document.querySelector("#messages-list").innerHTML = ChatRow(cardsPeople);
-
   Loading(false);
 }
 
@@ -161,17 +173,17 @@ async function retriveMessagesByUsernameSearch(clientName, userId, lang) {
 
   let users = document.querySelectorAll(".chat-row-username");
 
+  if (clientName === "") {
+    retriveMessages(userId);
+    return;
+  }
+
   if (users.length === 0) {
     document.querySelector("#messages-list").innerHTML = `
       <span class="no-messages">${
         translations(lang)?.chats_page_nomessages
       }</span>
     `;
-    return;
-  }
-
-  if (clientName === "") {
-    retriveMessages(userId);
     return;
   }
 
