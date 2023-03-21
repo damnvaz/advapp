@@ -169,6 +169,8 @@ async function retriveMessages(userid) {
     return [];
   }
 
+  let receiverId = window.location.href.split("chat.html?id=")[1];
+
   let messagesArr = [];
   for (let i = 0; i < messages.length; i++) {
     let req = await baseRequest({
@@ -177,9 +179,18 @@ async function retriveMessages(userid) {
     });
     req = await req.result;
 
-    if (userid !== messages[i].senderId) {
+    if (userid === messages[i].senderId) {
+      messagesArr.push({
+        username: translations(lang)?.chats_page_you,
+        time: messages[i].createdAt,
+        message: messages[i].message,
+        userid: userid,
+      });
+    }
+
+    if (receiverId === messages[i].senderId) {
       let req = await baseRequest({
-        id: messages[i].senderId,
+        id: receiverId,
         req: "get_user_by_id",
       });
       req = req.result;
@@ -188,20 +199,7 @@ async function retriveMessages(userid) {
         username: req.name,
         time: messages[i].createdAt,
         message: messages[i].message,
-        userid: messages[i].senderId,
-      });
-    } else {
-      let req = await baseRequest({
-        id: messages[i].receiverId,
-        req: "get_user_by_id",
-      });
-      req = req.result;
-
-      messagesArr.push({
-        username: translations(lang)?.chats_page_you,
-        time: messages[i].createdAt,
-        message: messages[i].message,
-        userid: userid,
+        userid: receiverId,
       });
     }
   }
