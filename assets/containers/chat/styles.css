@@ -1,0 +1,44 @@
+.phone-client-bg {
+  background-color: #fff;
+}
+
+.top-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-icon {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.refresh-icon {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.search-icon {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  margin-right: 30px;
+}
+
+.subcontent {
+  padding-bottom: 30px;
+  height: 60vh;
+  background-color: #f8f8f8;
+  border-radius: 5px;
+  margin-top: 25px;
+}
+
+.page-title {
+  margin-top: 0px !important;
+  font-size: 1.3rem !important;
+}

@@ -1,6 +1,6 @@
 import { getOnlyTime } from "../../queries/base.js";
 
-export function ChatMessage(props, userid) {
+export function ChatMessage(props, userid, show = true) {
   let messages = "";
 
   for (let i = 0; i < props.length; i++) {
@@ -27,12 +27,22 @@ export function ChatMessage(props, userid) {
             };
           "
           >
-            <span style="display: none;" class="chat-message-user-id">${props[i].userid}</span>
+            <span style="display: none;" class="chat-message-user-id">${
+              props[i].userid
+            }</span>
             
             <div class="chat-message-user-container">
                 <span 
                   class="chat-message-username" 
-                  onclick="window.location.href='user-profile.html?id=${props[i].userid}'"
+                  style="text-decoration: ${
+                    show === false ? "none" : "underline"
+                  }"
+                  
+                  onclick="window.location.href='${
+                    show === true
+                      ? "user-profile.html?id=" + props[i].userid
+                      : "#"
+                  }'"
                 >${username}</span>
                 <span class="chat-message-message">${props[i].message}</span>
             </div>
