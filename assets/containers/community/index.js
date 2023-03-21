@@ -187,6 +187,7 @@ async function sendMessage(userid) {
     req: "send_message_forum",
   });
 
+  document.querySelector("#new_chat_your_message").value = "";
   retriveMessages(userid);
 }
 
