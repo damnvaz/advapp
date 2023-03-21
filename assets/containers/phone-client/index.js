@@ -30,7 +30,7 @@ async function showPageContent() {
       <section class="section-area">
         <div class="content">
           ${ArrowBack()}
-          ${PageTitle(translations(lang)?.new_chat_page_title)}
+          ${PageTitle(translations(lang)?.phone_client_page)}
           
   
           <div class="subcontent" >
@@ -67,7 +67,7 @@ async function showPageContent() {
       return;
     }
 
-    sendMessage(user.id);
+    sendMessage();
   });
 
   Loading(false);
@@ -91,31 +91,11 @@ async function retriveUsers(userid) {
 
   Loading(false);
   return messages;
-  // [
-  //   { 0: "1", 1: "Anderson" },
-  //   { 0: "2", 1: "Thais" },
-  // ];
 }
 
-async function sendMessage(senderId) {
-  let receiverId = document.querySelector("#new_chat_who_to_send").value;
+async function sendMessage() {
+  let email = document.querySelector("#new_chat_who_to_send").value;
   let message = document.querySelector("#new_chat_your_message").value;
 
-  let currentTime = new Date(
-    new Date().getTime() - new Date().getTimezoneOffset() * 60000
-  )
-    .toISOString()
-    .split(".")[0]
-    .substring(0, 16);
-
-  let body = {
-    senderId: senderId,
-    receiverId: receiverId,
-    message: message.trim(),
-    createdAt: currentTime,
-    req: "send_message",
-  };
-
-  await baseRequest(body);
-  window.location.href = "chat.html?id=" + receiverId;
+  window.open(`mailto:${email}?body=${message}`, "_blank");
 }

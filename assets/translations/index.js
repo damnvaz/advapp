@@ -129,6 +129,8 @@ function ptBR() {
     new_chat_page_no_clients: "Sem clientes para exibir.",
     new_chat_send_button: "Enviar",
     new_chat_validation_no_clients: "Sem clientes para enviar mensagens.",
+    
+    phone_client_page: "Enviar email",
   };
 }
 
@@ -217,5 +219,7 @@ function enUS() {
     new_chat_page_no_clients: "No clients to show.",
     new_chat_send_button: "Send",
     new_chat_validation_no_clients: "No clients to send message.",
+
+    phone_client_page: "Send email",
   };
 }
