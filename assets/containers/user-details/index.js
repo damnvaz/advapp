@@ -5,7 +5,11 @@ import {
   PageTitle,
   Toast,
 } from "../../components/index.js";
-import { baseRequest, getUserMartialStatus } from "../../queries/base.js";
+import {
+  baseRequest,
+  convertDateDash,
+  getUserMartialStatus,
+} from "../../queries/base.js";
 import { translations } from "../../translations/index.js";
 import { isUserNotLogged } from "../../utils/checkSession.js";
 import { checkUserLanguage } from "../../utils/checkUserLanguage.js";
@@ -63,7 +67,11 @@ function OtherData(lang) {
 }
 
 function LoadData(data) {
-  let addressData = data.address;
+  let not = " - não informado";
+  let addressData =
+    data.address !== ""
+      ? `Endereço: Endereço${not}, Número: Número${not}, Complemento: Complemento${not}, Bairro: Bairro${not}, CEP: CEP${not}, Cidade: Cidade${not}, Estado: Estado${not}`
+      : data.address;
   let address = addressData.split("Endereço: ")[1].split(",")[0];
   let addressNumber = addressData.split("Número: ")[1].split(",")[0];
   let complement = addressData.split("Complemento: ")[1].split(",")[0];
@@ -78,8 +86,11 @@ function LoadData(data) {
     data.nationalRegistration;
   document.querySelector("#user_drivers_license").innerHTML =
     data.driversLicense;
-  document.querySelector("#user_work_passport").innerHTML = data.workPassport;
-  document.querySelector("#user_birthdate").innerHTML = data.birthdate;
+  document.querySelector("#user_work_passport").innerHTML =
+    data.workPassport !== "-" ? data.workPassport : "CTPS - não informado";
+  document.querySelector("#user_birthdate").innerHTML = convertDateDash(
+    data.birthdate
+  );
   document.querySelector("#user_phone").innerHTML = data.phone;
   document.querySelector("#user_email").innerHTML = data.email;
   document.querySelector("#user_zipcode").innerHTML = zipcode;
@@ -91,7 +102,7 @@ function LoadData(data) {
   document.querySelector("#user_address_state").innerHTML = state;
   document.querySelector("#user_martial_status").innerHTML =
     getUserMartialStatus(data.martialStatus);
-  document.querySelector("#user_occupation").innerHTML = data.occupation;
+  document.querySelector("#user_occupation").innerHTML = data.occupation !== "-" ? data.occupation : "Profissão - não informada";
 }
 
 async function showPageContent() {
@@ -102,7 +113,7 @@ async function showPageContent() {
   const user = JSON.parse(localStorage.getItem("userSession"));
 
   let req = await baseRequest({
-    id: user.id,
+    id: window.location.href.split("user-details.html?id=")[1],
     req: "get_user_by_id",
   });
   req = req.result;
