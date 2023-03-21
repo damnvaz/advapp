@@ -136,6 +136,11 @@ function ptBR() {
     phone_client_page_who_to_send: "Para quem você deseja ligar?",
     phone_client_page_validation_no_clients: "Sem clientes para ligar.",
     phone_client_page_call: "Ligar",
+
+    community_page_title: "Comunidade",
+    community_page_search: "Buscar mensagem",
+    community_page_message: "Sua mensagem aqui",
+    community_page_button: "enviar",
   };
 }
 
@@ -231,5 +236,10 @@ function enUS() {
     phone_client_page_who_to_send: "Who do you want to call?",
     phone_client_page_validation_no_clients: "No clients to call.",
     phone_client_page_call: "Call",
+
+    community_page_title: "Community",
+    community_page_search: "Search message",
+    community_page_message: "Your message here",
+    community_page_button: "send",
   };
 }

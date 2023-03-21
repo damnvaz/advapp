@@ -589,6 +589,81 @@ if ($postjson['req'] == 'send_message') {
     return;
 }
 
+// COMMUNITY
+if ($postjson['req'] == 'get_forum_messages') {
+
+
+    $query = mysqli_query($mysqli, "SELECT * FROM forum ORDER BY id asc ");
+
+    if (mysqli_num_rows($query) == 0) {
+       $result = json_encode(array('success' => false, 'result' => []));
+       echo $result; 
+       return;
+    }
+
+
+    while ($row = mysqli_fetch_array($query)) {
+        
+        $data[] = array(
+            'id' => $row['id'],
+            'userId' => $row['userId'],
+            'message' => $row['message'],
+            'createdAt' => $row['createdAt']
+        );
+    }
+   
+   $result = json_encode(array('success' => true, 'result' => $data));
+   echo $result; 
+   return;
+}
+
+if ($postjson['req'] == 'send_message_forum') {
+
+    if ($postjson['userId'] == '') {
+ 		$result = json_encode(array('success'=> false, 'result' => 'Informe userId.'));
+        echo $result; 
+        return;
+ 	}
+    
+    
+    if ($postjson['message'] == '') {
+ 		$result = json_encode(array('success'=> false, 'result' => 'Informe message.'));
+        echo $result; 
+        return;
+ 	}
+    
+    if ($postjson['createdAt'] == '') {
+ 		$result = json_encode(array('success'=> false, 'result' => 'Informe createdAt.'));
+        echo $result; 
+        return;
+ 	}
+
+    $userId = $postjson['userId'];
+    $message = $postjson['message'];
+    $createdAt = $postjson['createdAt'];
+
+   
+    $query = mysqli_query($mysqli, 
+        "INSERT INTO forum SET 
+            userId = '$userId',
+            message = '$message',
+            createdAt = '$createdAt'
+        ");
+
+ 	$id = mysqli_insert_id($mysqli);
+ 	if ($query) {
+ 		$result = json_encode(array('success' => true, 'result' => 'Dados salvos com sucesso.'));
+        echo $result; 
+        return;
+    }
+
+	$result = json_encode(array('success' => false, 'result' => 'Erro ao enviar mensagem.'));
+    echo $result; 
+    return;
+}
+
+
+
 
 // PLANS
 if ($postjson['req'] == 'get_plans') {

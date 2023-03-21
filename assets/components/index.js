@@ -26,6 +26,7 @@ import { Bottombar } from "./bottombar/index.js";
 import { Copyright } from "./copyright/index.js";
 import { Accordion } from "./accordion/index.js";
 import { ChatRow } from "./chat-row/index.js";
+import { ChatMessage } from "./chat-message/index.js";
 
 export {
   ArrowBack,
@@ -54,4 +55,5 @@ export {
   PageTitle,
   Accordion,
   ChatRow,
+  ChatMessage,
 };
