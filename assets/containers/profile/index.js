@@ -38,7 +38,7 @@ function Select(id, event, options, width) {
       id="${id}"
       ${event !== "" ? JSON.parse(event) : ""}
       dir="ltr"
-      ${width !== "" ? 'style="width: 100%"' : ''}
+      ${width !== "" ? 'style="width: 100%"' : ""}
       > 
         ${options !== "" ? options : ""}
     </select>
@@ -105,16 +105,17 @@ function OtherData(lang) {
       <option style='color: #0a0a0a' value='2'>
         ${translations(lang)?.signup_page_married}
       </option>
-      <option style='color: #0a0a0a' value='2'>
+      <option style='color: #0a0a0a' value='3'>
         ${translations(lang)?.signup_page_separated}
       </option>
-      <option style='color: #0a0a0a' value='2'>
+      <option style='color: #0a0a0a' value='4'>
         ${translations(lang)?.signup_page_divorced}
       </option>
-      <option style='color: #0a0a0a' value='2'>
+      <option style='color: #0a0a0a' value='5'>
         ${translations(lang)?.signup_page_widowed}
       </option>
-   `, '100%'
+   `,
+      "100%"
     )}
   ${Input("user_occupation", "Ocupação profissional")}
   `;
@@ -278,8 +279,7 @@ async function updateUserData(id) {
 
   await baseRequest({
     id: Number(id),
-    name: document
-    .querySelector("#user_name").value,
+    name: document.querySelector("#user_name").value,
     document: document
       .querySelector("#user_document")
       .value.replace(/\D/g, "")

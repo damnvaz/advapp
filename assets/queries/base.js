@@ -1,3 +1,6 @@
+import { translations } from "../translations/index.js";
+import { checkUserLanguage } from "../utils/checkUserLanguage.js";
+
 export function convertDate(date) {
   var newDate = date.split("/");
   return newDate[2] + "-" + newDate[1] + "-" + newDate[0];
@@ -17,6 +20,30 @@ export function getOnlyTime(date) {
   var dateTime = date.split("T");
   var time = dateTime[1].split(":");
   return time[0] + ":" + time[1];
+}
+
+export function getUserMartialStatus(status) {
+  const lang = checkUserLanguage();
+
+  switch (status) {
+    case "1":
+      return translations(lang)?.signup_page_single;
+
+    case "2":
+      return translations(lang)?.signup_page_married;
+
+    case "3":
+      return translations(lang)?.signup_page_separated;
+
+    case "4":
+      return translations(lang)?.signup_page_divorced;
+
+    case "5":
+      return translations(lang)?.signup_page_widowed;
+
+    default:
+      return translations(lang)?.signup_page_single;
+  }
 }
 
 export async function baseRequest(body) {
