@@ -30,19 +30,27 @@ async function showPageContent() {
       <section class="section-area">
         <div class="content">
           ${ArrowBack()}
-          ${PageTitle(translations(lang)?.phone_client_page)}
+          ${PageTitle(translations(lang)?.email_client_page)}
           
   
           <div class="subcontent" >
             <div class="form-content p-3">
-              ${InputLabel(translations(lang)?.phone_client_page_who_to_send)}
-              ${Input("phone_client", "", "tel", "18", null)}
+              ${InputLabel(translations(lang)?.new_chat_page_who_to_send)}
+              ${InputDataList(
+                "new_chat_who_to_send",
+                options,
+                translations(lang)?.new_chat_page_no_clients
+              )}
             </div><br/>
             
+            <div class="form-content p-3">
+              ${InputLabel(translations(lang)?.new_chat_page_your_message)}
+              ${Input("new_chat_your_message", "", "text", "150", null)}
+            </div><br/>
 
             <div class="form-content mb-2 p-3" style="display: table; margin: 20px auto;">
               ${Button(
-                translations(lang)?.phone_client_page_call,
+                translations(lang)?.new_chat_send_button,
                 null,
                 "send_message",
                 "green"
@@ -55,14 +63,11 @@ async function showPageContent() {
 
   document.querySelector("#send_message").addEventListener("click", () => {
     if (options.length === 0) {
-      Toast(
-        "danger",
-        translations(lang)?.phone_client_page_validation_no_clients
-      );
+      Toast("danger", translations(lang)?.new_chat_validation_no_clients);
       return;
     }
 
-    callUser();
+    sendMessage();
   });
 
   Loading(false);
@@ -88,8 +93,9 @@ async function retriveUsers(userid) {
   return messages;
 }
 
-async function callUser() {
-  let tel = document.querySelector("#phone_client").value;
+async function sendMessage() {
+  let email = document.querySelector("#new_chat_who_to_send").value;
+  let message = document.querySelector("#new_chat_your_message").value;
 
-  window.open(`tel:${tel}`, "_blank");
+  window.open(`mailto:${email}?body=${message}`, "_blank");
 }

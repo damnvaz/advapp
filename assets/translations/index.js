@@ -129,8 +129,13 @@ function ptBR() {
     new_chat_page_no_clients: "Sem clientes para exibir.",
     new_chat_send_button: "Enviar",
     new_chat_validation_no_clients: "Sem clientes para enviar mensagens.",
-    
-    phone_client_page: "Enviar email",
+
+    email_client_page: "Enviar email",
+
+    phone_client_page: "Ligar",
+    phone_client_page_who_to_send: "Para quem você deseja ligar?",
+    phone_client_page_validation_no_clients: "Sem clientes para ligar.",
+    phone_client_page_call: "Ligar",
   };
 }
 
@@ -220,6 +225,11 @@ function enUS() {
     new_chat_send_button: "Send",
     new_chat_validation_no_clients: "No clients to send message.",
 
-    phone_client_page: "Send email",
+    email_client_page: "Send email",
+
+    phone_client_page: "Call",
+    phone_client_page_who_to_send: "Who do you want to call?",
+    phone_client_page_validation_no_clients: "No clients to call.",
+    phone_client_page_call: "Call",
   };
 }
