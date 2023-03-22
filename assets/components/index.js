@@ -27,6 +27,7 @@ import { Copyright } from "./copyright/index.js";
 import { Accordion } from "./accordion/index.js";
 import { ChatRow } from "./chat-row/index.js";
 import { ChatMessage } from "./chat-message/index.js";
+import { UserRow } from "./user-row/index.js";
 
 export {
   ArrowBack,
@@ -56,4 +57,5 @@ export {
   Accordion,
   ChatRow,
   ChatMessage,
+  UserRow,
 };

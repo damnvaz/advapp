@@ -1,0 +1,58 @@
+.user-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid #CECECE;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.user-row:hover {
+    background-color: #CECECE;
+    cursor: pointer;
+}
+
+.user-row-user-image {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.user-row-user-container {
+  width: 90%;
+  margin-left: 15px;
+}
+
+.user-row-user-time {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-row-username {
+  font-family: "medium";
+  font-size: 16px;
+}
+
+.user-row-status {
+  font-family: "regular";
+  color: #9c9c9c;
+  font-size: 14px;
+}
+
+.user-row-document {
+  font-family: "regular";
+  color: #9c9c9c;
+  font-size: 15px;
+}
+
+.user-active {
+  color: #469CDA;
+}
+
+.user-inactive {
+  color: #DA4646;
+}

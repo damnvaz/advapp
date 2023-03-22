@@ -4,6 +4,7 @@ import {
   Loading,
   PageTitle,
   ChatRow,
+  UserRow,
 } from "../../components/index.js";
 import { baseRequest } from "../../queries/base.js";
 import { translations } from "../../translations/index.js";
@@ -38,6 +39,21 @@ async function showPageContent() {
     { url: "new-chat.html", icon: "add" },
   ];
 
+  const users = [
+    {
+      userid: "1",
+      username: "Anderson",
+      document: "123.123.123-21",
+      status: "Ativo",
+    },
+    {
+      userid: "2",
+      username: "Amanda",
+      document: "111.222.333-12",
+      status: "Inativo",
+    },
+  ];
+
   document.getElementById("content").innerHTML = `
       <section class="section-area">
         <div class="content">
@@ -55,7 +71,9 @@ async function showPageContent() {
             ${PageTitle(translations(lang)?.users_page_title)}
             ${SearchBar("search_bar", translations(lang)?.users_page_searchbar)}
   
-          <div class="subcontent" id="messages-list"></div>
+          <div class="subcontent" id="messages-list">
+            ${UserRow(users)}
+          </div>
 
         </div>
       </section>
