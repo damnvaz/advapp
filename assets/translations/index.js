@@ -145,6 +145,13 @@ function ptBR() {
     users_page_title: "Clientes",
     users_page_searchbar: "Buscar pelo nome ou documento..",
     users_page_searchbar_empty: "Digite o nome ou documento para buscar",
+
+    user_edit_page_personal_data: 'Dados pessoais',
+    user_edit_page_document: 'CPF/CNPJ:',
+    user_edit_page_national_registration: 'Identidade:',
+    user_edit_page_drivers_license: 'CNH:',
+    user_edit_page_work_passport: 'Carteira de trabalho:',
+    user_edit_page_birthdate: 'Data de nascimento',
   };
 }
 
