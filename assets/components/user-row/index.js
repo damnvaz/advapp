@@ -3,16 +3,16 @@ export function UserRow(props) {
 
   for (let i = 0; i < props.length; i++) {
     let username =
-      props[i].username.length > 22
-        ? props[i].username.substring(0, 23) + "..."
-        : props[i].username;
+      props[i].name.length > 22
+        ? props[i].name.substring(0, 23) + "..."
+        : props[i].name;
 
     messages += `
         <div class="user-row"
-          onclick="window.location.href='user-edit.html?id=${props[i].userid}'"
+          onclick="window.location.href='user-edit.html?id=${props[i].id}'"
           >
             <span style="display: none;" class="user-row-user-id">
-              ${props[i].userid}
+              ${props[i].id}
             </span>
             <img
                 class="user-row-user-image" 
@@ -25,11 +25,9 @@ export function UserRow(props) {
                     <span class="user-row-document">${props[i].document}</span>
                     <span class="user-row-status
                      ${
-                       props[i].status === "Ativo"
-                         ? "user-active"
-                         : "user-inactive"
+                       props[i].status === "1" ? "user-active" : "user-inactive"
                      }
-                    ">${props[i].status}</span>
+                    ">${props[i].status === "1" ? "Ativo" : "Inativo"}</span>
                 </div>
             </div>
         </div>

@@ -144,6 +144,7 @@ function ptBR() {
 
     users_page_title: "Clientes",
     users_page_searchbar: "Buscar pelo nome ou documento..",
+    users_page_searchbar_empty: "Digite o nome ou documento para buscar",
   };
 }
 
@@ -247,5 +248,6 @@ function enUS() {
 
     users_page_title: "Clients",
     users_page_searchbar: "Search by name or document",
+    users_page_searchbar_empty: "Type the name or document to search",
   };
 }

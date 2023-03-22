@@ -745,24 +745,22 @@ if ($postjson['req'] == 'clients_by_user_id') {
     }
 
  	while ($row = mysqli_fetch_array($query)) { 
- 		$data = array(
-            'id' => $data['id'], 
-            'name' => $data['name'],
-            'document' => $data['document'],
-            'nationalRegistration' => $data['nationalRegistration'],
-            'driversLicense' => $data['driversLicense'],
-            'phone' => $data['phone'],
-            'email' => $data['email'],
-            'pass' => $data['pass'],
-            'type' => $data['type'],
-            'status' => $data['status'],
-            'address' => $data['address'],
-            'createdAt' => utf8_encode($data['createdAt']),
-            'recipientId' => utf8_encode($data['recipientId']),
-            'martialStatus' => utf8_encode($data['martialStatus']),
-            'occupation' => utf8_encode($data['occupation']),
-            'workPassport' => $data['workPassport'],
-            'files' => $data['files']
+ 		$data[] = array(
+            'id' => $row['id'], 
+            'name' => $row['name'],
+            'document' => $row['document'],
+            'nationalRegistration' => $row['nationalRegistration'],
+            'driversLicense' => $row['driversLicense'],
+            'phone' => $row['phone'],
+            'email' => $row['email'],
+            'pass' => $row['pass'],
+            'status' => $row['status'],
+            'address' => $row['address'],
+            'createdAt' => $row['createdAt'],
+            'recipientId' => $row['recipientId'],
+            'martialStatus' => $row['martialStatus'],
+            'occupation' => $row['occupation'],
+            'workPassport' => $row['workPassport']
  		);
  	}
 	

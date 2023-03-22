@@ -5,6 +5,7 @@ import {
   PageTitle,
   ChatRow,
   UserRow,
+  Toast,
 } from "../../components/index.js";
 import { baseRequest } from "../../queries/base.js";
 import { translations } from "../../translations/index.js";
@@ -31,28 +32,11 @@ async function showPageContent() {
   const user = JSON.parse(localStorage.getItem("userSession"));
 
   const lang = checkUserLanguage();
-
-  const bottombarArr = [
-    { url: "phone-client.html", icon: "phone" },
-    { url: "email-client.html", icon: "email" },
-    { url: "community.html", icon: "community" },
-    { url: "new-chat.html", icon: "add" },
-  ];
-
-  const users = [
-    {
-      userid: "1",
-      username: "Anderson",
-      document: "123.123.123-21",
-      status: "Ativo",
-    },
-    {
-      userid: "2",
-      username: "Amanda",
-      document: "111.222.333-12",
-      status: "Inativo",
-    },
-  ];
+  let users = await baseRequest({
+    id: user.id,
+    req: "clients_by_user_id",
+  });
+  users = users.result;
 
   document.getElementById("content").innerHTML = `
       <section class="section-area">
@@ -71,7 +55,7 @@ async function showPageContent() {
             ${PageTitle(translations(lang)?.users_page_title)}
             ${SearchBar("search_bar", translations(lang)?.users_page_searchbar)}
   
-          <div class="subcontent" id="messages-list">
+          <div class="subcontent" id="users-list">
             ${UserRow(users)}
           </div>
 
@@ -79,61 +63,54 @@ async function showPageContent() {
       </section>
     `;
 
-  document.querySelector("#new_user").addEventListener("click", (e) => {});
+  document.querySelector("#new_user").addEventListener("click", (e) => {
+    window.location.href = "new-user.html";
+  });
 
-  // retriveMessages(user.id, lang);
+  document.querySelector("#search_bar").addEventListener("keyup", (e) => {
+    if (e.keyCode == 13) {
+      const searchItem = document.querySelector("#search_bar").value;
+      if (searchItem === "") {
+        Toast("danger", translations(lang)?.users_page_searchbar_empty);
+        document.querySelector("#users-list").innerHTML = UserRow(users);
+        return;
+      }
+
+      retriveUsersBySearch(searchItem);
+    }
+  });
 
   Loading(false);
 }
 showPageContent();
 
-async function retriveMessages(userid, lang) {
+async function retriveUsersBySearch(search) {
   Loading(true);
 
-  let messages = await baseRequest({
-    id: userid,
-    req: "get_messages",
-  });
+  let usersArr = [];
+  let users = document.querySelectorAll(".user-row-username");
+  search = search.toLowerCase();
 
-  messages = messages.result;
+  for (let i = 0; i < users.length; i++) {
+    let status =
+      document.querySelectorAll(".user-row-status")[i].innerHTML === "Ativo"
+        ? "1"
+        : "2";
 
-  if (messages.length === 0) {
-    document.querySelector("#messages-list").innerHTML = `
-      <span class="no-messages">${
-        translations(lang)?.chats_page_nomessages
-      }</span>
-    `;
-    Loading(false);
-    return;
-  }
-
-  const messagesSorted = sortMessagesOlderToNewer(messages);
-
-  // const receiverArr = groupByUser(messagesSorted, (item) => item.receiverId);
-  // const senderArr = groupByUser(messagesSorted, (item) => item.senderId);
-  // const concatArr = [...receiverArr, ...senderArr];
-
-  let cardsPeople = [];
-
-  for (let i = 0; i < messagesSorted.length; i++) {
-    if (userid !== messagesSorted[i].senderId) {
-      let req = await baseRequest({
-        id: messagesSorted[i].senderId,
-        req: "get_user_by_id",
-      });
-      req = req.result;
-
-      cardsPeople.push({
-        username: req.name,
-        time: messagesSorted[i].createdAt,
-        message: messagesSorted[i].message,
-        userid: messagesSorted[i].senderId,
+    let userName = document.querySelectorAll(".user-row-username")[i].innerHTML;
+    let userDoc = document.querySelectorAll(".user-row-document")[i].innerHTML.replace(/\D/g, "");
+    if (userName.toLowerCase().includes(search) || userDoc.includes(search)) {
+      usersArr.push({
+        name: userName,
+        status: status,
+        document: userDoc ,
+        id: document.querySelectorAll(".user-row-user-id")[i].innerHTML,
       });
     }
   }
+  console.log(usersArr)
 
-  const messagesArr = removeDuplicates(cardsPeople, "username");
+  document.querySelector("#users-list").innerHTML = UserRow(usersArr);
 
-  document.querySelector("#messages-list").innerHTML = ChatRow(messagesArr);
   Loading(false);
 }
