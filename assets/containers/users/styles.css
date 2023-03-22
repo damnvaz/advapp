@@ -1,0 +1,36 @@
+.users-bg {
+  background-color: #fff;
+}
+
+.top-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.new-user-icon {
+  color: var(--back);
+  font-family: bold;
+  cursor: pointer;
+  margin-bottom: 30px;
+  display: flex;
+  cursor: pointer;
+}
+
+.compose-message {
+  color: var(--back);
+  font-family: bold;
+  cursor: pointer;
+  margin-bottom: 30px;
+  display: flex;
+  cursor: pointer;
+}
+
+.search-bar {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.subcontent {
+  padding-bottom: 30px;
+}

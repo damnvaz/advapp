@@ -141,6 +141,9 @@ function ptBR() {
     community_page_search: "Buscar mensagem",
     community_page_message: "Sua mensagem aqui",
     community_page_button: "enviar",
+
+    users_page_title: "Clientes",
+    users_page_searchbar: "Buscar pelo nome ou documento..",
   };
 }
 
@@ -241,5 +244,8 @@ function enUS() {
     community_page_search: "Search message",
     community_page_message: "Your message here",
     community_page_button: "send",
+
+    users_page_title: "Clients",
+    users_page_searchbar: "Search by name or document",
   };
 }

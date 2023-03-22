@@ -22,7 +22,7 @@ async function getPageContent() {
       value2: data?.agenda?.agendaForWeek || 0,
     },
     {
-      url: "clients.html",
+      url: "users.html",
       bg: "#FFD0D0",
       color: "#BC6161",
       title: "Clientes",
