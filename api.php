@@ -839,6 +839,58 @@ if ($postjson['req'] == 'create_client') {
     return;
 }
 
+if ($postjson['req'] == 'edit_client') {
+
+
+    $name = $postjson['name'];
+    $document = $postjson['document'];
+    $nationalRegistration = $postjson['nationalRegistration'];
+    $driversLicense = $postjson['driversLicense'];
+    $email = $postjson['email'];
+    $pass = $postjson['pass'];
+    $lawyerId = $postjson['lawyerId'];
+    $address = $postjson['address'];
+    $phone = $postjson['phone'];
+    $birthdate = $postjson['birthdate'];
+    $createdAt = $postjson['createdAt'];
+    $martialStatus = $postjson['martialStatus'];
+    $occupation = $postjson['occupation'];
+    $workPassport = $postjson['workPassport'];
+    $id = $postjson['id'];
+
+    $query = mysqli_query($mysqli, 
+    "UPDATE users SET 
+        name = '$name',
+        document = '$document',
+        nationalRegistration = '$nationalRegistration',
+        driversLicense = '$driversLicense',
+        phone = '$phone',
+        email = '$email',
+        pass = '$phone',
+        type = 3,
+        status = 1,
+        birthdate = '$birthdate',
+        address = '$address',
+        createdAt = '$createdAt',
+        recipientId = '-',
+        martialStatus = '$martialStatus',
+        occupation = '$occupation',
+        workPassport = '$workPassport'
+        WHERE id = '$id'
+    ");
+
+    if ($query) {
+        $result = json_encode(array('success' => true, 'result' => 'Dados salvos com sucesso.'));
+        echo $result; 
+        return;
+    }
+
+    $result = json_encode(array('success' => false, 'result' => 'Erro ao atualizar.'));
+    echo $result; 
+    return;
+
+}
+
 if ($postjson['req'] == 'delete_client') {
 
     // VALIDATE INPUT BEFORE REQUEST

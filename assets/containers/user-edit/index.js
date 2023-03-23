@@ -280,7 +280,7 @@ async function showPageContent() {
   const lang = checkUserLanguage();
 
   let req = await baseRequest({
-    id: window.location.href.split('user-edit.html?id=')[1],
+    id: window.location.href.split("user-edit.html?id=")[1],
     req: "get_user_by_id",
   });
   req = req.result;
@@ -379,6 +379,7 @@ async function saveUser(userid) {
   );
 
   await baseRequest({
+    id: window.location.href.split("user-edit.html?id=")[1],
     name: document.querySelector("#user_name").value.trim(),
     document: document
       .querySelector("#user_document")
