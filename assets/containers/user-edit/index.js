@@ -1,11 +1,5 @@
-import {
-  ArrowBack,
-  Button,
-  Loading,
-  PageTitle,
-  Toast,
-} from "../../components/index.js";
-import { baseRequest } from "../../queries/base.js";
+import { ArrowBack, Button, Loading, Toast } from "../../components/index.js";
+import { baseRequest, convertDateDash } from "../../queries/base.js";
 import { translations } from "../../translations/index.js";
 import { isUserNotLogged } from "../../utils/checkSession.js";
 import { checkUserLanguage } from "../../utils/checkUserLanguage.js";
@@ -19,10 +13,10 @@ import {
   mTel,
 } from "../../utils/maskInput.js";
 
-function Input(id, placeholder, maxLength = "180", type, width = "100%") {
+function Input(id, placeholder, type, maxLength = "180", width = "100%") {
   return `
     <input 
-      class="profile-input" 
+      class="profile-input ${id === "user_name" ? "profile-input-center" : ""}" 
       type="${type}" 
       placeholder="${placeholder}" 
       id="${id}"
@@ -50,51 +44,127 @@ function PersonalData(lang) {
   <span class='profile-content-title'>${
     translations(lang)?.profile_page_personal_data
   }</span>
-  ${Input("user_name", "Nome completo", "", "text")}
-  ${Input("user_document", "Documento (CPF/CNPJ)", "18", "tel")}
-  <div style='display: flex; flex-direction: row; justify-content: space-between'> 
-   ${Input("user_national_registration", "RG", "14", "tel")}
-   ${Input("user_drivers_license", "CNH", "14", "tel")}
-  </div>
-
-  ${Input("user_work_passport", "(Carteira de trabalho)", "", "tel")}
-  ${Input("user_birthdate", "Data de nascimento", "", "tel")}
+  ${Input(
+    "user_document",
+    translations(lang)?.new_user_page_document,
+    "tel",
+    "",
+    null
+  )}
+  ${Input(
+    "user_national_registration",
+    translations(lang)?.new_user_page_national_registration,
+    "tel",
+    "",
+    null
+  )}
+  ${Input(
+    "user_drivers_license",
+    translations(lang)?.new_user_page_drivers_license,
+    "tel",
+    "",
+    null
+  )}
+  ${Input(
+    "user_work_passport",
+    translations(lang)?.new_user_page_work_passport,
+    "tel",
+    "",
+    null
+  )}
+  ${Input(
+    "user_birthdate",
+    translations(lang)?.new_user_page_birthdate,
+    "tel",
+    "",
+    null
+  )}
   `;
 }
 
 function ContactData(lang) {
   return `
     <span class='profile-content-title'>${
-      translations(lang)?.profile_page_contact
+      translations(lang)?.new_user_page_contact_data
     }</span>
-    ${Input("user_phone", "Telefone celular", "", "tel")}
-    ${Input("user_email", "Email", "", "email")}
-    <div style='display: flex; flex-direction: row; align-items: center;'> 
-      ${Input("user_pass", "Senha", "", "password", "120px")}
-      <span style='font-size: 14px; margin-top: 10px; color: cornflowerblue' id="pass"></span>
-    </div>
+    ${Input(
+      "user_phone",
+      translations(lang)?.new_user_page_phone,
+      "tel",
+      "",
+      null
+    )}
+    ${Input(
+      "user_email",
+      "Email",
+      translations(lang)?.new_user_page_email,
+      "",
+      null
+    )}
   `;
 }
 
 function AddressData(lang) {
   return `
   <span class='profile-content-title'>${
-    translations(lang)?.profile_page_address
+    translations(lang)?.new_user_page_address_data
   }</span>
-  ${Input("user_zipcode", "CEP", "", "tel")}
-  ${Input("user_address", "Endereço", "", "text")}
-  ${Input("user_address_number", "Número", "", "tel")}
-  ${Input("user_address_neighborhood", "Bairro", "", "text")}
-  ${Input("user_address_complement", "Complemento", "", "text")}
-  ${Input("user_address_city", "Cidade", "", "text")}
-  ${Input("user_address_state", "Estado", "", "text")}
+  ${Input(
+    "user_zipcode",
+    translations(lang)?.new_user_page_zipcode,
+    "tel",
+    "",
+    null
+  )}
+  ${Input(
+    "user_address",
+    translations(lang)?.new_user_page_address,
+    "text",
+    "",
+    null
+  )}
+  ${Input(
+    "user_address_number",
+    translations(lang)?.new_user_page_address_number,
+    "number",
+    "",
+    null
+  )}
+  ${Input(
+    "user_address_neighborhood",
+    translations(lang)?.new_user_page_neighborhood,
+    "text",
+    "",
+    null
+  )}
+  ${Input(
+    "user_address_complement",
+    translations(lang)?.new_user_page_complement,
+    "text",
+    "",
+    null
+  )}
+  ${Input(
+    "user_address_city",
+    translations(lang)?.new_user_page_city,
+    "text",
+    "",
+    null
+  )}
+  ${Input(
+    "user_address_state",
+    translations(lang)?.new_user_page_state,
+    "text",
+    "",
+    null
+  )}
   `;
 }
 
 function OtherData(lang) {
   return `
     <span class='profile-content-title'>${
-      translations(lang)?.profile_page_other
+      translations(lang)?.new_user_page_other_data
     }</span>
     ${Select(
       "user_martial_status",
@@ -117,20 +187,53 @@ function OtherData(lang) {
    `,
       "100%"
     )}
-  ${Input("user_occupation", "Ocupação profissional")}
+  ${Input(
+    "user_occupation",
+    translations(lang)?.new_user_page_occupation,
+    "text",
+    "",
+    null
+  )}
+  
+  <br />
+  <span class='profile-content-title'>${
+    translations(lang)?.new_user_page_observation
+  }</span>
   `;
 }
 
 function SaveButton(lang) {
   return `
     <div style='display: table; margin: 80px auto 50px auto;'>
-      ${Button(
-        translations(lang)?.save_data,
-        null,
-        "save_data_button",
-        "green"
-      )}
+      <button
+        class="button"
+        style="width: 140px; 
+          background-color: var(--button-green); 
+          color: #fff; border: 1px solid var(--button-green) !important;""
+        type="button"
+        id="save_data_button"
+      >
+          ${translations(lang)?.new_user_page_save_data}
+      </button>
     </div>
+  `;
+}
+
+function RemoveButton(lang) {
+  return `
+    <div style='display: table; margin: 80px auto 50px auto;'>
+      <button
+          class="button"
+          style="width: 140px; 
+            background-color: var(--button-red); 
+            color: #fff; border: 1px solid var(--button-red) !important;""
+          type="button"
+          id="remove_data_button"
+      >
+          ${translations(lang)?.new_user_page_remove_data}
+      </button>
+    </div>
+
   `;
 }
 
@@ -157,7 +260,6 @@ function LoadData(data) {
   document.querySelector("#user_birthdate").value = data.birthdate;
   document.querySelector("#user_phone").value = data.phone;
   document.querySelector("#user_email").value = data.email;
-  document.querySelector("#user_pass").value = data.pass;
   document.querySelector("#user_zipcode").value = zipcode;
   document.querySelector("#user_address").value = address;
   document.querySelector("#user_address_number").value = addressNumber;
@@ -175,27 +277,38 @@ async function showPageContent() {
   isUserNotLogged();
 
   const user = JSON.parse(localStorage.getItem("userSession"));
+  const lang = checkUserLanguage();
 
   let req = await baseRequest({
-    id: user.id,
+    id: window.location.href.split('user-edit.html?id=')[1],
     req: "get_user_by_id",
   });
   req = req.result;
-
-  const lang = checkUserLanguage();
 
   document.getElementById("content").innerHTML = `
       <section class="section-area">
         <div class="content">
           ${ArrowBack()}
-          ${PageTitle(translations(lang)?.profile_page_title)}
+
+          <img src="assets/icons/no-user.svg" alt="no user icon" class="user-icon" />
+          ${Input(
+            "user_name",
+            translations(lang)?.new_user_page_fullname,
+            "",
+            "text",
+            ""
+          )}
   
           <div class="subcontent">
-                ${PersonalData(lang)}     
-                ${ContactData(lang)}                
-                ${AddressData(lang)}
-                ${OtherData(lang)}
-                ${SaveButton(lang)}
+            ${PersonalData(lang)}     
+            ${ContactData(lang)}                
+            ${AddressData(lang)}
+            ${OtherData(lang)}
+
+            <div class="button-row">
+              ${RemoveButton(lang)}
+              ${SaveButton(lang)}
+            </div>
           </div>
         </div>
       </section>
@@ -203,7 +316,6 @@ async function showPageContent() {
 
   LoadData(req);
 
-  // input handler
   document.querySelector("#user_birthdate").onkeydown = () => {
     fMasc(document.querySelector("#user_birthdate"), mDataNasc);
   };
@@ -218,14 +330,6 @@ async function showPageContent() {
   };
   document.querySelector("#user_zipcode").onkeydown = () => {
     fMasc(document.querySelector("#user_zipcode"), mCEP);
-  };
-  document.querySelector("#user_pass").onkeyup = () => {
-    document.querySelector("#pass").innerHTML =
-      "(" + document.querySelector("#user_pass").value + ")";
-  };
-  document.querySelector("#user_pass").onblur = () => {
-    document.querySelector("#pass").innerHTML =
-      "(" + document.querySelector("#user_pass").value + ")";
   };
 
   // get address info
@@ -242,48 +346,40 @@ async function showPageContent() {
     }
   });
 
-  document
-    .querySelector(`#save_data_button`)
-    .addEventListener("click", async () => {
-      updateUserData(user.id);
+  document.querySelector("#save_data_button").onclick = () => {
+    saveUser(user.id);
+  };
 
-      refreshData(user.id);
-    });
+  document.querySelector("#remove_data_button").onclick = () => {
+    deleteUser();
+  };
 
   Loading(false);
 }
 showPageContent();
 
-async function updateUserData(id) {
-  let add = document.querySelector("#user_address").value;
-  let num = document.querySelector("#user_address_number").value;
-  let comp =
-    document.querySelector("#user_address_complement").value === ""
-      ? "(não possui complemento)"
-      : document.querySelector("#user_address_complement").value;
-  let neig = document.querySelector("#user_address_neighborhood").value;
-  let zip = document.querySelector("#user_zipcode").value;
+async function saveUser(userid) {
+  let zipcode = document.querySelector("#user_zipcode").value;
+  let address = document.querySelector("#user_address").value;
+  let addressNumber = document.querySelector("#user_address_number").value;
+  let neighborhood = document.querySelector("#user_address_neighborhood").value;
+  let complement =
+    document.querySelector("#user_address_complement").value !== ""
+      ? document.querySelector("#user_address_complement").value
+      : "(não tem)";
   let city = document.querySelector("#user_address_city").value;
-  let uf = document.querySelector("#user_address_state").value;
+  let state = document.querySelector("#user_address_state").value;
 
-  let workPassport =
-    document.querySelector("#user_work_passport").value === ""
-      ? "(não possui carteira de trabalho)"
-      : document.querySelector("#user_work_passport").value;
+  let fulladdress = `Endereço: ${address}, Número: ${addressNumber}, Complemento: ${complement}, Bairro: ${neighborhood}, CEP: ${zipcode}, Cidade: ${city}, Estado: ${state}`;
 
-  let cnh =
-    document.querySelector("#user_drivers_license").value === ""
-      ? "(não possui cnh)"
-      : document
-          .querySelector("#user_drivers_license")
-          .value.replace(/\D/g, "")
-          .trim();
-
-  let address = `Endereço: ${add}, Número: ${num}, Complemento: ${comp}, Bairro: ${neig}, CEP: ${zip}, Cidade: ${city}, Estado: ${uf}.`;
+  let currentTime = convertDateDash(
+    new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000)
+      .toISOString()
+      .split("T")[0]
+  );
 
   await baseRequest({
-    id: Number(id),
-    name: document.querySelector("#user_name").value,
+    name: document.querySelector("#user_name").value.trim(),
     document: document
       .querySelector("#user_document")
       .value.replace(/\D/g, "")
@@ -292,30 +388,53 @@ async function updateUserData(id) {
       .querySelector("#user_national_registration")
       .value.replace(/\D/g, "")
       .trim(),
-    driversLicense: cnh,
-    email: document.querySelector("#user_email").value.trim(),
-    pass: document.querySelector("#user_pass").value.trim(),
+    driversLicense:
+      document.querySelector("#user_drivers_license").value !== ""
+        ? document
+            .querySelector("#user_drivers_license")
+            .value.replace(/\D/g, "")
+            .trim()
+        : "(não tem)",
     phone: document.querySelector("#user_phone").value.replace(/\D/g, ""),
+    email: document.querySelector("#user_email").value.trim(),
+    pass: document.querySelector("#user_phone").value.replace(/\D/g, "").trim(),
     birthdate: document
       .querySelector("#user_birthdate")
       .value.replace(/\D/g, "")
       .trim(),
-    address: address,
+    address: fulladdress,
+    lawyerId: userid,
+    createdAt: currentTime,
     martialStatus: document.querySelector("#user_martial_status").value.trim(),
-    occupation: document.querySelector("#user_occupation").value.trim(),
-    workPassport: workPassport,
-    req: "edit_user",
+    occupation:
+      document.querySelector("#user_occupation").value !== ""
+        ? document.querySelector("#user_occupation").value.trim()
+        : "(não tem)",
+    workPassport:
+      document.querySelector("#user_work_passport").value !== ""
+        ? document.querySelector("#user_work_passport").value.trim()
+        : "(não tem)",
+    req: "create_client",
   });
-}
-
-async function refreshData(userId) {
-  let req = await baseRequest({
-    id: userId,
-    req: "get_user_by_id",
-  });
-  req = req.result;
 
   Toast("success", "Dados salvos com sucesso");
 
-  LoadData(req);
+  setTimeout(() => {
+    window.location.href = "users.html";
+  }, 3400);
+}
+
+async function deleteUser() {
+  let clientId = window.location.href.split("user-edit.html?id=")[1];
+
+  await baseRequest({
+    clientId: clientId,
+    req: "delete_client",
+  });
+
+  Toast("success", "Removido com sucesso");
+
+  setTimeout(() => {
+    window.location.href = "users.html";
+  }, 3400);
 }

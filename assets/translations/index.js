@@ -155,6 +155,7 @@ function ptBR() {
     user_edit_page_birthdate: "Data de nascimento",
 
     new_user_page_save_data: "salvar",
+    new_user_page_remove_data: "excluir",
     new_user_page_personal_data: "Dados pessoais",
     new_user_page_fullname: "Nome completo",
     new_user_page_document: "Documento (CPF/CNPJ)",
@@ -290,6 +291,7 @@ function enUS() {
     users_page_searchbar_empty: "Type the name or document to search",
 
     new_user_page_save_data: "save",
+    new_user_page_remove_data: "remove",
     new_user_page_personal_data: "Personal data",
     new_user_page_fullname: "Fullname",
     new_user_page_document: "Document (CPF/CNPJ)",

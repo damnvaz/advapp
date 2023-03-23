@@ -1,0 +1,77 @@
+.new-user-bg {
+  background-color: #fff;
+}
+
+.profile-content-title {
+  font-family: "bold";
+  font-size: 18px;
+  color: #333;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  text-align: left;
+  width: 100%;
+}
+
+.profile-input,
+.profile-select {
+  font-family: "regular";
+  border: none;
+  font-size: 17px;
+  color: #797979;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.page-title {
+  font-size: 1.4rem !important;
+  text-align: center !important;
+}
+
+.buttons-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  align-items: center;
+  margin: 30px 0px 0px 0px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.35));
+}
+
+.container-button {
+  border-radius: 10px;
+  background-color: #f4f0f0;
+  height: 60px;
+  width: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-icon {
+  width: 80px;
+  height: 80px;
+  display: table;
+  margin: 10px auto;
+}
+
+.icon-button {
+  width: 35px;
+  height: 35px;
+}
+
+.subcontent {
+  margin: 35px auto 60px auto !important;
+}
+
+.profile-input-center {
+  text-align: center;
+  font-family: "bold";
+  color: #333;
+}
+
+.button-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}

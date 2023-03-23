@@ -839,6 +839,30 @@ if ($postjson['req'] == 'create_client') {
     return;
 }
 
+if ($postjson['req'] == 'delete_client') {
+
+    // VALIDATE INPUT BEFORE REQUEST
+    if ($postjson['clientId'] == '') {
+        $result = json_encode(array('success' => false, 'result' => 'Please inform clientId'));
+        echo $result;
+        return;
+    }
+
+	$clientId = $postjson['clientId'];
+	$query = mysqli_query($mysqli, "DELETE FROM users WHERE id = '$clientId' ");
+	$queryClient = mysqli_query($mysqli, "DELETE FROM clients WHERE clientId = '$clientId' ");
+
+	if ($query) {
+		$result = json_encode(array('success' => true, 'result' => 'Deletado com sucesso.'));
+		echo $result;
+		return;
+	}
+
+	$result = json_encode(array('success' => false, 'result' => 'Erro ao deletar.'));
+	echo $result;
+	return;   
+}
+
 // TRANSACTIONS
 if ($postjson['req'] == 'transactions_by_user_id') {
     
