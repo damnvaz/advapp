@@ -415,7 +415,7 @@ async function saveUser(userid) {
       document.querySelector("#user_work_passport").value !== ""
         ? document.querySelector("#user_work_passport").value.trim()
         : "(não tem)",
-    req: "create_client",
+    req: "edit_client",
   });
 
   Toast("success", "Dados salvos com sucesso");
