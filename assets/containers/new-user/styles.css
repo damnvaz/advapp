@@ -12,13 +12,14 @@
   width: 100%;
 }
 
-.profile-input {
+.profile-input,
+.profile-select {
   font-family: "regular";
   border: none;
   font-size: 17px;
   color: #797979;
   margin-top: 10px;
-  width: 80%;
+  width: 100%;
 }
 
 .page-title {
@@ -60,4 +61,10 @@
 
 .subcontent {
   margin: 35px auto 60px auto !important;
+}
+
+.profile-input-center {
+  text-align: center;
+  font-family: 'bold';
+  color: #333;
 }

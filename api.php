@@ -736,11 +736,17 @@ if ($postjson['req'] == 'clients_by_user_id') {
  	}
 
     $id = $postjson['id'];
- 	$query = mysqli_query($mysqli, "SELECT * FROM clients WHERE lawyerId = '$id' ");
+ 	$query = mysqli_query($mysqli, 
+        "SELECT * 
+        FROM users 
+        INNER JOIN clients 
+        ON clients.clientId = users.id
+        WHERE clients.lawyerId = '$id'
+        ");
 
     if (mysqli_num_rows($query) == 0) {
         $result = json_encode(array('success' => false, 'result' => []));
-        echo $result; 
+        echo $result;
         return;
     }
 
@@ -760,12 +766,76 @@ if ($postjson['req'] == 'clients_by_user_id') {
             'recipientId' => $row['recipientId'],
             'martialStatus' => $row['martialStatus'],
             'occupation' => $row['occupation'],
-            'workPassport' => $row['workPassport']
+            'workPassport' => $row['workPassport'],
+            'lawyerId' => $row['lawyerId']
  		);
  	}
 	
     $result = json_encode(array('success'=>true, 'result' => $data));
     echo $result; 
+    return;
+}
+
+if ($postjson['req'] == 'create_client') {
+    
+    $name = $postjson['name'];
+    $document = $postjson['document'];
+    $nationalRegistration = $postjson['nationalRegistration'];
+    $driversLicense = $postjson['driversLicense'];
+    $email = $postjson['email'];
+    $pass = $postjson['pass'];
+    $lawyerId = $postjson['lawyerId'];
+    $address = $postjson['address'];
+    $phone = $postjson['phone'];
+    $birthdate = $postjson['birthdate'];
+    $createdAt = $postjson['createdAt'];
+    $martialStatus = $postjson['martialStatus'];
+    $occupation = $postjson['occupation'];
+    $workPassport = $postjson['workPassport'];
+
+ 	$query = mysqli_query($mysqli, 
+        "INSERT INTO users SET 
+            name = '$name',
+            document = '$document',
+            nationalRegistration = '$nationalRegistration',
+            driversLicense = '$driversLicense',
+            phone = '$phone',
+            email = '$email',
+            pass = '$phone',
+            type = 3,
+            status = 1,
+            birthdate = '$birthdate',
+            address = '$address',
+            createdAt = '$createdAt',
+            recipientId = '-',
+            martialStatus = '$martialStatus',
+            occupation = '$occupation',
+            workPassport = '$workPassport'
+        ");
+
+ 	$id = mysqli_insert_id($mysqli);
+ 	if ($query) {
+        
+        $queryClient = mysqli_query($mysqli,
+        "INSERT INTO clients SET 
+            clientId = '$id',
+            lawyerId = '$lawyerId'
+        ");
+
+        if ($queryClient) {
+            $result = json_encode(array('success' => true, 'result' => 'Dados salvos com sucesso.'));
+            echo $result;
+            return;
+        }
+
+        $result = json_encode(array('success' => false, 'result' => 'Erro ao criar cliente.'));
+        echo $result;
+        return;
+    }
+
+
+	$result = json_encode(array('success' => false, 'result' => 'Erro ao criar usuário.'));
+    echo $result;
     return;
 }
 
