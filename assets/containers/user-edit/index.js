@@ -207,7 +207,7 @@ function SaveButton(lang) {
     <div style='display: table; margin: 80px auto 50px auto;'>
       <button
         class="button"
-        style="width: 140px; 
+        style="width: 130px; 
           background-color: var(--button-green); 
           color: #fff; border: 1px solid var(--button-green) !important;""
         type="button"
@@ -224,7 +224,7 @@ function RemoveButton(lang) {
     <div style='display: table; margin: 80px auto 50px auto;'>
       <button
           class="button"
-          style="width: 140px; 
+          style="width: 130px; 
             background-color: var(--button-red); 
             color: #fff; border: 1px solid var(--button-red) !important;""
           type="button"
