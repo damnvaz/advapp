@@ -22,34 +22,14 @@ async function getPageContent() {
       value2: data?.agenda?.agendaForWeek || 0,
     },
     {
-      url: "users.html",
-      bg: "#FFD0D0",
-      color: "#BC6161",
-      title: "Clientes",
-      description1: "cadastrados",
-      value1: data?.clients?.total || 0,
-      description2: "hoje",
-      value2: data?.clients?.signedUpToday || 0,
-    },
-    {
-      url: "transactions.html",
+      url: "contracts.html",
       bg: "#D0D8FF",
       color: "#6170BC",
-      title: "Transações",
-      description1: "à receber",
-      value1: data?.transactions?.toReceive || "0,00",
-      description2: "recebido",
-      value2: data?.transactions?.received || "0,00",
-    },
-    {
-      url: "#",
-      bg: "transparent",
-      color: "transparent",
-      title: "",
-      description1: "",
-      value1: "",
-      description2: "",
-      value2: "",
+      title: "Contratos",
+      description1: "em curso",
+      value1: data?.transactions?.toReceive || "3",
+      description2: "fechados",
+      value2: data?.transactions?.received || "2",
     },
   ];
 
@@ -59,8 +39,8 @@ async function getPageContent() {
   }
 
   let bottombarArr = [
-    { url: "documents.html", icon: "document" },
-    { url: "reports.html", icon: "report" },
+    { url: "transactions.html", icon: "transaction" },
+    { url: "users.html", icon: "users" },
     { url: "chats.html", icon: "chat" },
     { url: "settings.html", icon: "settings" },
   ];
