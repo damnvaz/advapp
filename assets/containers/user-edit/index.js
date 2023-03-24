@@ -240,7 +240,7 @@ function RemoveButton(lang) {
 function LoadData(data) {
   let not = " - não informado";
   let addressData =
-    data.address === ""
+    data.address !== ""
       ? `Endereço: Endereço${not}, Número: Número${not}, Complemento: Complemento${not}, Bairro: Bairro${not}, CEP: CEP${not}, Cidade: Cidade${not}, Estado: Estado${not}`
       : data.address;
   let address = addressData.split("Endereço: ")[1].split(",")[0];
