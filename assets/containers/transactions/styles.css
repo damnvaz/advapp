@@ -1,0 +1,14 @@
+.users-bg {
+  background-color: #fff;
+}
+
+.top-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+.subcontent {
+  padding-bottom: 30px;
+}

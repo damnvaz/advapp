@@ -1,0 +1,10 @@
+.transaction-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid #CECECE;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}

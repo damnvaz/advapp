@@ -28,6 +28,7 @@ import { Accordion } from "./accordion/index.js";
 import { ChatRow } from "./chat-row/index.js";
 import { ChatMessage } from "./chat-message/index.js";
 import { UserRow } from "./user-row/index.js";
+import { TransactionRow } from "./transaction-row/index.js";
 
 export {
   ArrowBack,
@@ -58,4 +59,5 @@ export {
   ChatRow,
   ChatMessage,
   UserRow,
+  TransactionRow,
 };
