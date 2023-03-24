@@ -27,9 +27,9 @@ async function getPageContent() {
       color: "#6170BC",
       title: "Contratos",
       description1: "em curso",
-      value1: data?.transactions?.toReceive || "3",
+      value1: data?.contracts?.inProgress || "0",
       description2: "fechados",
-      value2: data?.transactions?.received || "2",
+      value2: data?.contracts?.done || "0",
     },
   ];
 
@@ -119,47 +119,11 @@ async function getData(user) {
     agendaForWeek: agendaForWeek.length,
   };
 
-  let clients = await baseRequest({
-    id: user.id,
-    req: "clients_by_user_id",
-  });
 
-  clients = clients.result;
-  let signedUpToday = clients.map((item) => {
-    return item.createdAt === date && item;
-  });
+  let contracts = {
+    inProgress: '3',
+    done: '2'
+  }
 
-  clients = {
-    ...clients,
-    total: clients.length,
-    signedUpToday: signedUpToday.length,
-  };
-
-  let transactions = await baseRequest({
-    id: user.id,
-    req: "transactions_by_user_id",
-  });
-
-  transactions = transactions.result;
-  let toReceiveList = transactions.map((item) => {
-    return !item.wasPaid && item;
-  });
-
-  let totalToReceive = 0;
-  toReceiveList.map((item) => {
-    totalToReceive += Number(item.amount);
-  });
-
-  let totalReceived = 0;
-  transactions.map((item) => {
-    totalReceived += Number(item.amount);
-  });
-
-  transactions = {
-    ...transactions,
-    toReceive: Number(totalToReceive).toFixed(2),
-    received: Number(totalReceived).toFixed(2),
-  };
-
-  return [agenda, clients, transactions];
+  return [agenda, contracts];
 }

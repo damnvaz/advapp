@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 16-Mar-2023 às 14:45
--- Versão do servidor: 10.4.27-MariaDB
--- versão do PHP: 8.2.0
+-- Host: localhost
+-- Generation Time: Mar 24, 2023 at 02:54 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.3.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `advdb`
+-- Database: `advdb`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `chat`
+-- Table structure for table `chat`
 --
 
 CREATE TABLE `chat` (
@@ -32,38 +32,24 @@ CREATE TABLE `chat` (
   `senderId` varchar(255) NOT NULL,
   `receiverId` varchar(255) NOT NULL,
   `message` varchar(255) NOT NULL,
-  `createdAt` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `createdAt` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `clients`
+-- Table structure for table `clients`
 --
 
 CREATE TABLE `clients` (
-  `id` bigint(20) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `document` varchar(18) NOT NULL,
-  `nationalRegistration` varchar(18) NOT NULL,
-  `driversLicense` varchar(18) NOT NULL,
-  `phone` varchar(30) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `pass` varchar(255) NOT NULL,
-  `lawyerId` varchar(255) NOT NULL,
-  `status` int(11) NOT NULL,
-  `address` varchar(255) NOT NULL,
-  `createdAt` varchar(15) NOT NULL,
-  `recipientId` varchar(255) NOT NULL,
-  `martialStatus` varchar(255) NOT NULL,
-  `occupation` varchar(255) NOT NULL,
-  `workPassport` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `clientId` bigint(20) NOT NULL,
+  `lawyerId` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `contract`
+-- Table structure for table `contract`
 --
 
 CREATE TABLE `contract` (
@@ -73,22 +59,22 @@ CREATE TABLE `contract` (
   `paymentMethod` varchar(30) NOT NULL,
   `status` int(11) NOT NULL,
   `details` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `contract_template`
+-- Table structure for table `contract_template`
 --
 
 CREATE TABLE `contract_template` (
   `id` bigint(20) NOT NULL,
   `lawyerId` varchar(255) NOT NULL,
   `details` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `contract_template`
+-- Dumping data for table `contract_template`
 --
 
 INSERT INTO `contract_template` (`id`, `lawyerId`, `details`) VALUES
@@ -97,17 +83,17 @@ INSERT INTO `contract_template` (`id`, `lawyerId`, `details`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `faq`
+-- Table structure for table `faq`
 --
 
 CREATE TABLE `faq` (
   `id` bigint(20) NOT NULL,
   `doubt` varchar(150) NOT NULL,
   `details` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `faq`
+-- Dumping data for table `faq`
 --
 
 INSERT INTO `faq` (`id`, `doubt`, `details`) VALUES
@@ -117,20 +103,20 @@ INSERT INTO `faq` (`id`, `doubt`, `details`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `forum`
+-- Table structure for table `forum`
 --
 
 CREATE TABLE `forum` (
   `id` bigint(20) NOT NULL,
   `userId` varchar(255) NOT NULL,
   `message` varchar(255) NOT NULL,
-  `createdAt` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `createdAt` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `log`
+-- Table structure for table `log`
 --
 
 CREATE TABLE `log` (
@@ -138,25 +124,50 @@ CREATE TABLE `log` (
   `userId` varchar(255) NOT NULL,
   `message` varchar(255) NOT NULL,
   `createdAt` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `notifications`
+-- Table structure for table `notifications`
 --
 
 CREATE TABLE `notifications` (
   `id` bigint(20) NOT NULL,
   `receiverId` varchar(255) NOT NULL,
   `message` varchar(255) NOT NULL,
+  `url` varchar(150) NOT NULL,
   `wasRead` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `platform`
+-- Table structure for table `plans`
+--
+
+CREATE TABLE `plans` (
+  `id` bigint(20) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `oldPrice` varchar(30) NOT NULL,
+  `price` varchar(30) NOT NULL,
+  `details` varchar(255) NOT NULL,
+  `bg` varchar(255) NOT NULL,
+  `color` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `plans`
+--
+
+INSERT INTO `plans` (`id`, `title`, `oldPrice`, `price`, `details`, `bg`, `color`) VALUES
+(1, 'Plano Silver', 'R$ 69,90', 'R$ 59,90', '\"Agendamento de consultas\",\"Chat com o cliente\",\"Relatorios\"', '#E1DEDE', '#797979'),
+(2, 'Plano Black', 'R$ 89,90', 'R$ 79,90', '\"Agendamento de consultas\",\"Chat com o cliente\",\"Relatorios\",\"Contratos\",\"Forum\"', '#525151', '#f9f9f9');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `platform`
 --
 
 CREATE TABLE `platform` (
@@ -165,10 +176,10 @@ CREATE TABLE `platform` (
   `phone` varchar(20) NOT NULL,
   `stoneApiKey` varchar(255) NOT NULL,
   `recipientId` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `platform`
+-- Dumping data for table `platform`
 --
 
 INSERT INTO `platform` (`id`, `email`, `phone`, `stoneApiKey`, `recipientId`) VALUES
@@ -177,17 +188,17 @@ INSERT INTO `platform` (`id`, `email`, `phone`, `stoneApiKey`, `recipientId`) VA
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `privacy_policy`
+-- Table structure for table `privacy_policy`
 --
 
 CREATE TABLE `privacy_policy` (
   `id` bigint(20) NOT NULL,
   `policy` longtext NOT NULL,
   `version` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `privacy_policy`
+-- Dumping data for table `privacy_policy`
 --
 
 INSERT INTO `privacy_policy` (`id`, `policy`, `version`) VALUES
@@ -196,7 +207,7 @@ INSERT INTO `privacy_policy` (`id`, `policy`, `version`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `process`
+-- Table structure for table `process`
 --
 
 CREATE TABLE `process` (
@@ -206,24 +217,24 @@ CREATE TABLE `process` (
   `lawyerId` varchar(255) NOT NULL,
   `defandant` varchar(255) NOT NULL,
   `files` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `process_template`
+-- Table structure for table `process_template`
 --
 
 CREATE TABLE `process_template` (
   `id` bigint(20) NOT NULL,
   `lawyerId` varchar(255) NOT NULL,
   `details` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `receipts`
+-- Table structure for table `receipts`
 --
 
 CREATE TABLE `receipts` (
@@ -233,12 +244,12 @@ CREATE TABLE `receipts` (
   `contractId` varchar(255) NOT NULL,
   `details` longtext NOT NULL,
   `createdAt` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `schedule`
+-- Table structure for table `schedule`
 --
 
 CREATE TABLE `schedule` (
@@ -252,24 +263,24 @@ CREATE TABLE `schedule` (
   `day` varchar(30) NOT NULL,
   `time` varchar(30) NOT NULL,
   `paymentMethod` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `schedule_service`
+-- Table structure for table `schedule_service`
 --
 
 CREATE TABLE `schedule_service` (
   `id` bigint(20) NOT NULL,
   `service` varchar(255) NOT NULL,
   `userId` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `schedule_time`
+-- Table structure for table `schedule_time`
 --
 
 CREATE TABLE `schedule_time` (
@@ -278,34 +289,34 @@ CREATE TABLE `schedule_time` (
   `time` varchar(8) NOT NULL,
   `userId` varchar(255) NOT NULL,
   `comment` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `suggestions`
+-- Table structure for table `suggestions`
 --
 
 CREATE TABLE `suggestions` (
   `Id` bigint(20) NOT NULL,
   `suggestion` varchar(255) NOT NULL,
   `createdAt` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `terms_of_use`
+-- Table structure for table `terms_of_use`
 --
 
 CREATE TABLE `terms_of_use` (
   `id` bigint(20) NOT NULL,
   `terms` longtext NOT NULL,
   `version` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `terms_of_use`
+-- Dumping data for table `terms_of_use`
 --
 
 INSERT INTO `terms_of_use` (`id`, `terms`, `version`) VALUES
@@ -314,7 +325,7 @@ INSERT INTO `terms_of_use` (`id`, `terms`, `version`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `transactions`
+-- Table structure for table `transactions`
 --
 
 CREATE TABLE `transactions` (
@@ -326,12 +337,12 @@ CREATE TABLE `transactions` (
   `service` varchar(255) NOT NULL,
   `wasPaid` tinyint(1) NOT NULL,
   `createdAt` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -345,268 +356,276 @@ CREATE TABLE `users` (
   `pass` varchar(255) NOT NULL,
   `type` int(11) NOT NULL,
   `status` int(11) NOT NULL,
+  `birthdate` varchar(12) NOT NULL,
   `address` varchar(255) NOT NULL,
-  `createdAt` varchar(15) NOT NULL,
+  `createdAt` varchar(16) NOT NULL,
   `recipientId` varchar(255) NOT NULL,
   `martialStatus` varchar(255) NOT NULL,
   `occupation` varchar(255) NOT NULL,
   `workPassport` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `users`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `document`, `nationalRegistration`, `driversLicense`, `phone`, `email`, `pass`, `type`, `status`, `address`, `createdAt`, `recipientId`, `martialStatus`, `occupation`, `workPassport`) VALUES
-(1, 'Daniel Vaz Monteiro', '17927364790', '288167992', '-', '21991943672', 'contact.daniel.vaz@gmail.com', '12345678', 1, 1, '-', '15/03/2023', '-', '1', 'Advogado(a)', '-');
+INSERT INTO `users` (`id`, `name`, `document`, `nationalRegistration`, `driversLicense`, `phone`, `email`, `pass`, `type`, `status`, `birthdate`, `address`, `createdAt`, `recipientId`, `martialStatus`, `occupation`, `workPassport`) VALUES
+(1, 'Daniel Vaz Monteiro', '179.273.647-90', '28.816.799-2', '(não tem carteira de motorista)', '(21)99194-3672', 'contact.daniel.vaz@gmail.com', '12345678', 1, 1, '04/11/1997', 'Endereço: Rua Ernesto Silveira, Número: 137, Complemento: (não possui complemento), Bairro: Nossa Senhora de Fátima, CEP: 25.961-350, Cidade: Teresópolis, Estado: RJ.', '15/03/2023', '-', '1', 'Software Engineer', '(não possui carteira de trabalho)'),
+(2, 'Lucas Nogueira Secchin', '144.951.367-04', '26.371.925-4', '(não lembra)', '(21)98087-1656', 'lucasecchin@hotmail.com', '12345678', 1, 1, '17/08/1996', '-', '21/03/2023', '-', '1', 'IT Support Leader', '(não lembra)');
 
 --
--- Índices para tabelas despejadas
+-- Indexes for dumped tables
 --
 
 --
--- Índices para tabela `chat`
+-- Indexes for table `chat`
 --
 ALTER TABLE `chat`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `clients`
+-- Indexes for table `clients`
 --
 ALTER TABLE `clients`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`clientId`);
 
 --
--- Índices para tabela `contract`
+-- Indexes for table `contract`
 --
 ALTER TABLE `contract`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `contract_template`
+-- Indexes for table `contract_template`
 --
 ALTER TABLE `contract_template`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `faq`
+-- Indexes for table `faq`
 --
 ALTER TABLE `faq`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `forum`
+-- Indexes for table `forum`
 --
 ALTER TABLE `forum`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `log`
+-- Indexes for table `log`
 --
 ALTER TABLE `log`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `notifications`
+-- Indexes for table `notifications`
 --
 ALTER TABLE `notifications`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `platform`
+-- Indexes for table `plans`
+--
+ALTER TABLE `plans`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `platform`
 --
 ALTER TABLE `platform`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `privacy_policy`
+-- Indexes for table `privacy_policy`
 --
 ALTER TABLE `privacy_policy`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `process`
+-- Indexes for table `process`
 --
 ALTER TABLE `process`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `process_template`
+-- Indexes for table `process_template`
 --
 ALTER TABLE `process_template`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `receipts`
+-- Indexes for table `receipts`
 --
 ALTER TABLE `receipts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `schedule`
+-- Indexes for table `schedule`
 --
 ALTER TABLE `schedule`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `schedule_service`
+-- Indexes for table `schedule_service`
 --
 ALTER TABLE `schedule_service`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `schedule_time`
+-- Indexes for table `schedule_time`
 --
 ALTER TABLE `schedule_time`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `suggestions`
+-- Indexes for table `suggestions`
 --
 ALTER TABLE `suggestions`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Índices para tabela `terms_of_use`
+-- Indexes for table `terms_of_use`
 --
 ALTER TABLE `terms_of_use`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `transactions`
+-- Indexes for table `transactions`
 --
 ALTER TABLE `transactions`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de tabela `chat`
+-- AUTO_INCREMENT for table `chat`
 --
 ALTER TABLE `chat`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `clients`
---
-ALTER TABLE `clients`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `contract`
+-- AUTO_INCREMENT for table `contract`
 --
 ALTER TABLE `contract`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `contract_template`
+-- AUTO_INCREMENT for table `contract_template`
 --
 ALTER TABLE `contract_template`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de tabela `faq`
+-- AUTO_INCREMENT for table `faq`
 --
 ALTER TABLE `faq`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de tabela `forum`
+-- AUTO_INCREMENT for table `forum`
 --
 ALTER TABLE `forum`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `log`
+-- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `notifications`
+-- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `platform`
+-- AUTO_INCREMENT for table `plans`
+--
+ALTER TABLE `plans`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `platform`
 --
 ALTER TABLE `platform`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de tabela `privacy_policy`
+-- AUTO_INCREMENT for table `privacy_policy`
 --
 ALTER TABLE `privacy_policy`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de tabela `process`
+-- AUTO_INCREMENT for table `process`
 --
 ALTER TABLE `process`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `process_template`
+-- AUTO_INCREMENT for table `process_template`
 --
 ALTER TABLE `process_template`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `receipts`
+-- AUTO_INCREMENT for table `receipts`
 --
 ALTER TABLE `receipts`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `schedule`
+-- AUTO_INCREMENT for table `schedule`
 --
 ALTER TABLE `schedule`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `schedule_service`
+-- AUTO_INCREMENT for table `schedule_service`
 --
 ALTER TABLE `schedule_service`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `schedule_time`
+-- AUTO_INCREMENT for table `schedule_time`
 --
 ALTER TABLE `schedule_time`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `suggestions`
+-- AUTO_INCREMENT for table `suggestions`
 --
 ALTER TABLE `suggestions`
   MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `terms_of_use`
+-- AUTO_INCREMENT for table `terms_of_use`
 --
 ALTER TABLE `terms_of_use`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de tabela `transactions`
+-- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

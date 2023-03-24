@@ -52,7 +52,7 @@ function PersonalData(lang) {
   }</span>
   ${Input("user_name", "Nome completo", "", "text")}
   ${Input("user_document", "Documento (CPF/CNPJ)", "18", "tel")}
-  <div style='display: flex; flex-direction: row; justify-content: space-between'> 
+  <div style='display: flex; flex-direction: row; justify-content: space-between; width: 100%;'> 
    ${Input("user_national_registration", "RG", "14", "tel")}
    ${Input("user_drivers_license", "CNH", "14", "tel")}
   </div>
@@ -69,7 +69,7 @@ function ContactData(lang) {
     }</span>
     ${Input("user_phone", "Telefone celular", "", "tel")}
     ${Input("user_email", "Email", "", "email")}
-    <div style='display: flex; flex-direction: row; align-items: center;'> 
+    <div style='display: flex; flex-direction: row; align-items: center; width: 100%'> 
       ${Input("user_pass", "Senha", "", "password", "120px")}
       <span style='font-size: 14px; margin-top: 10px; color: cornflowerblue' id="pass"></span>
     </div>
@@ -137,7 +137,7 @@ function SaveButton(lang) {
 function LoadData(data) {
   let not = " - não informado";
   let addressData =
-    data.address === ""
+    data.address !== ""
       ? `Endereço: Endereço${not}, Número: Número${not}, Complemento: Complemento${not}, Bairro: Bairro${not}, CEP: CEP${not}, Cidade: Cidade${not}, Estado: Estado${not}`
       : data.address;
   let address = addressData.split("Endereço: ")[1].split(",")[0];
@@ -191,11 +191,11 @@ async function showPageContent() {
           ${PageTitle(translations(lang)?.profile_page_title)}
   
           <div class="subcontent">
-                ${PersonalData(lang)}     
-                ${ContactData(lang)}                
-                ${AddressData(lang)}
-                ${OtherData(lang)}
-                ${SaveButton(lang)}
+              ${PersonalData(lang)}     
+              ${ContactData(lang)}                
+              ${AddressData(lang)}
+              ${OtherData(lang)}
+              ${SaveButton(lang)}
           </div>
         </div>
       </section>
