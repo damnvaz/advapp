@@ -40,14 +40,17 @@ async function showPageContent() {
       <section class="section-area">
         <div class="content">
           ${ArrowBack()}
-          ${PageTitle("Transações")}
 
-          <img 
-            class="refresh-icon"
-            src="assets/icons/refresh.svg"
-            alt="refresh icon"
-            id="refresh_icon"
-          />
+          <div class="top-content"> 
+            ${PageTitle("Transações")}
+
+            <img 
+              class="refresh-icon"
+              src="assets/icons/refresh.svg"
+              alt="refresh icon"
+              id="refresh_icon"
+            />
+          </div>
   
           ${SearchBar("search_bar", "Buscar por data / cliente / valor")}
           <div class="subcontent" id="transactions-list">
